@@ -1,174 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Xenforo</title>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport" />
-    <meta name="description" content="Credit Card Generator" />
-    <meta name="keywords" content="Namso, Namso Lite, ccgen, credit card generator, generator, cc, bin, credit, mastercard, visa, amex, discover, oshekher" />
-    <meta name="author" content="0xN1" />
-    <meta name="google" content="notranslate" />
-    <meta name="og:description" content="Credit Card Generator" />
-    <meta name="og:url" content="/" />
-    <meta name="og:title" content="www.uncoder.eu.org" />
-    <meta name="og:image" content="https://i.imgur.com/RMFVK6p.png" />
-    <meta name="theme-color" content="#1a1a1a" />
-    <meta name="msapplication-navbutton-color" content="#1a1a1a" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<head>
+   <title>Xenforo</title>
+   <meta charset="UTF-8">
+   <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+   <meta name="description" content="Credit Card Generator">
+   <meta name="keywords" content="Namso, Namso Lite, ccgen, credit card generator, generator, cc, bin, credit, mastercard, visa, amex, discover, oshekher">
+   <meta name="author" content="0xN1">
+   <meta name="google" content="notranslate">
+   <meta name="og:description" content="Credit Card Generator">
+   <meta name="og:url" content="/">
+   <meta name="og:title" content="www.uncoder.eu.org">
+   <meta name="og:image" content="https://img.icons8.com/external-filled-outline-satawat-anukul/100/000000/external-ecommerce-ecommercefilled-outline-filled-outline-satawat-anukul-29.png">
+   <meta name="theme-color" content="#1a1a1a">
+   <meta name="msapplication-navbutton-color" content="#1a1a1a">
+   <meta name="apple-mobile-web-app-capable" content="yes">
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+   
+   <link rel="shortcut icon" href="https://img.icons8.com/external-filled-outline-satawat-anukul/100/000000/external-ecommerce-ecommercefilled-outline-filled-outline-satawat-anukul-29.png">
+   <link rel="stylesheet" type="text/css" href="https://rawcdn.githack.com/OshekharO/CC-GEN/f928805e2420ebe89eaabde78039aef08f2c1feb/Xenforo/css/ccgen_style.css">
+   <link href="https://rawcdn.githack.com/OshekharO/CC-GEN/f928805e2420ebe89eaabde78039aef08f2c1feb/Xenforo/css/geosans.css" rel="stylesheet" type="text/css">
+   <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-    <link rel="shortcut icon" href="https://img.icons8.com/external-filled-outline-satawat-anukul/100/000000/external-ecommerce-ecommercefilled-outline-filled-outline-satawat-anukul-29.png" />
-    <!-- css -->
-    <link rel="stylesheet" type="text/css" href="https://rawcdn.githack.com/OshekharO/CC-GEN/f928805e2420ebe89eaabde78039aef08f2c1feb/Xenforo/css/ccgen_style.css" />
-    <link rel="stylesheet" type="text/css" href="https://rawcdn.githack.com/OshekharO/CC-GEN/f928805e2420ebe89eaabde78039aef08f2c1feb/Xenforo/css/Responsive_ads.css">
-    <link href="https://rawcdn.githack.com/OshekharO/CC-GEN/f928805e2420ebe89eaabde78039aef08f2c1feb/Xenforo/css/geosans.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script src="https://kit.fontawesome.com/fa8e56120a.js"></script>
-    <!-- js -->
-    <script type="text/javascript" src="https://rawcdn.githack.com/OshekharO/CC-GEN/f928805e2420ebe89eaabde78039aef08f2c1feb/Xenforo/js/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="https://rawcdn.githack.com/OshekharO/CC-GEN/f928805e2420ebe89eaabde78039aef08f2c1feb/Xenforo/js/ccgen_eng.js"></script>
-  </head>
-  <body onload="ccgen();">
-    <header>
-      <div style="width: 60%; background: #1c1d22; border-radius: 10px; margin-left: auto; margin-right: auto; margin-top: 10px;">
-        <section class="title" style="text-shadow: 0px 0px 15px #7ec7c0; font-size: 2rem; padding: 15px; font-family: GeosansLight;">Source BIN CC GEN V4 LITE</section>
-      </div>
-    </header>
+<body onload="ccgen();">
+  <header>
+     
+     <section class="title"><img src="https://img.icons8.com/external-filled-outline-satawat-anukul/100/000000/external-ecommerce-ecommercefilled-outline-filled-outline-satawat-anukul-29.pn" alt="NamsoCCGen">XENFORO CC GEN</section>
+   </header>
+   <div align="center">
+	     <div class="principal"><br>
+	     <form name="console" id="console" class="form-horizontal" role="form" method="POST">
+	        <div class="p"><div class="Ilabel"><i class="fa fa-gg"></i> Insert your BIN</div><input type="text" class="input_text" id="ccpN" name="ccp" value="" style="width: 175px" placeholder="xxxx xxxx xxxx xxxx" maxlength="19"></div>
+	        <br>
+	           <select name="ccnsp" class="input_text" style="display:none;"><option selected="selected">None</select>
+	           <div class="p"><div class="Ilabel"><i class="fa fa-plus-square"></i> Include</div>
+	           <div class="input_text s"><label>Date<input type="checkbox" id="ccexpdat" name="ccexpdat" checked></label><label>CCV2<input type="checkbox" id="ccvi" name="ccvi" checked></label><label>Bank Info<input type="checkbox" id="ccbank" name="ccbank"></label></div>
+	           </div>
+	           <br>
+	              <div class="p"><div class="Ilabel"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Amount</div><input class="input_text" type="text" name="ccghm" style="width: 40px" maxlength="4" value="10"></div>
+	              <div class="p"><div class="Ilabel"><i class="fa fa-cogs" aria-hidden="true"></i> Format</div>
+	                 <select name="ccoudatfmt" class="input_text">
+	                    <option value="CHECKER" selected="selected">CHK
+	                    <option value="CSV">CSV
+	                    <option value="XML">XML
+	                    <option value="JSON">JSON
+	                 </select>
+	                 </div><br>
+	                    <div class="p"><div class="Ilabel"><i class="fa fa-connectdevelop"></i> CCV2</div><input type="text" id="eccv" maxlength="4" style="width: 40px" value="rnd" class="input_text" name="eccv"></div>
+	                    <div class="p"><div class="Ilabel"><i class="fa fa-calendar" aria-hidden="true"></i> Month</div>
+	                    <select name="emeses" class="input_text">
+	                       <option value="rnd">Rnd
+	                       <option value="01">01
+	                       <option value="02">02
+	                       <option value="03">03
+	                       <option value="04">04
+	                       <option value="05">05
+	                       <option value="06">06
+	                       <option value="07">07
+	                       <option value="08">08
+	                       <option value="09">09
+	                       <option value="10">10
+	                       <option value="11">11
+	                       <option value="12">12
+	                    </select>
+	                    </div>
+	                    	<div class="p"><div class="Ilabel"><i class="fa fa-calendar" aria-hidden="true"></i> Year</div>
+	                    	<select name="eyear" class="input_text">
+	                    	   <option value="rnd">Rnd
+	                    	   <option value="2019">2019
+	                    	   <option value="2020">2020
+	                    	   <option value="2021">2021
+	                    	   <option value="2022">2022
+	                    	   <option value="2023">2023
+	                    	   <option value="2024">2024
+	                    	   <option value="2025">2025
+	                    	   <option value="2026">2026
+	                    	   <option value="2027">2027
+	                    	   <option value="2028">2028
+	                    	</select>
+	                    	</div>
+	                  <input type="hidden" name="tr" value="1000">
+	                 <input type="hidden" name="L" style="width: 20px" value="1L">
+	                 <br>
+	               <br>
+	              <a class="Lbutton" name="gerar" id="gerar"><i class="fa fa-cog fa-spin"></i> Generate Cards</a>
+	              <br>
+	             <br>
+	            <div align="center">
+	             <div class="eighty">
+	              <div>
+	               <div class="clean" id="cleanText"></div>
+	              </div>
+	               <textarea class="textarea" name="output2" id="output2" rows="15" readonly=""></textarea>
+	             </div>
+	           </div>
+	         </form>
+	       </div>
+	     </div>
+	     <br>
+<footer>
+    <span><i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp; © 2022 Saksham Shekher . All rights reserved.&nbsp;<i class="fa fa-credit-card-alt" aria-hidden="true"></i></span>
+ 
+   <br>
 
-    <!-- Ads -->
-    <div id="leaderboard-pixfuture">
-      <div align="center">
-        <!-- add your ads Here  -->
-      </div>
-    </div>
-    <!-- Ads -->
-    <div align="center" style="width: 60%; background: #1c1d22; border-radius: 10px; margin-left: auto; margin-right: auto; margin-top: 10px;">
-      <br />
-      <form name="console" id="console" class="form-horizontal" role="form" method="POST">
-        <span style="/* padding-left:250px;*/ padding-right: auto; color: #c9b023; font-size: 18px; text-align: center; font-family: GeosansLight; text-shadow: 1px 1px 10px #f00; font-weight: bold;">
-          <i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp; VISA&nbsp;<i class="fab fa-cc-visa"></i> MASTERCARD&nbsp;<i class="fab fa-cc-mastercard"></i> AMEX&nbsp;<i class="fab fa-cc-amex"></i> DISCOVER&nbsp;
-          <i class="fab fa-cc-amex"></i> &nbsp;<i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-        </span>
+</footer>
 
-        <table>
-          <tbody>
-            <tr>
-              <td style="width: 40%; text-align: left; padding-left: 15px; margin-right: auto; color: #7ec7c0; font-family: 'GeosansLight';">
-                <div class="p">
-                  <div style="padding-top: 7px; padding-bottom: auto;"><i class="fa fa-gg"></i> Insert your BIN</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="border: none;" class="input_text" id="ccpN" name="ccp" value="" placeholder="  xxxx xxxx xxxx xxxx" maxlength="19" />
-                </div>
-                &nbsp;&nbsp;
-                <select name="ccnsp" class="input_text" style="display: none;">
-                  <option selected="selected">None</option>
-                </select>
-                <div class="p">
-                  <div style="padding-top: 6px; padding-bottom: auto;"><i class="fa fa-plus-square"></i> Include</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <div class="input_text s" style="border: none;">
-                    <label>Date<input type="checkbox" id="ccexpdat" name="ccexpdat" checked="" /></label>&nbsp;<label>CCV2<input type="checkbox" id="ccvi" name="ccvi" checked="" />&nbsp;&nbsp;</label>
-                    <label>Bank Info<input type="checkbox" id="ccbank" name="ccbank" /></label>
-                  </div>
-                </div>
-
-                <div class="p">
-                  <div style="padding-top: 5px; padding-bottom: auto;"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Amount</div>
-                  &nbsp;&nbsp;<input style="border: none; width: 50px;" class="input_text" type="text" name="ccghm" maxlength="4" value="10" />
-                </div>
-                &nbsp;
-                <div class="p">
-                  <div style="padding-top: 5px; padding-bottom: auto;"><i class="fa fa-cogs" aria-hidden="true"></i> Format</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <select name="ccoudatfmt" class="input_text" style="border: none;">
-                    <option value="CHECKER" selected="selected">CHK </option>
-                    <option value="CSV">CSV </option>
-                    <option value="XML">XML </option>
-                    <option value="JSON">JSON </option>
-                  </select>
-                </div>
-                <div class="p">
-                  <div style="padding-top: 5px; padding-bottom: auto;"><i class="fa fa-connectdevelop"></i> CCV2</div>
-                  &nbsp;&nbsp;<input type="text" style="border: none; width: 60px;" id="eccv" maxlength="4" value="rnd" class="input_text" name="eccv" />
-                </div>
-                <br />
-                <div class="p">
-                  <div style="padding-top: 5px; padding-bottom: auto;"><i class="fa fa-calendar" aria-hidden="true"></i> Month</div>
-                  &nbsp;&nbsp;
-                  <select name="emeses" style="border: none;" class="input_text">
-                    <option value="rnd">Random </option>
-                    <option value="01">01 </option>
-                    <option value="02">02 </option>
-                    <option value="03">03 </option>
-                    <option value="04">04 </option>
-                    <option value="05">05 </option>
-                    <option value="06">06 </option>
-                    <option value="07">07 </option>
-                    <option value="08">08 </option>
-                    <option value="09">09 </option>
-                    <option value="10">10 </option>
-                    <option value="11">11 </option>
-                    <option value="12">12 </option>
-                  </select>
-                </div>
-                &nbsp;
-                <div class="p">
-                  <div style="padding-top: 5px; padding-bottom: auto;"><i class="fa fa-calendar" aria-hidden="true"></i> Year</div>
-                  &nbsp;&nbsp;
-                  <select name="eyear" style="border: none;" class="input_text">
-                    <option value="rnd">Random </option>
-                    <option value="2019">2019 </option>
-                    <option value="2020">2020 </option>
-                    <option value="2021">2021 </option>
-                    <option value="2022">2022 </option>
-                    <option value="2023">2023 </option>
-                    <option value="2024">2024 </option>
-                    <option value="2025">2025 </option>
-                    <option value="2026">2026 </option>
-                    <option value="2027">2027 </option>
-                    <option value="2028">2028 </option>
-                  </select>
-                </div>
-                <input type="hidden" name="tr" value="1000" />
-                <input type="hidden" name="L" style="width: 20px;" value="1L" />
-                <style>
-                  .Lbutton {
-                    -webkit-transition-duration: 0.4s; /* Safari */
-                    transition-duration: 0.4s;
-                    background: #2b2b35;
-                    font-family: "GeosansLight";
-                  }
-                  .Lbutton:hover {
-                    background: #7ec7c0; /* Green */
-                    color: #1c1d22;
-                  }
-                </style>
-
-                <a class="Lbutton" name="gerar" id="gerar" style="border: none;"><i class="fa fa-cog fa-spin"></i> Generate Cards</a>
-              </td>
-              <script>
-                if (screen.width < 500) {
-                  document.write("<tr>");
-                }
-              </script>
-              <td>
-                <div align="center">
-                  <div class="eighty">
-                    <div>
-                      <div class="clean" id="cleanText"></div>
-                    </div>
-                    <textarea class="textarea" name="output2" id="output2" rows="15" readonly="" style="font-family: GeosansLight;"></textarea>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <span style="/* padding-left:250px;*/ padding-right: auto; color: #7ec7c0; font-size: 18px; text-align: center; font-family: GeosansLight;">
-          <i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp;© 2022 Saksham Shekher . All rights reserved.&nbsp;<i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-        </span>
-      </form>
-    </div>
-  </body>
+	<script type="text/javascript" src="https://rawcdn.githack.com/OshekharO/CC-GEN/f928805e2420ebe89eaabde78039aef08f2c1feb/Xenforo/js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="https://rawcdn.githack.com/OshekharO/CC-GEN/f928805e2420ebe89eaabde78039aef08f2c1feb/Xenforo/js/ccgen_eng.js"></script>
+	
+ </body>
 </html>
