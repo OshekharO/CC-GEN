@@ -10,7 +10,7 @@ Currently supported card types are:
 
 ## 🙈 Demo
 
-Demo: [www.namso-gen.eu.org](www.namso-gen.eu.org)
+Demo: www.namso-gen.eu.org
 
 
 ## 🚸 Warnings :
