@@ -1,0 +1,313 @@
+/***************************************
+*       CCGen.org Style for CSS
+*        Designed by N1ghtm4R3
+*       Thank-you Namso Soluciones
+*
+* Open-Source Code </> 15-11-2017
+* https://t.me/OshekharO
+****************************************/
+
+body{
+	margin:0;
+	background-color: #202026;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+header{
+	color: #7EC7C0;
+}
+.title{
+	font-size: 2rem;
+	padding: 15px;
+	font-family: 'GeosansLight';
+	text-shadow: 0px 0px 15px #7EC7C0;
+	text-align: center;
+}
+.header-title {
+	background: #1a1a1a;
+	font-family: 'GeosansLight';
+	display: flex;
+	justify-content: flex-end;
+	padding: 1px;
+}
+.header-title a {
+	cursor: pointer;
+	transition: all 0.5s;
+	-webkit-transition: all .5s;
+	text-decoration: none;
+	color: #7EC7C0;
+}
+.header-title a:hover {
+	color: rgba(0, 0, 0, 0.75);
+	background: white;
+	border-radius: 10px;
+	padding: 0 5px 0 5px;
+}
+
+.principal {
+	width: 77%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.title img{
+	display: inline-block;
+	height: 2.5rem;
+	vertical-align: middle;
+}
+
+.Lbuttoni{
+	text-decoration: none;
+	cursor:pointer;
+	-webkit-transition: all .5s;
+	transition: all .5s;
+}
+.Lbuttoni:hover{
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+
+form#console {
+	text-align: center;
+}
+.Ilabel, .input_text,.input_texts {
+	display: -webkit-inline-box;
+	font-family: 'GeosansLight';
+	font-size: 19px;
+}
+.Ilabel {
+	background-color: #232329;
+	padding: 5px;
+	border-radius: 5px 0 0 5px;
+	border-right: 1px solid #7EC7C0;
+	border-left: 1px solid #7EC7C0;
+	border-top: 1px solid #7EC7C0;
+	color: #7EC7C0;
+	border-color: #7EC7C0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 38px rgba(126, 199, 192, .9);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 38px rgba(126, 199, 192, .9); 
+}
+.input_text {
+	padding: 6px;
+	border: 0;
+	border-bottom: 1px solid #7EC7C0;
+	border-right: 1px solid #7EC7C0;
+	border-top: 1px solid #7EC7C0;
+	border-radius: 0 5px 5px 0;
+	/* -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 18px rgba(126, 199, 192, .9);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 18px rgba(126, 199, 192, .9);*/
+	vertical-align: bottom;
+	outline: none;
+	font-size:17px;
+	color:#ebebeb;
+	background-color:#2B2B35;
+}
+select.input_text {
+	margin-left: -5px;
+	font-size: 16px;
+	background-color:#2B2B35;
+}
+.p {
+	display: -webkit-inline-box;
+	margin-bottom: 12px;
+}
+.s{
+	margin-left: -5px;
+	background: #2B2B35;
+	padding: 5.5px;
+}
+.input_text>label{
+	cursor:pointer;
+}
+
+.clean{
+	background: #4d4f53 url('../img/close.png') 0 0 no-repeat;
+	border-radius: 50%;
+	cursor: pointer;
+	height: 24px;
+	width: 24px;
+	float: right;
+	margin: 0 -12px -12px 0;
+	position: relative;
+	transition: all 0.5s;
+	-webkit-transition: all .5s;
+}
+.clean:hover {
+	background: #6f808f url('../img/close.png') 0 0 no-repeat;
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+.cleanit{
+	background: #4d4f53 url('../img/close.png') 0 0 no-repeat;
+	border-radius: 50%;
+	cursor: pointer;
+	height: 24px;
+	width: 24px;
+	float: right;
+	position: relative;
+	transition: all 0.5s;
+	-webkit-transition: all .5s;
+}
+.cleanit:hover {
+	background: rgba(0, 0, 0, 0.87) url('../img/close.png') 0 0 no-repeat;
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+
+.eighty{
+	width:80%;
+}
+
+.Lbutton {
+ border: 1px solid #7EC7C0;
+	color: #7EC7C0;
+	/*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 18px rgba(126, 199, 192, .9);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 18px rgba(126, 199, 192, .9);*/
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #232329), color-stop(1, #232329));
+	background:-moz-linear-gradient(top, #232329 5%, #232329 100%);
+	background:-webkit-linear-gradient(top, #232329 5%, #232329 100%);
+	background:-o-linear-gradient(top, #232329 5%, #232329 100%);
+	background:-ms-linear-gradient(top, #232329 5%, #232329 100%);
+	background:linear-gradient(to bottom, #232329 5%, #232329 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#232329', endColorstr='#232329',GradientType=0);
+	background-color:#232329;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	font-family:'GeosansLight';
+	font-size:20px;
+	font-weight:bold;
+	padding:8px 40px;
+	text-decoration:none;
+}
+.Lbutton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #232329), color-stop(1, #232329));
+	background:-moz-linear-gradient(top, #232329 5%, #232329 100%);
+	background:-webkit-linear-gradient(top, #232329 5%, #232329 100%);
+	background:-o-linear-gradient(top, #232329 5%, #232329 100%);
+	background:-ms-linear-gradient(top, #232329 5%, #232329 100%);
+	background:linear-gradient(to bottom, #232329 5%, #232329 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3B3454', endColorstr='#232329',GradientType=0);
+	background-color:#232329;
+}
+.Lbutton:active {
+	position:relative;
+	top:1px;
+}
+.Lbutton:hover, .Lbutton:focus, .Lbutton:active, .Lbutton.active, .open > .dropdown-toggle.Lbutton{
+	color: #7EC7C0;
+	border-color: #7EC7C0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 38px rgba(126, 199, 192, .9);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 38px rgba(126, 199, 192, .9);
+}
+
+/*Textarea*/
+.textarea {
+	background-color:#2B2B35;
+	border-bottom: 2px solid #2A203F;
+	border-color: #7EC7C0;
+	/*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 38px rgba(126, 199, 192, .9);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 38px rgba(126, 199, 192, .9);*/
+	width: 100%;
+	color:#ebebeb;
+	font-size: 16px;
+	margin-bottom: 10px;
+	outline: none;
+	font-family: 'GeosansLight';
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.textarea::-webkit-scrollbar {
+	width: 10px;
+}
+.textarea::-webkit-scrollbar-thumb {
+	background: #7EC7C0 !important;
+}
+
+/*Footer*/
+footer {
+	background-color: #232329;
+	border-color: #7EC7C0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 38px rgba(126, 199, 192, .9);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 38px rgba(126, 199, 192, .9);
+	color:#7EC7C0;
+ padding: 5px;
+	font-size: 18px;
+ text-align: center;
+	font-family: 'GeosansLight';
+}
+
+a {
+	color:#CECED4;
+}
+
+/*Ajustar*/
+@media (max-width: 376px){
+	.title{
+		font-size: 1.5rem;
+	}
+	.p{
+
+	}
+	.Ilabel{
+		width: 90%;
+		border-radius: 0;
+	}
+	.input_text{
+		width: 80%;
+		border-radius: 0;
+		text-align: -webkit-center;
+		border-right: 0;
+	}
+	.inline{
+		width: 40%;
+	}
+	.hh{
+		text-align: center;
+	}
+}
+@media (max-width: 595px){
+	.form{
+		width:99%;
+		margin: 5px 0 5px 0;
+	}
+}
+@media (max-width: 445px){
+	.item{
+		width:38%;
+	}
+}
+@media (max-width: 745px){
+	.z1,.z2,.z3,.z4,.z5,.z7{
+		width:100%;
+	}
+	.y{
+		display:none;
+	}
+	.z1{
+		background: teal;
+		color: white;
+	}
+}
+@media (max-width: 1016px){
+	.menu,.principal{
+		width:100%;
+	}
+	#a0{
+		display:block;
+	}
+	#menu-sub{
+		display:none;
+	}
+	.item-title{
+		font-size: 20px;
+	}
+}
+@media (min-width: 1017px){
+	#menu-sub{
+		display:block !important;
+	}
+}
