@@ -10,7 +10,7 @@ Currently supported card types are:
 
 ## 🙈 Demo
 
-Demo: www.namso-gen.eu.org
+Demo: [https://uncoder.eu.org](https://uncoder.eu.org/cc-gen/)
 
 
 ## 🚸 Warnings :
