@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             width: 100%;
             padding: 30px;
         }
@@ -44,7 +44,7 @@
         }
 
         .card-body {
-            padding: 40px;
+            padding: 30px;
         }
 
         .form-label {
@@ -55,7 +55,7 @@
         .form-control, .form-select {
             border-radius: 10px;
             border: 2px solid #e0e0e0;
-            padding: 12px;
+            padding: 10px;
             transition: all 0.3s ease;
         }
 
@@ -68,7 +68,7 @@
             background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
             border: none;
             border-radius: 50px;
-            padding: 12px 30px;
+            padding: 10px 25px;
             font-weight: 600;
             letter-spacing: 1px;
             transition: all 0.3s ease;
@@ -80,16 +80,35 @@
         }
 
         .output {
-            margin-top: 30px;
+            margin-top: 20px;
+            position: relative;
         }
 
         .textarea {
-            height: 200px;
+            height: 150px;
             border-radius: 15px;
             padding: 15px;
             font-family: 'Roboto Mono', monospace;
             font-size: 14px;
             background-color: #f8f9fa;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4ECDC4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #45b7a0;
         }
 
         @media (max-width: 768px) {
@@ -110,22 +129,20 @@
             </div>
             <div class="card-body">
                 <form name="console" id="console" class="needs-validation" novalidate>
-                    <div class="row mb-4">
-                        <div class="col-md-6 mb-3">
-                            <label for="binInput" class="form-label"><i class="fas fa-hashtag me-2"></i>BIN:</label>
-                            <input type="text" class="form-control" id="binInput" name="bin" placeholder="e.g., 523465xxxxxxxxxx" required />
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="cardCount" class="form-label"><i class="fas fa-layer-group me-2"></i>Number of Cards:</label>
-                            <input type="number" class="form-control" id="cardCount" name="count" value="10" min="1" max="50" required />
-                        </div>
+                    <div class="mb-3">
+                        <label for="binInput" class="form-label"><i class="fas fa-hashtag me-2"></i>BIN:</label>
+                        <input type="text" class="form-control" id="binInput" name="bin" placeholder="e.g., 523465xxxxxxxxxx" required />
                     </div>
-                    <div class="row mb-4">
-                        <div class="col-md-4 mb-3">
+                    <div class="mb-3">
+                        <label for="cardCount" class="form-label"><i class="fas fa-layer-group me-2"></i>Number of Cards:</label>
+                        <input type="number" class="form-control" id="cardCount" name="count" value="10" min="1" max="50" required />
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
                             <label for="cvvInput" class="form-label"><i class="fas fa-lock me-2"></i>Custom CVV:</label>
                             <input type="text" class="form-control" id="cvvInput" name="cvv" placeholder="Optional" maxlength="3" />
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-4">
                             <label for="expiryMonth" class="form-label"><i class="fas fa-calendar-alt me-2"></i>Expiry Month:</label>
                             <select class="form-select" id="expiryMonth">
                 <option value="">Random</option>
@@ -141,9 +158,9 @@
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
-              </select>
+                            </select>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-4">
                             <label for="expiryYear" class="form-label"><i class="fas fa-calendar-check me-2"></i>Expiry Year:</label>
                             <select class="form-select" id="expiryYear">
                 <option value="">Random</option>
@@ -157,22 +174,24 @@
               </select>
                         </div>
                     </div>
-                    <div class="text-center mb-4">
+                    <div class="text-center mb-3">
                         <button type="button" class="btn btn-generate btn-lg px-5" onclick="generateCards()">
                             <i class="fas fa-cog fa-spin me-2"></i> Generate Cards
                         </button>
                     </div>
                     <div class="output">
                         <textarea class="form-control textarea" name="output2" id="output2" rows="10" readonly placeholder="Generated cards will appear here..."></textarea>
+                        <button class="copy-btn" onclick="copyToClipboard()"><i class="fas fa-copy me-2"></i>Copy</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    // Function to handle BIN input changes
-    function handleBinInputChange() {
+        // Your existing JavaScript code here
+function handleBinInputChange() {
   let binValue = binInput.value.trim();
   const cleanBinValue = binValue.replace(/[^0-9]/g, ''); // Removing non-digits
 
@@ -261,6 +280,20 @@
     function generateRandomCVV() {
       return ('00' + Math.floor(Math.random() * 1000)).slice(-3);
     }
-  </script>
-  </body>
+        
+        function copyToClipboard() {
+            const textarea = document.getElementById('output2');
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Optional: Provide user feedback
+            const copyBtn = document.querySelector('.copy-btn');
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check me-2"></i>Copied!';
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
 </html>
