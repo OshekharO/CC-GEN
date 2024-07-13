@@ -94,7 +94,7 @@
       <div class="card-body">
         <form name="console" id="console" class="needs-validation" novalidate>
           <div class="mb-3">
-            <label for="binInput" class="form-label"><i class="fas fa-credit-card"></i> BIN (Use 'x' for random digits):</label>
+            <label for="binInput" class="form-label"><i class="fas fa-credit-card"></i> BIN:</label>
             <input type="text" class="form-control" id="binInput" name="bin" placeholder="e.g., 5322xxxxxxxxx" required>
             <div class="invalid-feedback">
               Please enter a valid BIN pattern.
@@ -130,7 +130,7 @@
             </select>
           </div>
           <div class="mb-3">
-            <label for="expiryYear" class="form-label">Expiry Year (Optional):</label>
+            <label for="expiryYear" class="form-label"><i class="fas fa-calendar-alt"></i> Expiry Year (Optional):</label>
             <select class="form-select" id="expiryYear">
               <option value="">Random</option>
               <option value="2024">2024</option>
@@ -183,16 +183,19 @@
       }
     }
 
-    function generateCardNumberFromPattern(pattern) {
-      let cardNumber = '';
-      for (let i = 0; i < pattern.length; i++) {
-        cardNumber += pattern[i] === 'x' ? Math.floor(Math.random() * 10) : pattern[i];
-      }
-      return cardNumber;
+function generateCardNumberFromPattern(pattern) {
+  let cardNumber = '';
+  for (let i = 0; i < pattern.length; i++) {
+    if (pattern[i] === 'x') {
+      cardNumber += Math.floor(Math.random() * 10);
+    } else {
+      cardNumber += pattern[i]; 
     }
+  }
+  return cardNumber;
+}
 
     function completeLuhnCardNumber(number) {
-      // ... (Luhn algorithm implementation from the previous example)
       let sum = 0;
       let alternate = false;
       for (let i = number.length - 1; i >= 0; i--) {
