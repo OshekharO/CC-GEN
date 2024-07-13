@@ -1,221 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CC GEN</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CC GEN</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-    body {
-      background-color: #f8f9fa; /* Light background color */
-      font-family: 'Roboto', sans-serif; /* Modern font */
-    }
-
-    .container {
-      margin-top: 50px;
-      max-width: 600px; /* Adjusted max-width for better responsiveness */
-    }
-
-    .card {
-      border: none; /* Remove default card border */
-      border-radius: 15px; /* Rounded corners */
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle drop shadow */
-    }
-
-    .card-header {
-      background-color: #007bff; /* Primary color header */
-      color: #fff;
-      border-radius: 15px 15px 0 0; /* Rounded top corners */
-    }
-
-    .card-body {
-      padding: 30px;
-    }
-
-    .form-label {
-      font-weight: 500; /* Slightly bolder labels */
-    }
-
-    .form-control {
-      border-radius: 8px; /* Rounded input fields */
-      border: 1px solid #ced4da; /* Light border color */
-    }
-
-    .form-control:focus {
-      border-color: #80bdff; /* Focus state border color */
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus state box shadow */
-    }
-
-    .form-check-input:checked {
-      background-color: #007bff; /* Primary color for checked checkboxes */
-      border-color: #007bff;
-    }
-
-    .btn-generate {
-      background-color: #28a745; /* Success color for generate button */
-      border-color: #28a745;
-      border-radius: 8px; /* Rounded button */
-      transition: all 0.2s ease-in-out; /* Smooth transition on hover */
-    }
-
-    .btn-generate:hover {
-      background-color: #218838; /* Darker green on hover */
-      border-color: #1e7e34;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Hover effect: Larger drop shadow */
-    }
-
-    .output {
-      margin-top: 20px;
-    }
-
-    .textarea {
-      height: 200px;
-      resize: vertical;
-      font-family: 'Courier New', Courier, monospace; /* Monospace font for output */
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 576px) { 
-      .container {
-        margin-top: 30px;
-        max-width: 95%; /* Full width on smaller screens */
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+      body {
+        background-color: #f8f9fa; /* Light background color */
+        font-family: "Roboto", sans-serif; /* Modern font */
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="card">
-      <div class="card-header text-center">
-        <h3 class="mb-0">CC GEN</h3>
-      </div>
-      <div class="card-body">
-        <form name="console" id="console" class="needs-validation" novalidate>
-          <div class="mb-3">
-            <label for="binInput" class="form-label"><i class="fas fa-credit-card"></i> BIN:</label>
-            <input type="text" class="form-control" id="binInput" name="bin" placeholder="e.g., 5322xxxxxxxxx" required>
-            <div class="invalid-feedback">
-              Please enter a valid BIN pattern.
+
+      .container {
+        margin-top: 50px;
+        max-width: 600px; /* Adjusted max-width for better responsiveness */
+      }
+
+      .card {
+        border: none; /* Remove default card border */
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle drop shadow */
+      }
+
+      .card-header {
+        background-color: #007bff; /* Primary color header */
+        color: #fff;
+        border-radius: 15px 15px 0 0; /* Rounded top corners */
+      }
+
+      .card-body {
+        padding: 30px;
+      }
+
+      .form-label {
+        font-weight: 500; /* Slightly bolder labels */
+      }
+
+      .form-control {
+        border-radius: 8px; /* Rounded input fields */
+        border: 1px solid #ced4da; /* Light border color */
+      }
+
+      .form-control:focus {
+        border-color: #80bdff; /* Focus state border color */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus state box shadow */
+      }
+
+      .form-check-input:checked {
+        background-color: #007bff; /* Primary color for checked checkboxes */
+        border-color: #007bff;
+      }
+
+      .btn-generate {
+        background-color: #28a745; /* Success color for generate button */
+        border-color: #28a745;
+        border-radius: 8px; /* Rounded button */
+        transition: all 0.2s ease-in-out; /* Smooth transition on hover */
+      }
+
+      .btn-generate:hover {
+        background-color: #218838; /* Darker green on hover */
+        border-color: #1e7e34;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Hover effect: Larger drop shadow */
+      }
+
+      .output {
+        margin-top: 20px;
+      }
+
+      .textarea {
+        height: 200px;
+        resize: vertical;
+        font-family: "Courier New", Courier, monospace; /* Monospace font for output */
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 576px) {
+        .container {
+          margin-top: 30px;
+          max-width: 95%; /* Full width on smaller screens */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-header text-center">
+          <h3 class="mb-0">CC GEN</h3>
+        </div>
+        <div class="card-body">
+          <form name="console" id="console" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="binInput" class="form-label"><i class="fas fa-credit-card"></i> BIN:</label>
+              <input type="text" class="form-control" id="binInput" name="bin" placeholder="e.g., 523465xxxxxxxxxx" required />
+              <div class="invalid-feedback">
+                Please enter a valid BIN pattern.
+              </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="cardCount" class="form-label"><i class="fas fa-hashtag"></i> Number of Cards:</label>
-            <input type="number" class="form-control" id="cardCount" name="count" value="10" min="1" max="50" required>
-            <div class="invalid-feedback">
-              Please enter a number between 1 and 50.
+            <div class="mb-3">
+              <label for="cardCount" class="form-label"><i class="fas fa-hashtag"></i> Number of Cards:</label>
+              <input type="number" class="form-control" id="cardCount" name="count" value="10" min="1" max="50" required />
+              <div class="invalid-feedback">
+                Please enter a number between 1 and 50.
+              </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="cvvInput" class="form-label"><i class="fas fa-lock"></i> Custom CVV (Optional):</label>
-            <input type="text" class="form-control" id="cvvInput" name="cvv" placeholder="Leave blank for random" maxlength="3">
-          </div>
-          <div class="mb-3">
-            <label for="expiryMonth" class="form-label"><i class="fas fa-calendar-alt"></i> Expiry Month (Optional):</label>
-            <select class="form-select" id="expiryMonth">
-              <option value="">Random</option>
-              <option value="01">01</option>
-              <option value="02">02</option>
-              <option value="03">03</option>
-              <option value="04">04</option>
-              <option value="05">05</option>
-              <option value="06">06</option>
-              <option value="07">07</option>
-              <option value="08">08</option>
-              <option value="09">09</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="expiryYear" class="form-label"><i class="fas fa-calendar-alt"></i> Expiry Year (Optional):</label>
-            <select class="form-select" id="expiryYear">
-              <option value="">Random</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
-            </select>
-          </div>
-          <div class="text-center">
-            <button type="button" class="btn btn-generate btn-lg px-5" onclick="generateCards()">
-              <i class="fas fa-cog fa-spin me-2"></i> Generate Cards
-            </button>
-          </div>
-          <div class="output mt-4">
-            <textarea class="form-control textarea" name="output2" id="output2" rows="10" readonly></textarea>
-          </div>
-        </form>
+            <div class="mb-3">
+              <label for="cvvInput" class="form-label"><i class="fas fa-lock"></i> Custom CVV (Optional):</label>
+              <input type="text" class="form-control" id="cvvInput" name="cvv" placeholder="Leave blank for random" maxlength="3" />
+            </div>
+            <div class="mb-3">
+              <label for="expiryMonth" class="form-label"><i class="fas fa-calendar-alt"></i> Expiry Month (Optional):</label>
+              <select class="form-select" id="expiryMonth">
+                <option value="">Random</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="expiryYear" class="form-label"><i class="fas fa-calendar-alt"></i> Expiry Year (Optional):</label>
+              <select class="form-select" id="expiryYear">
+                <option value="">Random</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+              </select>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-generate btn-lg px-5" onclick="generateCards()"><i class="fas fa-cog fa-spin me-2"></i> Generate Cards</button>
+            </div>
+            <div class="output mt-4">
+              <textarea class="form-control textarea" name="output2" id="output2" rows="10" readonly></textarea>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function generateCards() {
-      const binInput = document.getElementById('binInput').value.trim();
-      const cardCount = parseInt(document.getElementById('cardCount').value);
-      const customCvv = document.getElementById('cvvInput').value.trim();
-      const expiryMonth = document.getElementById('expiryMonth').value;
-      const expiryYear = document.getElementById('expiryYear').value;
-      const outputTextarea = document.getElementById('output2');
-      outputTextarea.value = ''; // Clear previous output
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function generateCards() {
+        const binInput = document.getElementById("binInput").value.trim();
+        const cardCount = parseInt(document.getElementById("cardCount").value);
+        const customCvv = document.getElementById("cvvInput").value.trim();
+        const expiryMonth = document.getElementById("expiryMonth").value;
+        const expiryYear = document.getElementById("expiryYear").value;
+        const outputTextarea = document.getElementById("output2");
+        outputTextarea.value = ""; // Clear previous output
 
-      // Simple validation for BIN pattern 
-      if (!/^\d{6}x*$/.test(binInput)) {
-        alert("Invalid BIN pattern. Use digits 0-9 and 'x' for random digits.");
-        return;
+        // Simple validation for BIN pattern
+        if (!/^[\dx]{6,}$/.test(binInput)) {
+          alert("Invalid BIN pattern. Use digits 0-9 and 'x' for random digits. Minimum 6 characters required.");
+          return;
+        }
+
+        for (let i = 0; i < cardCount; i++) {
+          let cardNumber = generateCardNumberFromPattern(binInput);
+          cardNumber = completeLuhnCardNumber(cardNumber);
+          const cvv = customCvv.length === 3 ? customCvv : generateRandomCVV();
+          const month = expiryMonth || ("0" + (Math.floor(Math.random() * 12) + 1)).slice(-2);
+          const year = expiryYear || (Math.floor(Math.random() * 11) + 2024).toString();
+
+          outputTextarea.value += `${cardNumber}|${month}|${year}|${cvv}\n`;
+        }
       }
 
-      for (let i = 0; i < cardCount; i++) {
-        let cardNumber = generateCardNumberFromPattern(binInput);
-        cardNumber = completeLuhnCardNumber(cardNumber);
-        const cvv = customCvv.length === 3 ? customCvv : generateRandomCVV();
-        const month = expiryMonth || ('0' + (Math.floor(Math.random() * 12) + 1)).slice(-2);
-        const year = expiryYear || (Math.floor(Math.random() * 11) + 2024).toString(); 
-
-        outputTextarea.value += `${cardNumber}|${month}|${year}|${cvv}\n`;
-      }
-    }
-
-function generateCardNumberFromPattern(pattern) {
-  let cardNumber = '';
-  for (let i = 0; i < pattern.length; i++) {
-    if (pattern[i] === 'x') {
-      cardNumber += Math.floor(Math.random() * 10);
-    } else {
-      cardNumber += pattern[i]; 
-    }
-  }
-  return cardNumber;
-}
-
-    function completeLuhnCardNumber(number) {
-      let sum = 0;
-      let alternate = false;
-      for (let i = number.length - 1; i >= 0; i--) {
-        let n = parseInt(number.substring(i, i + 1));
-        if (alternate) {
-          n *= 2;
-          if (n > 9) {
-            n = (n % 10) + 1;
+      function generateCardNumberFromPattern(pattern) {
+        let cardNumber = "";
+        for (let i = 0; i < pattern.length; i++) {
+          if (pattern[i] === "x") {
+            cardNumber += Math.floor(Math.random() * 10);
+          } else {
+            cardNumber += pattern[i];
           }
         }
-        sum += n;
-        alternate = !alternate;
+        return cardNumber;
       }
-      let checkDigit = ((Math.floor(sum / 10) + 1) * 10 - sum) % 10;
-      return number + checkDigit;
-    }
 
-    function generateRandomCVV() {
-      return ('00' + Math.floor(Math.random() * 1000)).slice(-3);
-    }
-  </script>
-</body>
+      function completeLuhnCardNumber(number) {
+        let sum = 0;
+        let alternate = false;
+        for (let i = number.length - 1; i >= 0; i--) {
+          let n = parseInt(number.substring(i, i + 1));
+          if (alternate) {
+            n *= 2;
+            if (n > 9) {
+              n = (n % 10) + 1;
+            }
+          }
+          sum += n;
+          alternate = !alternate;
+        }
+        let checkDigit = ((Math.floor(sum / 10) + 1) * 10 - sum) % 10;
+        return number + checkDigit;
+      }
+
+      function generateRandomCVV() {
+        return ("00" + Math.floor(Math.random() * 1000)).slice(-3);
+      }
+    </script>
+  </body>
 </html>
