@@ -175,31 +175,33 @@
     }
 
     function generateCards() {
-      const binInput = document.getElementById('binInput').value.trim();
-      const cardCount = parseInt(document.getElementById('cardCount').value);
-      const customCvv = document.getElementById('cvvInput').value.trim();
-      const expiryMonth = document.getElementById('expiryMonth').value;
-      const expiryYear = document.getElementById('expiryYear').value;
-      const outputTextarea = document.getElementById('output2');
-      outputTextarea.value = ''; // Clear previous output
+  const binInput = document.getElementById('binInput').value.trim();
+  const cardCount = parseInt(document.getElementById('cardCount').value);
+  const customCvv = document.getElementById('cvvInput').value.trim();
+  const expiryMonth = document.getElementById('expiryMonth').value;
+  const expiryYear = document.getElementById('expiryYear').value;
+  const outputTextarea = document.getElementById('output2');
+  outputTextarea.value = ''; // Clear previous output
 
-      // Validation (using the corrected regex)
-      if (!/^[\dx]{6,}$/.test(binInput)) {
-        alert("Invalid BIN pattern. Use digits 0-9 and 'x' for random digits. Minimum 6 characters required.");
-        return;
-      }
+  // Validation (using the corrected regex)
+  if (!/^[\dx]{6,16}$/.test(binInput)) { //BIN  can be from 6 to 16 digit
+    alert("Invalid BIN pattern. Use digits 0-9 and 'x' for random digits. Minimum 6 characters required.");
+    return;
+  }
 
-      for (let i = 0; i < cardCount; i++) {
-        let cardNumber = generateCardNumberFromPattern(binInput);
-        cardNumber = completeLuhnCardNumber(cardNumber);
-        const cvv = customCvv.length === 3 ? customCvv : generateRandomCVV();
-        const month = expiryMonth || ('0' + (Math.floor(Math.random() * 12) + 1)).slice(-2);
-        const year = expiryYear || (Math.floor(Math.random() * 11) + 2024).toString(); 
+  for (let i = 0; i < cardCount; i++) {
+    // Generate the full 16-digit card number FIRST
+    let cardNumber = generateCardNumberFromPattern(binInput);  
+    cardNumber = completeLuhnCardNumber(cardNumber.substring(0, 15)); // Pass only 15 digits to Luhn
 
-        outputTextarea.value += `${cardNumber}|${month}|${year}|${cvv}\n`;
-      }
-    }
+    const cvv = customCvv.length === 3 ? customCvv : generateRandomCVV();
+    const month = expiryMonth || ('0' + (Math.floor(Math.random() * 12) + 1)).slice(-2);
+    const year = expiryYear || (Math.floor(Math.random() * 11) + 2024).toString();
 
+    outputTextarea.value += `${cardNumber}|${month}|${year}|${cvv}\n`;
+  }
+}
+      
     function generateCardNumberFromPattern(pattern) {
       let cardNumber = '';
       for (let i = 0; i < pattern.length; i++) {
