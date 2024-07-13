@@ -157,17 +157,21 @@
     <script>
     // Function to handle BIN input changes
     function handleBinInputChange() {
-      let binValue = binInput.value.trim();
-      binValue = binValue.replace(/[^0-9]/g, ''); // Remove non-digits
+  let binValue = binInput.value.trim();
+  const cleanBinValue = binValue.replace(/[^0-9]/g, ''); // Removing non-digits
 
-      if (binValue.length < 16) {
-        binValue += "x".repeat(16 - binValue.length);
-      } else if (binValue.length > 16) {
-        binValue = binValue.substring(0, 16);
-      }
-
-      binInput.value = binValue;
+  // Create newBinValue by iterating through each character
+  let newBinValue = '';
+  for (let i = 0; i < 16; i++) {
+    if (i < cleanBinValue.length) {
+      newBinValue += cleanBinValue[i]; // Use digits from input
+    } else {
+      newBinValue += 'x'; // Add 'x' for remaining places
     }
+  }
+
+  binInput.value = newBinValue;
+}
 
     const binInput = document.getElementById('binInput'); 
     if (binInput) {
