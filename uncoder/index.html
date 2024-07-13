@@ -194,22 +194,28 @@
       }
 
       function completeLuhnCardNumber(number) {
-        let sum = 0;
-        let alternate = false;
-        for (let i = number.length - 1; i >= 0; i--) {
-          let n = parseInt(number.substring(i, i + 1));
-          if (alternate) {
-            n *= 2;
-            if (n > 9) {
-              n = (n % 10) + 1;
-            }
-          }
-          sum += n;
-          alternate = !alternate;
-        }
-        let checkDigit = ((Math.floor(sum / 10) + 1) * 10 - sum) % 10;
-        return number + checkDigit;
+  // Ensure the input number has 15 digits (16th will be the check digit)
+  if (number.length !== 15) {
+    console.error("Invalid input length for Luhn algorithm. Needs to be 15 digits.");
+    return ""; // Or handle the error appropriately
+  }
+
+  let sum = 0;
+  let alternate = false;
+  for (let i = number.length - 1; i >= 0; i--) {
+    let n = parseInt(number.substring(i, i + 1));
+    if (alternate) {
+      n *= 2;
+      if (n > 9) {
+        n = (n % 10) + 1;
       }
+    }
+    sum += n;
+    alternate = !alternate;
+  }
+  let checkDigit = ((Math.floor(sum / 10) + 1) * 10 - sum) % 10;
+  return number + checkDigit; // Append check digit to make it 16 digits
+}
 
       function generateRandomCVV() {
         return ("00" + Math.floor(Math.random() * 1000)).slice(-3);
