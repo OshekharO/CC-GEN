@@ -76,6 +76,24 @@
         font-family: "Courier New", Courier, monospace; /* Monospace font for output */
       }
 
+      .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4ECDC4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #45b7a0;
+        }
+
       /* Responsive Styles */
       @media (max-width: 576px) {
         .container {
@@ -147,6 +165,7 @@
             </div>
             <div class="output mt-4">
               <textarea class="form-control textarea" name="output2" id="output2" rows="10" readonly></textarea>
+              <button class="copy-btn" onclick="copyToClipboard()"><i class="fas fa-copy me-2"></i>Copy</button>
             </div>
           </form>
         </div>
@@ -245,6 +264,20 @@
     function generateRandomCVV() {
       return ('00' + Math.floor(Math.random() * 1000)).slice(-3);
     }
+
+    function copyToClipboard() {
+            const textarea = document.getElementById('output2');
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Optional: Provide user feedback
+            const copyBtn = document.querySelector('.copy-btn');
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check me-2"></i>Copied!';
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+            }, 2000);
+        }
   </script>
   </body>
 </html>
