@@ -155,71 +155,88 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      function generateCards() {
-        const binInput = document.getElementById("binInput").value.trim();
-        const cardCount = parseInt(document.getElementById("cardCount").value);
-        const customCvv = document.getElementById("cvvInput").value.trim();
-        const expiryMonth = document.getElementById("expiryMonth").value;
-        const expiryYear = document.getElementById("expiryYear").value;
-        const outputTextarea = document.getElementById("output2");
-        outputTextarea.value = ""; // Clear previous output
+    // Function to handle BIN input changes
+    function handleBinInputChange() {
+      let binValue = binInput.value.trim();
+      binValue = binValue.replace(/[^0-9]/g, ''); // Remove non-digits
 
-        // Simple validation for BIN pattern
-        if (!/^[\dx]{6,}$/.test(binInput)) {
-          alert("Invalid BIN pattern. Use digits 0-9 and 'x' for random digits. Minimum 6 characters required.");
-          return;
-        }
-
-        for (let i = 0; i < cardCount; i++) {
-          let cardNumber = generateCardNumberFromPattern(binInput);
-          cardNumber = completeLuhnCardNumber(cardNumber);
-          const cvv = customCvv.length === 3 ? customCvv : generateRandomCVV();
-          const month = expiryMonth || ("0" + (Math.floor(Math.random() * 12) + 1)).slice(-2);
-          const year = expiryYear || (Math.floor(Math.random() * 11) + 2024).toString();
-
-          outputTextarea.value += `${cardNumber}|${month}|${year}|${cvv}\n`;
-        }
+      if (binValue.length < 16) {
+        binValue += "x".repeat(16 - binValue.length);
+      } else if (binValue.length > 16) {
+        binValue = binValue.substring(0, 16);
       }
 
-      function generateCardNumberFromPattern(pattern) {
-        let cardNumber = "";
-        for (let i = 0; i < pattern.length; i++) {
-          if (pattern[i] === "x") {
-            cardNumber += Math.floor(Math.random() * 10);
-          } else {
-            cardNumber += pattern[i];
-          }
-        }
-        return cardNumber;
+      binInput.value = binValue;
+    }
+
+    const binInput = document.getElementById('binInput');
+    binInput.addEventListener('input', handleBinInputChange);
+
+    function generateCards() {
+      const binInput = document.getElementById('binInput').value.trim();
+      const cardCount = parseInt(document.getElementById('cardCount').value);
+      const customCvv = document.getElementById('cvvInput').value.trim();
+      const expiryMonth = document.getElementById('expiryMonth').value;
+      const expiryYear = document.getElementById('expiryYear').value;
+      const outputTextarea = document.getElementById('output2');
+      outputTextarea.value = ''; // Clear previous output
+
+      // Validation (using the corrected regex)
+      if (!/^[\dx]{6,}$/.test(binInput)) {
+        alert("Invalid BIN pattern. Use digits 0-9 and 'x' for random digits. Minimum 6 characters required.");
+        return;
       }
 
-      function completeLuhnCardNumber(number) {
-  // Ensure the input number has 15 digits (16th will be the check digit)
-  if (number.length !== 15) {
-    console.error("Invalid input length for Luhn algorithm. Needs to be 15 digits.");
-    return ""; // Or handle the error appropriately
-  }
+      for (let i = 0; i < cardCount; i++) {
+        let cardNumber = generateCardNumberFromPattern(binInput);
+        cardNumber = completeLuhnCardNumber(cardNumber);
+        const cvv = customCvv.length === 3 ? customCvv : generateRandomCVV();
+        const month = expiryMonth || ('0' + (Math.floor(Math.random() * 12) + 1)).slice(-2);
+        const year = expiryYear || (Math.floor(Math.random() * 11) + 2024).toString(); 
 
-  let sum = 0;
-  let alternate = false;
-  for (let i = number.length - 1; i >= 0; i--) {
-    let n = parseInt(number.substring(i, i + 1));
-    if (alternate) {
-      n *= 2;
-      if (n > 9) {
-        n = (n % 10) + 1;
+        outputTextarea.value += `${cardNumber}|${month}|${year}|${cvv}\n`;
       }
     }
-    sum += n;
-    alternate = !alternate;
-  }
-  let checkDigit = ((Math.floor(sum / 10) + 1) * 10 - sum) % 10;
-  return number + checkDigit; // Append check digit to make it 16 digits
-}
 
-      function generateRandomCVV() {
-        return ("00" + Math.floor(Math.random() * 1000)).slice(-3);
+    function generateCardNumberFromPattern(pattern) {
+      let cardNumber = '';
+      for (let i = 0; i < pattern.length; i++) {
+        if (pattern[i] === 'x') {
+          cardNumber += Math.floor(Math.random() * 10); 
+        } else {
+          cardNumber += pattern[i];
+        }
       }
-    </script>
+      return cardNumber;
+    }
+
+    function completeLuhnCardNumber(number) {
+      // (Corrected Luhn algorithm implementation)
+      if (number.length !== 15) {
+        console.error("Invalid input length for Luhn algorithm. Needs to be 15 digits.");
+        return ""; 
+      }
+
+      let sum = 0;
+      let alternate = false;
+      for (let i = number.length - 1; i >= 0; i--) {
+        let n = parseInt(number.substring(i, i + 1));
+        if (alternate) {
+          n *= 2;
+          if (n > 9) {
+            n = (n % 10) + 1;
+          }
+        }
+        sum += n;
+        alternate = !alternate;
+      }
+      let checkDigit = ((Math.floor(sum / 10) + 1) * 10 - sum) % 10;
+      return number + checkDigit; 
+    }
+
+    function generateRandomCVV() {
+      return ('00' + Math.floor(Math.random() * 1000)).slice(-3);
+    }
+  </script>
   </body>
 </html>
