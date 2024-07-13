@@ -169,8 +169,10 @@
       binInput.value = binValue;
     }
 
-    const binInput = document.getElementById('binInput');
-    binInput.addEventListener('input', handleBinInputChange);
+    const binInput = document.getElementById('binInput'); 
+    if (binInput) {
+      binInput.addEventListener('input', handleBinInputChange);
+    }
 
     function generateCards() {
       const binInput = document.getElementById('binInput').value.trim();
