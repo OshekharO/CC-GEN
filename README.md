@@ -1,30 +1,47 @@
-## Credit Card Generator
+# Credit Card Generator
 
-This is a test harness that will generate valid credit card numbers for test purposes.
+A simple, client-side credit card number generator for testing and development purposes.
 
-Currently supported card types are: 
+## 🚀 Features
 
-- Visa
-- Mastercard
-- American Express.
+- Generate valid credit card numbers based on a given BIN (Bank Identification Number)
+- Support for multiple output formats (PIPE, CSV, JSON, SQL, XML)
+- Customizable expiration dates and CVV
+- Luhn algorithm validation
+- Responsive design
 
-## 🙈 Demo
+## 🛠️ Usage
 
-Demo: [https://uncoder.eu.org](https://uncoder.eu.org/cc-gen/)
+1. Enter a BIN (first 6 digits of a credit card number)
+2. Select desired options:
+   - Include expiration date
+   - Include CVV
+   - Quantity of cards to generate
+   - Output format
+3. Click "Generate" to create card numbers
 
+## 💻 Technology Stack
 
-## 🚸 Warnings :
+- HTML5
+- CSS3 (with Tailwind CSS)
+- JavaScript (with jQuery)
 
-- This is Just For Educational Purpose
-- DO NOT Sell this Script, This is 💯% Free
+## ⚠️ Disclaimer
 
-## 🤗 Meet Me :
+This tool is for educational and testing purposes only. Do not use generated numbers for any illegal activities or real transactions.
 
-• 😪 check you did all things perfectly before contacting [ Warning ] <br>
+## 🤝 Contributing
 
-• For any Support About Script contact [@OshekherO](https://t.me/OshekherO) at Telegram <br>
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/OshekharO/CC-GEN/issues).
 
----
-<h4 align='center'>© 2023 ツ ѕнєкнєя</h4>
+## 👨‍💻 Author
 
-<!-- DO NOT REMOVE THIS CREDIT 🤬 🤬 -->
+- GitHub: [@OshekharO](https://github.com/OshekharO)
+- Website: [uncoder.eu.org](https://uncoder.eu.org)
+
+## 🙏 Acknowledgments
+
+- [Luhn Algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Normalize CSS](https://necolas.github.io/normalize.css/)
+- [jQuery](https://jquery.com/)
