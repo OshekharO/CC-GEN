@@ -1222,71 +1222,67 @@
         </div>
       </div>
     </div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+$(document).ready(function() {
+    const cardGenerator = window.cardGenerator();
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    $('#codehap').submit(function(e) {
+        e.preventDefault();
+        generateCards();
+    });
 
-<script>
-   $(document).ready(function() {
-       const cardGenerator = window.cardGenerator();
+    $('.btn-clip').click(function() {
+        copyToClipboard();
+    });
 
-       $('#codehap').submit(function(e) {
-           e.preventDefault();
-           generateCards();
-       });
+    function generateCards() {
+        const bin = $('input[name="bin"]').val();
+        cardGenerator.form.bin = bin;
+        cardGenerator.form.hasDate = $('input[name="date"]').is(':checked');
+        cardGenerator.form.expirationDateMonth = $('select[name="s_date"]').val();
+        cardGenerator.form.expirationDateYear = $('select[name="year"]').val();
+        cardGenerator.form.hasCvv = $('input[name="csv"]').is(':checked');
+        cardGenerator.form.cvv = $('input[name="s_csv"]').val();
+        cardGenerator.form.quantity = parseInt($('input[name="number"]').val());
+        cardGenerator.form.format = $('select[name="format"]').val();
 
-       $('.btn-clip').click(function() {
-           copyToClipboard();
-       });
+        $('.wait-loading').show();
+        $('#submit').hide();
 
-       function generateCards() {
-           const bin = $('input[name="bin"]').val();
-           cardGenerator.form.bin = bin;
-           cardGenerator.form.hasDate = $('input[name="date"]').is(':checked');
-           cardGenerator.form.expirationDateMonth = $('select[name="s_date"]').val();
-           cardGenerator.form.expirationDateYear = $('select[name="year"]').val();
-           cardGenerator.form.hasCvv = $('input[name="csv"]').is(':checked');
-           cardGenerator.form.cvv = $('input[name="s_csv"]').val();
-           cardGenerator.form.quantity = parseInt($('input[name="number"]').val());
-           cardGenerator.form.format = $('select[name="format"]').val();
+        setTimeout(function() {
+            cardGenerator.generate(bin);
+            updateResult();
+            $('.wait-loading').hide();
+            $('#submit').show();
+        }, 1000);
+    }
 
-           $('.wait-loading').show();
-           $('#submit').hide();
+    function updateResult() {
+        $('#result').val(cardGenerator.result);
+    }
 
-           setTimeout(function() {
-               cardGenerator.generate(bin);
-               updateResult();
-               $('.wait-loading').hide();
-               $('#submit').show();
-           }, 1000);
-       }
+    function copyToClipboard() {
+        const textarea = document.getElementById('result');
+        textarea.select();
+        document.execCommand('copy');
+        
+        const tooltip = document.querySelector('.tooltip');
+        tooltip.textContent = 'Copied!';
+        tooltip.classList.remove('invisible');
+        
+        setTimeout(() => {
+            tooltip.classList.add('invisible');
+            tooltip.textContent = 'Copy to clipboard';
+        }, 2000);
+    }
 
-       function updateResult() {
-           $('#result').val(cardGenerator.result);
-       }
+    // Toggle menu for mobile
+    $('#codehapBTN').click(function() {
+        $('#ch').toggleClass('hidden');
+    });
+});
 
-       function copyToClipboard() {
-           const textarea = document.getElementById('result');
-           textarea.select();
-           document.execCommand('copy');
-           
-           const tooltip = document.querySelector('.tooltip');
-           tooltip.textContent = 'Copied!';
-           tooltip.classList.remove('invisible');
-           
-           setTimeout(() => {
-               tooltip.classList.add('invisible');
-               tooltip.textContent = 'Copy to clipboard';
-           }, 2000);
-       }
-
-       // Toggle menu for mobile
-       $('#codehapBTN').click(function() {
-           $('#ch').toggleClass('hidden');
-       });
-   });
-   </script>
-    
-       <script>
 window.cardGenerator = function() {
     return {
         form: {
@@ -1357,96 +1353,6 @@ window.cardGenerator = function() {
             const e = this.formats[this.form.format];
             if (this.items.length && typeof e == "function") return e.call(this);
         },
-        get balanceOptions() {
-            const e = this.form.currency.toLowerCase();
-            let t;
-            switch (e) {
-                case "usd":
-                case "eur":
-                case "gbp":
-                case "chf":
-                    t = 1;
-                    break;
-                case "cad":
-                case "aud":
-                case "sgd":
-                    t = 2;
-                    break;
-                case "sar":
-                    t = 4;
-                    break;
-                case "brl":
-                    t = 5;
-                    break;
-                case "cny":
-                    t = 7;
-                    break;
-                case "zar":
-                case "mxn":
-                    t = 18;
-                    break;
-                case "php":
-                    t = 50;
-                    break;
-                case "rub":
-                case "inr":
-                    t = 84;
-                    break;
-                case "jpy":
-                    t = 140;
-                    break;
-                default:
-                    t = 1;
-            }
-            return ((n = 1) => {
-                const s = [];
-                let a = 500 * n,
-                    i = 1e3 * n;
-                for (let l = 0; l < 5; l++) s.push(`${a}-${i}`), a = i, i += 1e3 * n;
-                return s;
-            })(t);
-        },
-        toExclude(e) {
-            this.excludes = this.excludes.filter(t => !e.includes(t));
-        },
-        toInclude(e) {
-            e.forEach(t => {
-                this.excludes.includes(t) || this.excludes.push(t);
-            });
-        },
-        init() {
-            this.$watch("form.hasDate", e => {
-                const t = ["expiration_month", "expiration_year"];
-                e ? this.toExclude(t) : this.toInclude(t);
-            });
-            this.$watch("form.hasCvv", e => {
-                e ? this.toExclude(["cvv"]) : this.toInclude(["cvv"]);
-            });
-            this.$watch("form.hasMoney", e => {
-                const t = ["currency", "balance"];
-                e ? this.toExclude(t) : this.toInclude(t);
-            });
-            this.form.balance = this.balanceOptions[0];
-            this.$watch("form.currency", () => {
-                this.form.balance = this.balanceOptions[0];
-            });
-        },
-        reset() {
-            this.form = {
-                bin: "",
-                expirationDateMonth: "",
-                expirationDateYear: "",
-                cvv: "",
-                quantity: 10,
-                hasDate: true,
-                hasCvv: true,
-                hasMoney: false,
-                format: "pipe",
-                currency: "USD",
-                balance: this.form.balance = this.balanceOptions[0]
-            };
-            this.items = [];
-        },
         get filteredItems() {
             const e = [...this.items];
             const t = ["card_number", "expiration_month", "expiration_year", "cvv", "currency", "balance"];
@@ -1464,24 +1370,20 @@ window.cardGenerator = function() {
         generate(e) {
             if (e.length < 6) return;
             this.isGenerating = true;
-            setTimeout(() => {
-                this.bin = e;
-                this.items = [];
-                let t = [];
-                for (let x = 0; x < this.form.quantity; x++)
-                    t.push({
-                        card_number: this.generateCardNumber(e),
-                        expiration_month: this.generateExpirationMonth(),
-                        expiration_year: this.generateExpirationYear(),
-                        cvv: this.generateCvv(),
-                        currency: this.form.currency,
-                        balance: this.generateBalance()
-                    });
-                this.$nextTick(() => {
-                    this.items = t;
-                    this.isGenerating = false;
+            this.bin = e;
+            this.items = [];
+            let t = [];
+            for (let x = 0; x < this.form.quantity; x++)
+                t.push({
+                    card_number: this.generateCardNumber(e),
+                    expiration_month: this.generateExpirationMonth(),
+                    expiration_year: this.generateExpirationYear(),
+                    cvv: this.generateCvv(),
+                    currency: this.form.currency,
+                    balance: this.generateBalance()
                 });
-            }, 0);
+            this.items = t;
+            this.isGenerating = false;
         },
         generateCardNumber(e) {
             for (let x = 500; x >= 1; x--) {
@@ -1509,7 +1411,7 @@ window.cardGenerator = function() {
             return (this.form.expirationDateYear || this.rand(e, e + 8)).toString();
         },
         generateBalance() {
-            const e = this.form.balance.split("-");
+            const e = "500-1000".split("-");
             const t = parseInt(e[0], 10);
             const x = parseInt(e[1], 10);
             return (Math.ceil((Math.random() * (x - t) + t) / 100) * 100).toString();
