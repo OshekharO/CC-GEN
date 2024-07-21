@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Namso Gen - Random Credit Card Generator - NamsoGen</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" />
+    <style>
+      /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+      body {
+        margin: 0;
+      }
+      main {
+        display: block;
+      }
+      h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+      }
+      pre {
+        font-family: monospace, monospace;
+        font-size: 1em;
+      }
+      a {
+        background-color: transparent;
+      }
+      b,
+      strong {
+        font-weight: bolder;
+      }
+      code {
+        font-family: monospace, monospace;
+        font-size: 1em;
+      }
+      img {
+        border-style: none;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      input {
+        overflow: visible;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      [type="button"],
+      [type="reset"],
+      [type="submit"],
+      button {
+        -webkit-appearance: button;
+      }
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner,
+      button::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      [type="button"]:-moz-focusring,
+      [type="reset"]:-moz-focusring,
+      [type="submit"]:-moz-focusring,
+      button:-moz-focusring {
+        outline: 1px dotted ButtonText;
+      }
+      textarea {
+        overflow: auto;
+      }
+      [type="checkbox"],
+      [type="radio"] {
+        box-sizing: border-box;
+        padding: 0;
+      }
+      [type="number"]::-webkit-inner-spin-button,
+      [type="number"]::-webkit-outer-spin-button {
+        height: auto;
+      }
+      [type="search"] {
+        -webkit-appearance: textfield;
+        outline-offset: -2px;
+      }
+      [type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+      }
+      ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+        font: inherit;
+      }
+      details {
+        display: block;
+      }
+      [hidden],
+      template {
+        display: none;
+      }
+      h1,
+      h4,
+      h5,
+      p,
+      pre {
+        margin: 0;
+      }
+      button {
+        background-color: transparent;
+        background-image: none;
+        padding: 0;
+      }
+      button:focus {
+        outline: 1px dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        line-height: 1.5;
+      }
+      *,
+      :after,
+      :before {
+        box-sizing: border-box;
+        border: 0 solid #e2e8f0;
+      }
+      img {
+        border-style: solid;
+      }
+      textarea {
+        resize: vertical;
+      }
+      input::-moz-placeholder,
+      textarea::-moz-placeholder {
+        color: #a0aec0;
+      }
+      input:-ms-input-placeholder,
+      textarea:-ms-input-placeholder {
+        color: #a0aec0;
+      }
+      input::-ms-input-placeholder,
+      textarea::-ms-input-placeholder {
+        color: #a0aec0;
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: #a0aec0;
+      }
+      [role="button"],
+      button {
+        cursor: pointer;
+      }
+      h1,
+      h4,
+      h5 {
+        font-size: inherit;
+        font-weight: inherit;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        padding: 0;
+        line-height: inherit;
+        color: inherit;
+      }
+      code,
+      pre {
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+      }
+      img,
+      svg {
+        display: block;
+        vertical-align: middle;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .container {
+        width: 100%;
+      }
+      @media (min-width: 640px) {
+        .container {
+          max-width: 640px;
+        }
+      }
+      @media (min-width: 768px) {
+        .container {
+          max-width: 768px;
+        }
+      }
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 1024px;
+        }
+      }
+      @media (min-width: 1280px) {
+        .container {
+          max-width: 1280px;
+        }
+      }
+      .form-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: #fff;
+        border-color: #a0aec0;
+        border-width: 2px;
+        border-radius: 0.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        box-shadow: none;
+        font-weight: 500;
+      }
+      .form-input::-moz-placeholder {
+        color: #a0aec0;
+        opacity: 1;
+      }
+      .form-input:-ms-input-placeholder {
+        color: #a0aec0;
+        opacity: 1;
+      }
+      .form-input::-ms-input-placeholder {
+        color: #a0aec0;
+        opacity: 1;
+      }
+      .form-input::placeholder {
+        color: #a0aec0;
+        opacity: 1;
+      }
+      .form-input:focus {
+        outline: 0;
+        box-shadow: none;
+        border-color: #718096;
+      }
+      .form-textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: #fff;
+        border-color: #a0aec0;
+        border-width: 2px;
+        border-radius: 0.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        box-shadow: none;
+        font-weight: 500;
+      }
+      .form-textarea::-moz-placeholder {
+        color: #a0aec0;
+        opacity: 1;
+      }
+      .form-textarea:-ms-input-placeholder {
+        color: #a0aec0;
+        opacity: 1;
+      }
+      .form-textarea::-ms-input-placeholder {
+        color: #a0aec0;
+        opacity: 1;
+      }
+      .form-textarea::placeholder {
+        color: #a0aec0;
+        opacity: 1;
+      }
+      .form-textarea:focus {
+        outline: 0;
+        box-shadow: none;
+        border-color: #718096;
+      }
+      .form-select {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg fill='%234a5568' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/%3E%3C/svg%3E");
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+        background-repeat: no-repeat;
+        background-color: #fff;
+        border-color: #a0aec0;
+        border-width: 2px;
+        border-radius: 0.25rem;
+        padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        background-position: right 0.5rem center;
+        background-size: 1.5em 1.5em;
+        box-shadow: none;
+        font-weight: 500;
+      }
+      .form-select::-ms-expand {
+        color: #a0aec0;
+        border: none;
+      }
+      @media not print {
+        .form-select::-ms-expand {
+          display: none;
+        }
+      }
+      @media print and (-ms-high-contrast: active), print and (-ms-high-contrast: none) {
+        .form-select {
+          padding-right: 0.75rem;
+        }
+      }
+      .form-select:focus {
+        outline: 0;
+        box-shadow: none;
+        border-color: #718096;
+      }
+      .form-checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+        display: inline-block;
+        vertical-align: middle;
+        background-origin: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        flex-shrink: 0;
+        height: 1em;
+        width: 1em;
+        color: #4299e1;
+        background-color: #fff;
+        border-color: #e2e8f0;
+        border-width: 1px;
+        border-radius: 0.25rem;
+        box-shadow: none;
+      }
+      .form-checkbox:checked {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4a1 1 0 00-1.414-1.414L7 8.586 5.707 7.293z'/%3E%3C/svg%3E");
+        border-color: transparent;
+        background-color: currentColor;
+        background-size: 100% 100%;
+        background-position: 50%;
+        background-repeat: no-repeat;
+      }
+      @media not print {
+        .form-checkbox::-ms-check {
+          border-width: 1px;
+          color: transparent;
+          background: inherit;
+          border-color: inherit;
+          border-radius: inherit;
+        }
+      }
+      .form-checkbox:focus {
+        outline: 0;
+        box-shadow: none;
+        border-color: #63b3ed;
+      }
+      .bg-white {
+        --bg-opacity: 1;
+        background-color: #fff;
+        background-color: rgba(255, 255, 255, var(--bg-opacity));
+      }
+      .bg-gray-100 {
+        --bg-opacity: 1;
+        background-color: #f7fafc;
+        background-color: rgba(247, 250, 252, var(--bg-opacity));
+      }
+      .bg-gray-500 {
+        --bg-opacity: 1;
+        background-color: #a0aec0;
+        background-color: rgba(160, 174, 192, var(--bg-opacity));
+      }
+      .bg-gray-600 {
+        --bg-opacity: 1;
+        background-color: #718096;
+        background-color: rgba(113, 128, 150, var(--bg-opacity));
+      }
+      .bg-red-200 {
+        --bg-opacity: 1;
+        background-color: #fed7d7;
+        background-color: rgba(254, 215, 215, var(--bg-opacity));
+      }
+      .bg-teal-200 {
+        --bg-opacity: 1;
+        background-color: #b2f5ea;
+        background-color: rgba(178, 245, 234, var(--bg-opacity));
+      }
+      .bg-teal-500 {
+        --bg-opacity: 1;
+        background-color: #38b2ac;
+        background-color: rgba(56, 178, 172, var(--bg-opacity));
+      }
+      .bg-teal-600 {
+        --bg-opacity: 1;
+        background-color: #319795;
+        background-color: rgba(49, 151, 149, var(--bg-opacity));
+      }
+      .bg-teal-800 {
+        --bg-opacity: 1;
+        background-color: #285e61;
+        background-color: rgba(40, 94, 97, var(--bg-opacity));
+      }
+      .bg-teal-900 {
+        --bg-opacity: 1;
+        background-color: #234e52;
+        background-color: rgba(35, 78, 82, var(--bg-opacity));
+      }
+      .hover\:bg-gray-500:hover {
+        --bg-opacity: 1;
+        background-color: #a0aec0;
+        background-color: rgba(160, 174, 192, var(--bg-opacity));
+      }
+      .hover\:bg-teal-500:hover {
+        --bg-opacity: 1;
+        background-color: #38b2ac;
+        background-color: rgba(56, 178, 172, var(--bg-opacity));
+      }
+      .hover\:bg-teal-900:hover {
+        --bg-opacity: 1;
+        background-color: #234e52;
+        background-color: rgba(35, 78, 82, var(--bg-opacity));
+      }
+      .focus\:bg-gray-600:focus {
+        --bg-opacity: 1;
+        background-color: #718096;
+        background-color: rgba(113, 128, 150, var(--bg-opacity));
+      }
+      .focus\:bg-gray-700:focus {
+        --bg-opacity: 1;
+        background-color: #4a5568;
+        background-color: rgba(74, 85, 104, var(--bg-opacity));
+      }
+      .focus\:bg-teal-700:focus {
+        --bg-opacity: 1;
+        background-color: #2c7a7b;
+        background-color: rgba(44, 122, 123, var(--bg-opacity));
+      }
+      .border-gray-200 {
+        --border-opacity: 1;
+        border-color: #edf2f7;
+        border-color: rgba(237, 242, 247, var(--border-opacity));
+      }
+      .border-gray-500 {
+        --border-opacity: 1;
+        border-color: #a0aec0;
+        border-color: rgba(160, 174, 192, var(--border-opacity));
+      }
+      .border-red-400 {
+        --border-opacity: 1;
+        border-color: #fc8181;
+        border-color: rgba(252, 129, 129, var(--border-opacity));
+      }
+      .rounded {
+        border-radius: 0.25rem;
+      }
+      .rounded-lg {
+        border-radius: 0.5rem;
+      }
+      .rounded-full {
+        border-radius: 9999px;
+      }
+      .border-2 {
+        border-width: 2px;
+      }
+      .border {
+        border-width: 1px;
+      }
+      .cursor-pointer {
+        cursor: pointer;
+      }
+      .cursor-wait {
+        cursor: wait;
+      }
+      .cursor-not-allowed {
+        cursor: not-allowed;
+      }
+      .block {
+        display: block;
+      }
+      .inline-block {
+        display: inline-block;
+      }
+      .flex {
+        display: flex;
+      }
+      .inline-flex {
+        display: inline-flex;
+      }
+      .hidden {
+        display: none;
+      }
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+      .items-center {
+        align-items: center;
+      }
+      .justify-center {
+        justify-content: center;
+      }
+      .justify-between {
+        justify-content: space-between;
+      }
+      .font-primary {
+        font-family: Poppins, sans-serif;
+      }
+      .font-fallback {
+        font-family: sans-serif;
+      }
+      .font-medium {
+        font-weight: 500;
+      }
+      .font-semibold {
+        font-weight: 600;
+      }
+      .font-bold {
+        font-weight: 700;
+      }
+      .h-4 {
+        height: 1rem;
+      }
+      .h-6 {
+        height: 1.5rem;
+      }
+      .h-8 {
+        height: 2rem;
+      }
+      .h-full {
+        height: 100%;
+      }
+      .text-xs {
+        font-size: 0.75rem;
+      }
+      .text-sm {
+        font-size: 0.875rem;
+      }
+      .text-base {
+        font-size: 1rem;
+      }
+      .text-lg {
+        font-size: 1.125rem;
+      }
+      .text-2xl {
+        font-size: 1.5rem;
+      }
+      .text-3xl {
+        font-size: 1.875rem;
+      }
+      .leading-relaxed {
+        line-height: 1.625;
+      }
+      .list-disc {
+        list-style-type: disc;
+      }
+      .mx-0 {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .my-2 {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .mx-2 {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+      .my-3 {
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .-mx-1 {
+        margin-left: -0.25rem;
+        margin-right: -0.25rem;
+      }
+      .-mx-2 {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+      }
+      .mt-0 {
+        margin-top: 0;
+      }
+      .ml-0 {
+        margin-left: 0;
+      }
+      .mt-1 {
+        margin-top: 0.25rem;
+      }
+      .mr-1 {
+        margin-right: 0.25rem;
+      }
+      .mt-2 {
+        margin-top: 0.5rem;
+      }
+      .ml-2 {
+        margin-left: 0.5rem;
+      }
+      .mt-3 {
+        margin-top: 0.75rem;
+      }
+      .mb-3 {
+        margin-bottom: 0.75rem;
+      }
+      .mt-4 {
+        margin-top: 1rem;
+      }
+      .mt-5 {
+        margin-top: 1.25rem;
+      }
+      .mt-6 {
+        margin-top: 1.5rem;
+      }
+      .mt-8 {
+        margin-top: 2rem;
+      }
+      .mt-10 {
+        margin-top: 2.5rem;
+      }
+      .mr-10 {
+        margin-right: 2.5rem;
+      }
+      .mr-px {
+        margin-right: 1px;
+      }
+      .mb-px {
+        margin-bottom: 1px;
+      }
+      .-mt-1 {
+        margin-top: -0.25rem;
+      }
+      .-mt-3 {
+        margin-top: -0.75rem;
+      }
+      .-mt-20 {
+        margin-top: -5rem;
+      }
+      .min-h-70-screen {
+        min-height: 70vh;
+      }
+      .opacity-50 {
+        opacity: 0.5;
+      }
+      .focus\:outline-none:focus {
+        outline: 0;
+      }
+      .overflow-auto {
+        overflow: auto;
+      }
+      .p-2 {
+        padding: 0.5rem;
+      }
+      .p-3 {
+        padding: 0.75rem;
+      }
+      .py-0 {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .py-1 {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+      .px-1 {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+      }
+      .py-2 {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      .px-2 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .py-3 {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+      .px-3 {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .py-5 {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+      }
+      .px-5 {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+      .py-8 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      .px-8 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+      .py-20 {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+      .pt-1 {
+        padding-top: 0.25rem;
+      }
+      .pl-5 {
+        padding-left: 1.25rem;
+      }
+      .pb-10 {
+        padding-bottom: 2.5rem;
+      }
+      .pt-32 {
+        padding-top: 8rem;
+      }
+      .fixed {
+        position: fixed;
+      }
+      .absolute {
+        position: absolute;
+      }
+      .relative {
+        position: relative;
+      }
+      .top-0 {
+        top: 0;
+      }
+      .right-0 {
+        right: 0;
+      }
+      .bottom-0 {
+        bottom: 0;
+      }
+      .resize-none {
+        resize: none;
+      }
+      .shadow {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      }
+      .shadow-md {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      .fill-current {
+        fill: currentColor;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .text-right {
+        text-align: right;
+      }
+      .text-white {
+        --text-opacity: 1;
+        color: #fff;
+        color: rgba(255, 255, 255, var(--text-opacity));
+      }
+      .text-gray-500 {
+        --text-opacity: 1;
+        color: #a0aec0;
+        color: rgba(160, 174, 192, var(--text-opacity));
+      }
+      .text-gray-600 {
+        --text-opacity: 1;
+        color: #718096;
+        color: rgba(113, 128, 150, var(--text-opacity));
+      }
+      .text-gray-700 {
+        --text-opacity: 1;
+        color: #4a5568;
+        color: rgba(74, 85, 104, var(--text-opacity));
+      }
+      .text-gray-800 {
+        --text-opacity: 1;
+        color: #2d3748;
+        color: rgba(45, 55, 72, var(--text-opacity));
+      }
+      .text-red-500 {
+        --text-opacity: 1;
+        color: #f56565;
+        color: rgba(245, 101, 101, var(--text-opacity));
+      }
+      .text-teal-200 {
+        --text-opacity: 1;
+        color: #b2f5ea;
+        color: rgba(178, 245, 234, var(--text-opacity));
+      }
+      .text-teal-500 {
+        --text-opacity: 1;
+        color: #38b2ac;
+        color: rgba(56, 178, 172, var(--text-opacity));
+      }
+      .text-teal-600 {
+        --text-opacity: 1;
+        color: #319795;
+        color: rgba(49, 151, 149, var(--text-opacity));
+      }
+      .text-teal-700 {
+        --text-opacity: 1;
+        color: #2c7a7b;
+        color: rgba(44, 122, 123, var(--text-opacity));
+      }
+      .hover\:text-white:hover {
+        --text-opacity: 1;
+        color: #fff;
+        color: rgba(255, 255, 255, var(--text-opacity));
+      }
+      .hover\:text-teal-500:hover {
+        --text-opacity: 1;
+        color: #38b2ac;
+        color: rgba(56, 178, 172, var(--text-opacity));
+      }
+      .uppercase {
+        text-transform: uppercase;
+      }
+      .hover\:underline:hover,
+      .underline {
+        text-decoration: underline;
+      }
+      .hover\:no-underline:hover {
+        text-decoration: none;
+      }
+      .tracking-wide {
+        letter-spacing: 0.025em;
+      }
+      .visible {
+        visibility: visible;
+      }
+      .invisible {
+        visibility: hidden;
+      }
+      .w-4 {
+        width: 1rem;
+      }
+      .w-6 {
+        width: 1.5rem;
+      }
+      .w-8 {
+        width: 2rem;
+      }
+      .w-10 {
+        width: 2.5rem;
+      }
+      .w-24 {
+        width: 6rem;
+      }
+      .w-32 {
+        width: 8rem;
+      }
+      .w-full {
+        width: 100%;
+      }
+      .z-50 {
+        z-index: 50;
+      }
+      .transform {
+        --transform-translate-x: 0;
+        --transform-translate-y: 0;
+        --transform-rotate: 0;
+        --transform-skew-x: 0;
+        --transform-skew-y: 0;
+        --transform-scale-x: 1;
+        --transform-scale-y: 1;
+        transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x))
+          scaleY(var(--transform-scale-y));
+      }
+      .transition {
+        transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+      }
+      .container {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+      .transition {
+        transition: all 0.2s ease-in-out;
+      }
+      .form-input {
+        height: 46px;
+      }
+      @media (min-width: 640px) {
+        .sm\:inline-block {
+          display: inline-block;
+        }
+        .sm\:h-full {
+          height: 100%;
+        }
+        .sm\:mt-0 {
+          margin-top: 0;
+        }
+        .sm\:w-auto {
+          width: auto;
+        }
+        .sm\:w-1\/2 {
+          width: 50%;
+        }
+      }
+      @media (min-width: 768px) {
+        .md\:mt-0 {
+          margin-top: 0;
+        }
+        .md\:w-1\/2 {
+          width: 50%;
+        }
+      }
+      @media (min-width: 1024px) {
+        .lg\:flex {
+          display: flex;
+        }
+        .lg\:hidden {
+          display: none;
+        }
+        .lg\:mx-1 {
+          margin-left: 0.25rem;
+          margin-right: 0.25rem;
+        }
+        .lg\:mt-0 {
+          margin-top: 0;
+        }
+        .lg\:ml-1 {
+          margin-left: 0.25rem;
+        }
+        .lg\:w-auto {
+          width: auto;
+        }
+        .lg\:w-1\/2 {
+          width: 50%;
+        }
+      }
+      @media (min-width: 1280px) {
+        .xl\:w-2\/5 {
+          width: 40%;
+        }
+      }
+      .nuxt-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        opacity: 1;
+        transition: width 0.1s, opacity 0.4s;
+        background-color: #fff;
+        z-index: 999999;
+      }
+    </style>
+   <meta name="theme-color" content="#ffffff" />
+  </head>
+
+  <body>
+    <div data-server-rendered="true" id="__nuxt">
+      <div id="__layout">
+        <div class="font-primary">
+          <div class="transition bg-teal-800 py-3 fixed z-50 shadow w-full mt-0">
+            <div class="container">
+              <div class="flex flex-wrap justify-between items-center">
+                <a href="/">
+                  <span class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 709 709" class="mr-1 w-10">
+                      <style>
+                        .st0 {
+                          fill: #bdcece;
+                        }
+                        .st1 {
+                          fill: #9eb0b0;
+                        }
+                        .st3 {
+                          fill: #47505b;
+                        }
+                      </style>
+                      <path
+                        d="M233.86 584.37c-6.8-4.58-13.62-9.13-20.4-13.74-9.34-6.35-18.64-12.75-27.96-19.12-.98-.67-1.99-1.3-3.23-2.1-6.56 2.75-12.8 6.26-19.23 9.37-6.31 3.06-12.57 6.22-18.84 9.35-6.42 3.19-12.84 6.39-19.34 9.63-.97-.76-1.84-1.29-2.52-2a323.838 323.838 0 0 1-41.53-54.02c-.52-.85-.93-1.77-1.53-2.93 13.88-16.32 28.35-32.02 41.99-48.07-1.2-5.37-19.46-56.73-21.47-60.43-20.74-3.5-41.62-7.03-62.36-10.53-3.69-12.89-5.31-53.27-2.35-74.12 1.14-.33 2.41-.77 3.71-1.07 18-4.08 36.01-8.14 54.02-12.22 1.64-.37 3.26-.86 4.97-1.32 6.03-20.35 12-40.48 18.02-60.8-7.58-7.81-15.07-15.53-22.58-23.24-7.38-7.58-14.84-15.08-22.05-22.52 5.75-14.49 30.28-50.15 42.08-61.37 19.34 8.19 38.7 16.75 58.33 25.06.88-.46 1.85-.81 2.64-1.4 15.77-12.05 31.52-24.12 47.27-36.19.26-.2.46-.49 1-1.07-.52-6.83-1.89-13.86-2.91-20.93-1.01-6.94-2.06-13.87-3.07-20.8-1.03-7.09-2.04-14.19-3.07-21.33 1.32-1.61 3.06-2.23 4.87-2.71.36.74.95 1.44 1.04 2.21.18 1.52-.09 3.09.14 4.6.91 6.04 1.97 12.05 2.08 18.18.01.5.26.99.33 1.49.56 4.03 1.13 8.05 1.63 12.08.45 3.58.81 7.17 1.29 11.47 2.3-7.59 4.2-14.45 6.47-21.18 2.18-6.48 5.48-12.46 8.94-18.34 3.83-6.53 8.8-12.08 14.23-17.31 3.69-3.56 7.46-6.96 11.93-9.53.62-.36.91-1.31 1.35-1.98 2.11-.69 4.19-1.48 6.32-2.06 2.96-.8 5.95-1.46 9.1-2.21 3.31 4.34 5.64 9.09 8.35 13.6 2.82 4.69 5.58 9.42 8.37 14.13 2.7 4.57 5.38 9.14 8.08 13.7 2.7 4.56 5.42 9.1 8.22 13.8 1.4.08 2.73.24 4.07.21 18.65-.39 37.29-.85 55.94-1.17 2.74-.05 4.31-.99 5.59-3.47 7.82-15.21 15.8-30.34 23.74-45.5 1.42-2.71 2.89-5.39 4.26-7.96 13.41.52 54.06 12.35 69.14 20.12.38 4.12-.74 8.31-.87 12.54-.14 4.27-.69 8.52-1.06 12.78-.37 4.26-.74 8.52-1.13 12.78-.39 4.26-.82 8.51-1.19 12.77-.37 4.25-.7 8.5-1.06 13.01 5.65 4.27 11.58 7.99 17.32 11.95 5.92 4.08 11.88 8.1 17.82 12.13 5.79 3.93 11.58 7.85 17.49 11.85 19.12-9.58 38.06-19.08 57.14-28.64 1.01.82 2.02 1.46 2.83 2.3 15.97 16.58 29.91 34.73 41.9 54.38.35.57.58 1.21.98 2.06-14.04 16.12-28.07 32.23-42.14 48.38 7.18 20.03 14.26 39.8 21.37 59.65 1.65.42 3.1.9 4.59 1.14 11.3 1.87 22.61 3.67 33.92 5.53 2.02.33 4.01.85 6.01 1.28-.66 1.37-1.16 2.85-2.02 4.08-3.51 5.01-7.02 10.03-10.75 14.87-5.18 6.73-9.95 13.77-15.62 20.13-3.95 4.43-7.34 9.35-11.2 13.86-4.64 5.42-9.43 10.72-14.13 16.09-5.04 5.76-10.64 11.01-15.73 16.77-7.33 8.31-15.82 15.49-23.92 23.05-.89.83-1.74 1.65-3.05 1.67 0-.34-.08-.7 0-1.02 3.52-12.52 6.33-25.2 7.43-38.18.69-8.17.97-16.38 1.27-24.57.1-2.72-.44-5.45-.47-8.18-.09-8.24-1.22-16.38-2.59-24.46-2.29-13.5-5.92-26.67-10.79-39.5-9.16-24.11-22.37-45.74-39.49-64.96-20.79-23.34-45.55-41.29-74.31-53.61-21.55-9.23-44.06-14.87-67.43-16.42-17.6-1.16-35.17-.56-52.64 2.63-18.11 3.31-35.51 8.67-52.16 16.47-24.93 11.67-46.74 27.61-65.45 47.83-11.22 12.12-20.9 25.33-28.97 39.7-17.42 31.04-26.1 64.47-27.04 99.97-.13 4.77.45 9.56.5 14.34.09 8.24 1.17 16.39 2.55 24.46 2.97 17.42 8.02 34.28 15.33 50.4 14.91 32.9 36.67 60.4 65.48 82.22 19.4 14.7 40.72 25.74 64.04 32.81 6.05 1.83 12.15 3.45 18.23 5.17-.63 2.05-2.65 2.04-4.14 2.52-9.53 3.05-19.14 5.88-28.67 8.92-12.93 4.12-26.05 7.52-39.21 10.77-1.54.4-2.98.79-4.04 2.02z"
+                        class="st0"
+                      ></path>
+                      <path
+                        d="M233.86 584.37c1.06-1.23 2.5-1.61 4.02-1.99 13.16-3.25 26.28-6.65 39.21-10.77 9.53-3.04 19.14-5.86 28.67-8.92 1.49-.48 3.51-.46 4.14-2.52 1.64.09 3.28.18 4.92.28 2.15.49 4.29 1.1 6.47 1.45 3.2.51 6.43.78 9.63 1.24 7.61 1.1 15.29 1.34 22.95 1.59 3.73.12 7.48-.52 11.23-.58 7.36-.12 14.61-1.06 21.88-2.08 12.22-1.71 24.12-4.71 35.74-8.7 20.99-7.2 40.38-17.52 58.14-30.85 14.69-11.03 27.79-23.7 39.12-38.17 13.26-16.93 23.78-35.42 31.36-55.55 1.07-2.84 2.48-5.61 2.6-8.75.82-1.66 1.64-3.33 2.46-4.99 1.31-.02 2.17-.84 3.05-1.67 8.1-7.56 16.58-14.74 23.92-23.05 5.08-5.76 10.69-11.01 15.73-16.77 4.7-5.37 9.48-10.67 14.13-16.09 3.86-4.51 7.25-9.43 11.2-13.86 5.68-6.36 10.45-13.4 15.62-20.13 3.73-4.85 7.24-9.87 10.75-14.87.86-1.23 1.36-2.71 2.02-4.08 6.23.96 12.46 1.92 18.53 2.86 3.64 11.09 5.59 53.36 2.71 74.12-6.69 2.01-13.73 3.25-20.67 4.88-6.82 1.61-13.65 3.18-20.48 4.74-6.99 1.6-13.99 3.18-21.28 4.83-2.44 6.71-4.13 13.67-6.17 20.51-2 6.71-4.04 13.42-5.92 20.16-1.92 6.88-4.22 13.67-5.88 20.81 14.99 15.25 29.85 30.36 44.62 45.39-3.12 10.66-29.07 48.97-41.31 61.07-1.76.34-3.2-.81-4.72-1.46-16.84-7.13-33.66-14.31-50.49-21.48-1.25-.53-2.5-1.06-3.66-1.55-4.31 2.38-26.37 19.17-50.29 38.26-.86 1.45-.4 3-.17 4.49 2.52 16.91 5.09 33.8 7.63 50.71.43 2.86.78 5.73 1.16 8.51-9.95 7.31-55.92 23.86-69.98 25.09-10.84-18.19-21.77-36.52-32.78-54.99-21.35.6-42.5 1.2-63.76 1.8-10 19.16-19.88 38.07-29.86 57.19-24.59-4.12-48.03-11.18-70.9-20.84 0-1.16-.08-2.17.01-3.15.87-9.53 1.76-19.07 2.65-28.6.87-9.36 1.76-18.72 2.61-28.09.18-1.84.81-3.75-.56-5.43z"
+                        class="st1"
+                      ></path>
+                      <path
+                        d="M267.73 45.45c-.44.68-.73 1.62-1.35 1.98-4.47 2.57-8.23 5.97-11.93 9.53-5.42 5.23-10.4 10.77-14.23 17.31-3.45 5.89-6.76 11.87-8.94 18.34-2.27 6.73-4.17 13.58-6.47 21.18-.48-4.3-.84-7.89-1.29-11.47-.5-4.03-1.07-8.06-1.63-12.08-.07-.5-.32-.99-.33-1.49-.11-6.13-1.17-12.14-2.08-18.18-.23-1.51.04-3.08-.14-4.6-.09-.77-.68-1.48-1.04-2.21 3.65-1.75 7.24-3.66 10.98-5.22 10.98-4.56 21.97-9.11 33.47-12.22 1.63-.44 3.33-.59 4.98-.87z"
+                        fill="#d0dddd"
+                      ></path>
+                      <path
+                        d="M556.41 415.06c-.82 1.66-1.64 3.33-2.46 4.99-1.92-.15-3.16 1-4.4 2.22-1.94 1.92-3.88 3.86-5.94 5.64-3.6 3.11-7.3 6.12-10.96 9.16-2.62 2.17-5.21 4.38-7.89 6.47-.72.56-1.74 1.31-2.62.04 2.44-5.27 5.06-10.47 7.3-15.83 9.61-22.98 14.63-46.89 14.75-71.86.07-14.43-1.21-28.68-4.35-42.76-8.05-36.19-25.37-67.34-51.46-93.57-17.08-17.18-36.94-30.4-59.19-39.97-19.81-8.52-40.53-13.53-62.02-14.92-13.66-.88-27.32-.44-40.93 1.65-18.39 2.83-36.04 7.98-52.83 15.94-27.69 13.13-51.09 31.75-69.65 56.16-24.99 32.86-38.13 69.96-39.01 111.34-.31 14.43.71 28.73 3.7 42.83 4.42 20.91 12 40.63 23.07 58.96 12.89 21.34 29.23 39.61 49.17 54.56 18.67 13.99 39.24 24.24 61.73 30.53 14.03 3.93 28.29 6.55 42.91 6.95 2.56.07 5.1.47 7.65.72-2.04 1.61-4.51 2.28-6.87 3.18-9.85 3.79-19.73 7.5-29.57 11.31-.69.27-1.16 1.07-1.74 1.63l-4.92-.27c-6.08-1.72-12.19-3.34-18.23-5.17-23.32-7.07-44.64-18.12-64.04-32.81-28.81-21.82-50.57-49.33-65.48-82.22-7.31-16.12-12.35-32.97-15.33-50.4-1.38-8.07-2.46-16.22-2.55-24.46-.05-4.78-.63-9.57-.5-14.34.94-35.5 9.62-68.93 27.04-99.97 8.07-14.38 17.75-27.58 28.97-39.7 18.71-20.22 40.52-36.16 65.45-47.83 16.65-7.79 34.05-13.15 52.16-16.47 17.47-3.2 35.04-3.8 52.64-2.63 23.38 1.54 45.88 7.18 67.43 16.42 28.76 12.32 53.52 30.27 74.31 53.61 17.12 19.22 30.33 40.86 39.49 64.96 4.88 12.83 8.5 26 10.79 39.5 1.37 8.08 2.5 16.22 2.59 24.46.03 2.73.57 5.47.47 8.18-.3 8.2-.58 16.4-1.27 24.57-1.1 12.98-3.91 25.65-7.43 38.18-.07.32.01.68.02 1.02z"
+                        class="st3"
+                      ></path>
+                      <path
+                        d="M522.14 443.59c.89 1.27 1.9.52 2.62-.04 2.68-2.09 5.27-4.3 7.89-6.47 3.66-3.04 7.36-6.05 10.96-9.16 2.06-1.78 4-3.72 5.94-5.64 1.24-1.23 2.48-2.37 4.4-2.22-.12 3.14-1.53 5.9-2.6 8.75-7.59 20.13-18.11 38.62-31.36 55.55-11.33 14.47-24.43 27.14-39.12 38.17-17.76 13.33-37.16 23.65-58.14 30.85-11.62 3.99-23.52 6.99-35.74 8.7-7.28 1.02-14.53 1.96-21.88 2.08-3.75.06-7.5.71-11.23.58-7.66-.26-15.34-.49-22.95-1.59-3.2-.46-6.44-.73-9.63-1.24-2.18-.35-4.31-.96-6.47-1.45.57-.55 1.05-1.36 1.74-1.63 9.84-3.81 19.72-7.52 29.57-11.31 2.36-.91 4.83-1.58 6.87-3.18 1.68-.36 3.54.49 5.09-.76 12 .3 23.83-1.22 35.52-3.69 18.13-3.83 35.39-10.12 51.67-19.02 14.6-7.98 27.97-17.67 39.99-29.18 5.55-5.31 10.92-10.8 15.75-16.8 5.79-7.19 11.08-14.72 15.94-22.56.26-.42.32-.97.47-1.45 1.01-1.65 1.99-3.32 3.03-4.95.49-.82 1.1-1.57 1.67-2.34z"
+                        class="st3"
+                      ></path>
+                      <path
+                        d="M358.08 543.57c-1.55 1.25-3.41.4-5.09.76-2.55-.25-5.1-.65-7.65-.72-14.62-.39-28.87-3.02-42.91-6.95-22.49-6.3-43.07-16.54-61.73-30.53-19.95-14.95-36.29-33.22-49.17-54.56-11.07-18.33-18.65-38.05-23.07-58.96-2.98-14.1-4.01-28.4-3.7-42.83.88-41.38 14.03-78.48 39.01-111.34 18.56-24.41 41.96-43.03 69.65-56.16 16.79-7.96 34.44-13.11 52.83-15.94 13.61-2.1 27.27-2.54 40.93-1.65 21.49 1.39 42.21 6.39 62.02 14.92 22.25 9.57 42.1 22.8 59.19 39.97 26.09 26.24 43.41 57.38 51.46 93.57 3.13 14.08 4.41 28.33 4.35 42.76-.11 24.96-5.14 48.88-14.75 71.86-2.24 5.36-4.86 10.56-7.3 15.83-.57.78-1.18 1.53-1.69 2.34-1.04 1.63-2.02 3.3-3.03 4.95-1.94.24-3.51 1.2-5.02 2.37-11.7 9.06-23.7 17.71-36.03 25.9-8.09 5.37-16.27 10.61-24.5 15.75-4.62 2.89-9.42 5.49-14.16 8.18-3.41 1.93-6.86 3.79-10.3 5.68-6.12 3.38-12.14 6.95-18.37 10.1-9.75 4.92-19.62 9.61-29.49 14.28-5.54 2.62-11.22 4.95-16.8 7.49-1.68.75-3.63 1.15-4.68 2.93zm140.13-189.49c.39-78.19-63.67-143.64-143.57-143.81-77.58-.16-143.73 63.52-143.92 143.6-.18 75.11 59.47 143.7 143.37 143.98 81.43.27 144.37-65.93 144.12-143.77z"
+                        class="st0"
+                      ></path>
+                      <path
+                        d="M358.08 543.57c1.04-1.78 2.99-2.18 4.66-2.94 5.58-2.55 11.26-4.88 16.8-7.49 9.88-4.67 19.74-9.36 29.49-14.28 6.23-3.15 12.25-6.72 18.37-10.1 3.43-1.9 6.89-3.75 10.3-5.68 4.74-2.69 9.54-5.29 14.16-8.18 8.23-5.15 16.41-10.39 24.5-15.75 12.33-8.18 24.33-16.83 36.03-25.9 1.51-1.17 3.08-2.13 5.02-2.37-.15.49-.2 1.03-.46 1.45-4.86 7.84-10.15 15.37-15.94 22.56-4.83 6-10.2 11.49-15.75 16.8-12.02 11.5-25.39 21.19-39.99 29.18-16.28 8.9-33.54 15.19-51.67 19.02-11.69 2.46-23.51 3.99-35.52 3.68z"
+                        class="st1"
+                      ></path>
+                      <g>
+                        <path
+                          d="M348.57 409.51h-21.89l-36.61-55.55v55.55h-21.89v-90.5h21.89l36.61 56.06v-56.06h21.89v90.5zM434.07 326.44c7.34 5.55 11.9 13.06 13.7 22.53H424.6c-1.54-3.24-3.88-5.82-7.04-7.74s-6.96-2.88-11.39-2.88c-6.91 0-12.46 2.33-16.64 6.98s-6.27 10.94-6.27 18.88c0 8.62 2.2 15.23 6.59 19.84 4.39 4.61 10.64 6.91 18.75 6.91 5.2 0 9.77-1.43 13.7-4.29 3.92-2.86 6.7-6.93 8.32-12.22h-27.65V358.7h45.95v21.63c-1.71 5.29-4.44 10.2-8.19 14.72-3.76 4.52-8.56 8.19-14.4 11.01-5.85 2.82-12.52 4.22-20.03 4.22-9.13 0-17.11-1.94-23.94-5.82-6.83-3.88-12.1-9.32-15.81-16.32-3.71-7-5.57-14.98-5.57-23.94s1.86-16.94 5.57-23.94 8.96-12.44 15.74-16.32c6.78-3.88 14.7-5.82 23.74-5.82 11.36 0 20.7 2.78 28.04 8.32z"
+                          class="st0"
+                        ></path>
+                      </g>
+                    </svg>
+                    <span class="text-white font-semibold tracking-wide text-teal-200"></span>
+                  </span>
+                </a>
+                <div class="block lg:hidden">
+                  <button class="flex items-center px-3 py-2 focus:outline-none" id="codehapBTN">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8 fill-current text-white">
+                      <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div id="ch" class="mt-5 lg:mt-0 w-full lg:w-auto block lg:flex text-teal-200 text-sm font-medium tracking-wide hidden">
+                  <a href="/" class="bg-teal-900 block px-5 py-3 mx-0 lg:mx-1 hover:bg-teal-900 hover:text-white rounded focus:outline-none">
+                    Generate CC
+                  </a>
+
+                  <a href="/generate/lorem-ipsum" class="block px-5 py-3 mx-0 lg:mx-1 mt-1 lg:mt-0 hover:bg-teal-900 hover:text-white rounded focus:outline-none">
+                    Generate Lorem
+                  </a>
+
+                  <a href="/generate/users" class="block px-5 py-3 mx-0 lg:mx-1 mt-1 lg:mt-0 hover:bg-teal-900 hover:text-white rounded focus:outline-none">
+                    Generate User
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <main id="main" class="pb-10 pt-32 text-gray-600">
+            <div class="container min-h-70-screen">
+              <div class="min-h-70-screen">
+                <div class="text-center">
+                  <h1 class="text-3xl font-bold text-gray-700">Random Test Credit Card Numbers Generator</h1>
+                  <p class="my-3">
+                    Namso Gen provides a live credit card generator, instantly producing valid credit card numbers. Ideal for testing purposes in the technology field, these algorithm-generated cards offer a convenient solution for various
+                    verification needs.
+                  </p>
+                </div>
+
+                <div class="flex flex-wrap -mx-2 mt-5 text-gray-700">
+                  <div class="w-full sm:w-1/2 px-2">
+                    <form id="codehap">
+                      <input type="hidden" name="type" value="3" />
+                      <div>
+                        <label class="block cursor-pointer relative">
+                          <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">BIN</span>
+                          <input placeholder="453590" name="bin" class="form-input block w-full" />
+                        </label>
+                      </div>
+                      <div class="flex -mx-2 items-center">
+                        <div class="px-2 mt-6">
+                          <label class="flex items-center cursor-pointer"> <input type="checkbox" name="date" class="form-checkbox text-teal-700 cursor-pointer" checked /> <span class="ml-2 text-xs font-medium">DATE</span> </label>
+                        </div>
+                        <div class="mt-6 w-full sm:w-1/2 px-2">
+                          <label class="block cursor-pointer relative">
+                            <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">MONTH</span>
+                            <select name="s_date" class="form-select block w-full">
+                              <option value="">Random</option>
+                              <option value="1"> January </option>
+                              <option value="2"> Febuary </option>
+                              <option value="3"> March </option>
+                              <option value="4"> April </option>
+                              <option value="5"> May </option>
+                              <option value="6"> June </option>
+                              <option value="7"> July </option>
+                              <option value="8"> August </option>
+                              <option value="9"> September </option>
+                              <option value="10"> October </option>
+                              <option value="11"> November </option>
+                              <option value="12"> December </option>
+                            </select>
+                          </label>
+                        </div>
+                        <div class="mt-6 w-full sm:w-1/2 px-2">
+                          <label class="block cursor-pointer relative">
+                            <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">YEAR</span>
+                            <select name="year" class="form-select block w-full">
+                              <option value="">Random</option>
+                              <option value="2022">2022</option>
+                              <option value="2023">2023</option>
+                              <option value="2024">2024</option>
+                              <option value="2025">2025</option>
+                              <option value="2026">2026</option>
+                              <option value="2027">2027</option>
+                              <option value="2028">2028</option>
+                              <option value="2029">2029</option>
+                              <option value="2030">2030</option>
+                            </select>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="flex -mx-2 items-center">
+                        <div class="px-2 mt-6">
+                          <label class="flex items-center cursor-pointer"> <input name="csv" type="checkbox" class="form-checkbox text-teal-700 cursor-pointer" checked /> <span class="ml-2 text-xs font-medium">CVV</span> </label>
+                        </div>
+                        <div class="mt-6 w-full sm:w-1/2 px-2">
+                          <label class="block cursor-pointer relative">
+                            <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">CVV</span>
+                            <input name="s_csv" placeholder="Leave blank to randomize" class="form-input block w-full" />
+                          </label>
+                        </div>
+                        <div class="mt-6 w-full sm:w-1/2 px-2">
+                          <label class="block cursor-pointer relative">
+                            <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">QUANTITY</span>
+                            <input name="number" value="10" type="text" class="form-input block w-full" />
+                          </label>
+                        </div>
+                      </div>
+                      <div class="mt-6">
+                        <label class="block cursor-pointer relative">
+                          <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">FORMAT</span>
+                          <select name="format" class="form-select block w-full">
+                            <option value="pipe"> PIPE </option>
+                            <option value="csv"> CSV </option>
+                            <option value="xml"> XML </option>
+                            <option value="json"> JSON </option>
+                            <option value="sql"> SQL </option>
+                          </select>
+                        </label>
+                      </div>
+                      <div class="mt-6">
+                        <button type="submit" id="submit" class="flex items-center justify-center shadow-md bg-teal-600 text-white font-medium w-full rounded py-3 hover:bg-teal-500 focus:bg-teal-700 focus:outline-none">
+                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-current w-6 h-6 mr-1">
+                            <path
+                              d="M6.80003 3.45C7.67003 2.93 8.62003 2.53 9.63003 2.28C9.79674 2.77655 10.1152 3.2082 10.5404 3.514C10.9657 3.81981 11.4762 3.98432 12 3.98432C12.5238 3.98432 13.0344 3.81981 13.4596 3.514C13.8849 3.2082 14.2033 2.77655 14.37 2.28C15.38 2.53 16.33 2.93 17.19 3.45C16.9519 3.92008 16.8683 4.45341 16.9513 4.9738C17.0344 5.4942 17.2797 5.97505 17.6524 6.34768C18.025 6.7203 18.5058 6.96565 19.0262 7.04868C19.5466 7.13171 20.0799 7.04817 20.55 6.81C21.07 7.67 21.47 8.61 21.72 9.63C21.2235 9.7967 20.7918 10.1152 20.486 10.5404C20.1802 10.9657 20.0157 11.4762 20.0157 12C20.0157 12.5238 20.1802 13.0343 20.486 13.4596C20.7918 13.8848 21.2235 14.2033 21.72 14.37C21.47 15.38 21.07 16.33 20.55 17.19C20.0799 16.9518 19.5466 16.8683 19.0262 16.9513C18.5058 17.0343 18.025 17.2797 17.6524 17.6523C17.2797 18.025 17.0344 18.5058 16.9513 19.0262C16.8683 19.5466 16.9519 20.0799 17.19 20.55C16.33 21.07 15.39 21.47 14.37 21.72C14.2033 21.2234 13.8849 20.7918 13.4596 20.486C13.0344 20.1802 12.5238 20.0157 12 20.0157C11.4762 20.0157 10.9657 20.1802 10.5404 20.486C10.1152 20.7918 9.79674 21.2234 9.63003 21.72C8.62003 21.47 7.67003 21.07 6.81003 20.55C7.0482 20.0799 7.13174 19.5466 7.04871 19.0262C6.96568 18.5058 6.72034 18.025 6.34771 17.6523C5.97508 17.2797 5.49423 17.0343 4.97383 16.9513C4.45344 16.8683 3.92011 16.9518 3.45003 17.19C2.91713 16.3159 2.52248 15.3646 2.28003 14.37C2.77658 14.2033 3.20823 13.8848 3.51403 13.4596C3.81984 13.0343 3.98435 12.5238 3.98435 12C3.98435 11.4762 3.81984 10.9657 3.51403 10.5404C3.20823 10.1152 2.77658 9.7967 2.28003 9.63C2.53003 8.62 2.93003 7.67 3.45003 6.81C3.92011 7.04817 4.45344 7.13171 4.97383 7.04868C5.49423 6.96565 5.97508 6.7203 6.34771 6.34768C6.72034 5.97505 6.96568 5.4942 7.04871 4.9738C7.13174 4.45341 7.0482 3.92008 6.81003 3.45H6.80003ZM12 16C13.0609 16 14.0783 15.5786 14.8285 14.8284C15.5786 14.0783 16 13.0609 16 12C16 10.9391 15.5786 9.92172 14.8285 9.17157C14.0783 8.42143 13.0609 8 12 8C10.9392 8 9.92175 8.42143 9.1716 9.17157C8.42146 9.92172 8.00003 10.9391 8.00003 12C8.00003 13.0609 8.42146 14.0783 9.1716 14.8284C9.92175 15.5786 10.9392 16 12 16Z"
+                              fill="white"
+                            ></path>
+                            <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" fill="white"></path>
+                          </svg>
+                          Generate
+                        </button>
+
+                        <div class="wait-loading mt-2" style="display: none;">
+                          <button type="submit" id="submit" class="flex items-center justify-center shadow-md bg-teal-600 text-white font-medium w-full rounded py-3 hover:bg-teal-500 focus:bg-teal-700 focus:outline-none">
+                            <svg
+                              xmlns:svg="http://www.w3.org/2000/svg"
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlns:xlink="http://www.w3.org/1999/xlink"
+                              version="1.0"
+                              class="fill-current mr-1"
+                              width="19px"
+                              height="19px"
+                              viewBox="0 0 128 128"
+                              xml:space="preserve"
+                            >
+                              <g>
+                                <path
+                                  fill="white"
+                                  d="M116.7 66.28a52.86 52.86 0 0 1-1 8.18l9.8 7.57-1.78 4.67-1.77 4.67-12.36-.82a52.87 52.87 0 0 1-4.7 6.7L110 108.5l-3.75 3.3-3.75 3.32L92 108.67a52.6 52.6 0 0 1-7.45 3.9l-.66 12.3-4.87 1.2-4.86 1.2-6.38-10.66q-1.9.2-3.88.2-2.15 0-4.25-.14l-6.3 10.64-4.84-1.2-4.85-1.2-.7-12.43a52.6 52.6 0 0 1-6.7-3.5l-10.6 6.64-3.75-3.3-3.76-3.3 5.05-11.4a52.88 52.88 0 0 1-4.73-6.73l-12.34.9-1.8-4.66-1.8-4.67 9.7-7.67a52.8 52.8 0 0 1-1-8.05l-11.4-5 .56-4.95.54-4.97 12.26-2.3a52.37 52.37 0 0 1 2.94-7.83L8.4 32l2.8-4.14 2.8-4.14 12 3.68a53.06 53.06 0 0 1 6-5.33L29.57 9.8l4.4-2.37 4.43-2.35 8.95 8.86a52.4 52.4 0 0 1 8-1.98L59 0h10l3.66 11.96a52.4 52.4 0 0 1 7.8 1.9L89.26 5l4.42 2.3 4.43 2.34-2.3 12.27a52.98 52.98 0 0 1 6.2 5.5l11.9-3.7 2.9 4.1 2.84 4.1-7.8 9.8a52.34 52.34 0 0 1 2.86 7.5l12.3 2.17.6 4.96.57 4.95zM41 64a23 23 0 1 0 23-23 23 23 0 0 0-23 23z"
+                                />
+                                <animateTransform attributeName="transform" type="rotate" from="0 64 64" to="27.69 64 64" dur="600ms" repeatCount="indefinite"></animateTransform>
+                              </g>
+                            </svg>
+                            In Progress..
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="w-full sm:w-1/2 px-2">
+                    <div class="sm:h-full mt-6 sm:mt-0">
+                      <label class="block cursor-pointer relative h-full relative">
+                        <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">RESULT</span>
+                        <textarea id="result" rows="5" placeholder="xxxxxxxxxx" class="show-result form-textarea block w-full h-full resize-none font-fallback font-bold tracking-wide"></textarea>
+                        <button type="button" class="btn-clip bg-gray-500 px-2 py-1 absolute bottom-0 right-0 mb-px mr-px focus:outline-none focus:bg-gray-600">
+                          <span class="tooltip invisible absolute top-0 right-0 mr-10 -mt-1 w-32 py-1 text-center block text-white text-xs rounded-full bg-gray-600">Copy to clipboard</span>
+                          <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4 text-white">
+                            <path
+                              d="M3.50004 1.16666H7.00004V4.66666C7.00004 5.30833 7.52504 5.83333 8.16671 5.83333H11.6667V11.6667C11.6667 11.9761 11.5438 12.2728 11.325 12.4916C11.1062 12.7104 10.8095 12.8333 10.5 12.8333H3.50004C3.19062 12.8333 2.89388 12.7104 2.67508 12.4916C2.45629 12.2728 2.33337 11.9761 2.33337 11.6667V2.33333C2.33337 1.69166 2.85837 1.16666 3.50004 1.16666ZM4.66671 7.58333C4.512 7.58333 4.36362 7.64479 4.25423 7.75419C4.14483 7.86358 4.08337 8.01195 4.08337 8.16666C4.08337 8.32137 4.14483 8.46975 4.25423 8.57914C4.36362 8.68854 4.512 8.75 4.66671 8.75H9.33337C9.48808 8.75 9.63646 8.68854 9.74585 8.57914C9.85525 8.46975 9.91671 8.32137 9.91671 8.16666C9.91671 8.01195 9.85525 7.86358 9.74585 7.75419C9.63646 7.64479 9.48808 7.58333 9.33337 7.58333H4.66671ZM4.66671 9.91667C4.512 9.91667 4.36362 9.97812 4.25423 10.0875C4.14483 10.1969 4.08337 10.3453 4.08337 10.5C4.08337 10.6547 4.14483 10.8031 4.25423 10.9125C4.36362 11.0219 4.512 11.0833 4.66671 11.0833H7.00004C7.15475 11.0833 7.30312 11.0219 7.41252 10.9125C7.52191 10.8031 7.58337 10.6547 7.58337 10.5C7.58337 10.3453 7.52191 10.1969 7.41252 10.0875C7.30312 9.97812 7.15475 9.91667 7.00004 9.91667H4.66671Z"
+                            ></path>
+                            <path d="M8.16663 1.16666L11.6666 4.66666H8.16663V1.16666Z"></path>
+                          </svg>
+                        </button>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+
+          <footer class="py-8 bg-gray-100">
+            <div class="container text-center">
+              <div class="text-sm text-gray-600">
+                <a href="/about" class="px-2">
+                  About
+                </a>
+                •
+                <a href="/contact" class="px-2">
+                  Contact
+                </a>
+                •
+                <a href="/privacy-policy" class="px-2">
+                  Privacy Policy
+                </a>
+              </div>
+              <p class="text-xs text-gray-500">Copyright © <span class="text-gray-700">NamsoGen</span> - 2024</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+   $(document).ready(function() {
+       const cardGenerator = window.cardGenerator();
+
+       $('#codehap').submit(function(e) {
+           e.preventDefault();
+           generateCards();
+       });
+
+       $('.btn-clip').click(function() {
+           copyToClipboard();
+       });
+
+       function generateCards() {
+           const bin = $('input[name="bin"]').val();
+           cardGenerator.form.bin = bin;
+           cardGenerator.form.hasDate = $('input[name="date"]').is(':checked');
+           cardGenerator.form.expirationDateMonth = $('select[name="s_date"]').val();
+           cardGenerator.form.expirationDateYear = $('select[name="year"]').val();
+           cardGenerator.form.hasCvv = $('input[name="csv"]').is(':checked');
+           cardGenerator.form.cvv = $('input[name="s_csv"]').val();
+           cardGenerator.form.quantity = parseInt($('input[name="number"]').val());
+           cardGenerator.form.format = $('select[name="format"]').val();
+
+           $('.wait-loading').show();
+           $('#submit').hide();
+
+           setTimeout(function() {
+               cardGenerator.generate(bin);
+               updateResult();
+               $('.wait-loading').hide();
+               $('#submit').show();
+           }, 1000);
+       }
+
+       function updateResult() {
+           $('#result').val(cardGenerator.result);
+       }
+
+       function copyToClipboard() {
+           const textarea = document.getElementById('result');
+           textarea.select();
+           document.execCommand('copy');
+           
+           const tooltip = document.querySelector('.tooltip');
+           tooltip.textContent = 'Copied!';
+           tooltip.classList.remove('invisible');
+           
+           setTimeout(() => {
+               tooltip.classList.add('invisible');
+               tooltip.textContent = 'Copy to clipboard';
+           }, 2000);
+       }
+
+       // Toggle menu for mobile
+       $('#codehapBTN').click(function() {
+           $('#ch').toggleClass('hidden');
+       });
+   });
+   </script>
+    
+       <script>
+window.cardGenerator = function() {
+    return {
+        form: {
+            bin: "",
+            expirationDateMonth: "",
+            expirationDateYear: "",
+            cvv: "",
+            quantity: 10,
+            hasDate: true,
+            hasCvv: true,
+            hasMoney: false,
+            format: "pipe",
+            currency: "USD",
+            balance: ""
+        },
+        formats: {
+            pipe() {
+                return this.filteredItems.map(e => Object.values(e).map(t => t.split("/").join("|")).join("|")).join("\n");
+            },
+            csv() {
+                return this.filteredItems.map(e => Object.values(e).join(", ")).join("\n");
+            },
+            json(e, t) {
+                return JSON.stringify(this.filteredItems, null, 2);
+            },
+            sql() {
+                let e = "CREATE TABLE IF NOT EXISTS `credit_cards` (\n";
+                e += "	`id` BIGINT(11) NOT NULL AUTO_INCREMENT,\n";
+                e += "	`card_number` VARCHAR(19) NOT NULL,\n";
+                e += this.excludes.includes("expiration_month") ? "" : "	`expiration_month` VARCHAR(2) NOT NULL,\n";
+                e += this.excludes.includes("expiration_year") ? "" : "	`expiration_year` VARCHAR(4) NOT NULL,\n";
+                e += this.excludes.includes("cvv") ? "" : "	`cvv` VARCHAR(4) NOT NULL,\n";
+                e += this.excludes.includes("currency") ? "" : "	`currency` VARCHAR(3) NOT NULL,\n";
+                e += this.excludes.includes("balance") ? "" : "	`balance` DECIMAL(10, 2) NOT NULL,\n";
+                e += "	PRIMARY KEY (`id`),\n";
+                e += "	KEY (`card_number`),\n";
+                e += "	UNIQUE KEY (`card_number`)\n";
+                e += ");\n\r";
+                e += this.filteredItems.map(t => {
+                    const x = Object.keys(t).join(",");
+                    const n = Object.values(t).map(s => `'${s}'`).join(",");
+                    return `INSERT INTO credit_cards (${x}) VALUES (${n});`;
+                }).join("\n");
+                return e;
+            },
+            xml() {
+                let e = `<?xml version="1.0" encoding="utf-8"?>\n`;
+                e += `<CreditCards>\n`;
+                this.filteredItems.forEach(t => {
+                    const x = Object.entries(t);
+                    e += `	<CreditCard>\n`;
+                    x.map(n => {
+                        const s = n[0].split("_").map(a => a.replace(/^\w/, i => i.toUpperCase())).join("");
+                        e += `		<${s}>\n`;
+                        e += `			${n[1]}\n`;
+                        e += `		</${s}>\n`;
+                    });
+                    e += `	</CreditCard>\n`;
+                });
+                e += "</CreditCards>";
+                return e;
+            }
+        },
+        items: [],
+        excludes: ["currency", "balance"],
+        isGenerating: false,
+        get result() {
+            const e = this.formats[this.form.format];
+            if (this.items.length && typeof e == "function") return e.call(this);
+        },
+        get balanceOptions() {
+            const e = this.form.currency.toLowerCase();
+            let t;
+            switch (e) {
+                case "usd":
+                case "eur":
+                case "gbp":
+                case "chf":
+                    t = 1;
+                    break;
+                case "cad":
+                case "aud":
+                case "sgd":
+                    t = 2;
+                    break;
+                case "sar":
+                    t = 4;
+                    break;
+                case "brl":
+                    t = 5;
+                    break;
+                case "cny":
+                    t = 7;
+                    break;
+                case "zar":
+                case "mxn":
+                    t = 18;
+                    break;
+                case "php":
+                    t = 50;
+                    break;
+                case "rub":
+                case "inr":
+                    t = 84;
+                    break;
+                case "jpy":
+                    t = 140;
+                    break;
+                default:
+                    t = 1;
+            }
+            return ((n = 1) => {
+                const s = [];
+                let a = 500 * n,
+                    i = 1e3 * n;
+                for (let l = 0; l < 5; l++) s.push(`${a}-${i}`), a = i, i += 1e3 * n;
+                return s;
+            })(t);
+        },
+        toExclude(e) {
+            this.excludes = this.excludes.filter(t => !e.includes(t));
+        },
+        toInclude(e) {
+            e.forEach(t => {
+                this.excludes.includes(t) || this.excludes.push(t);
+            });
+        },
+        init() {
+            this.$watch("form.hasDate", e => {
+                const t = ["expiration_month", "expiration_year"];
+                e ? this.toExclude(t) : this.toInclude(t);
+            });
+            this.$watch("form.hasCvv", e => {
+                e ? this.toExclude(["cvv"]) : this.toInclude(["cvv"]);
+            });
+            this.$watch("form.hasMoney", e => {
+                const t = ["currency", "balance"];
+                e ? this.toExclude(t) : this.toInclude(t);
+            });
+            this.form.balance = this.balanceOptions[0];
+            this.$watch("form.currency", () => {
+                this.form.balance = this.balanceOptions[0];
+            });
+        },
+        reset() {
+            this.form = {
+                bin: "",
+                expirationDateMonth: "",
+                expirationDateYear: "",
+                cvv: "",
+                quantity: 10,
+                hasDate: true,
+                hasCvv: true,
+                hasMoney: false,
+                format: "pipe",
+                currency: "USD",
+                balance: this.form.balance = this.balanceOptions[0]
+            };
+            this.items = [];
+        },
+        get filteredItems() {
+            const e = [...this.items];
+            const t = ["card_number", "expiration_month", "expiration_year", "cvv", "currency", "balance"];
+            return e.map(x => {
+                let n = {};
+                t.forEach(s => {
+                    !this.excludes.includes(s) && x.hasOwnProperty(s) && (n[s] = x[s]);
+                });
+                Object.keys(x).forEach(s => {
+                    !this.excludes.includes(s) && !n.hasOwnProperty(s) && (n[s] = x[s]);
+                });
+                return n;
+            });
+        },
+        generate(e) {
+            if (e.length < 6) return;
+            this.isGenerating = true;
+            setTimeout(() => {
+                this.bin = e;
+                this.items = [];
+                let t = [];
+                for (let x = 0; x < this.form.quantity; x++)
+                    t.push({
+                        card_number: this.generateCardNumber(e),
+                        expiration_month: this.generateExpirationMonth(),
+                        expiration_year: this.generateExpirationYear(),
+                        cvv: this.generateCvv(),
+                        currency: this.form.currency,
+                        balance: this.generateBalance()
+                    });
+                this.$nextTick(() => {
+                    this.items = t;
+                    this.isGenerating = false;
+                });
+            }, 0);
+        },
+        generateCardNumber(e) {
+            for (let x = 500; x >= 1; x--) {
+                var t = this.sbtStringSpRnd(e, "x", "0123456789");
+                const n = this.sbtString(t, " -/abcdefghijklmnopqrstuvwyzABCDEFGHIJLMNOPQRSTUVWYZ");
+                const s = this.chkLCD(n);
+                const a = this.chkCCCksum(n, this.rand(0, 9));
+                if (s && a) break;
+            }
+            return t;
+        },
+        generateCvv() {
+            const e = this.bin.length < 16 ? 4 : 3;
+            let t = this.form.cvv;
+            if (t.length === 1 && e === 3)
+                for (let x = 0; x < 2; x++) t += this.rand(0, 9);
+            for (; t.length < e;) t += this.rand(0, 9);
+            return t.substring(0, e);
+        },
+        generateExpirationMonth(e) {
+            return ("0" + (this.form.expirationDateMonth || this.rand(1, 12))).slice(-2);
+        },
+        generateExpirationYear() {
+            const e = new Date().getFullYear();
+            return (this.form.expirationDateYear || this.rand(e, e + 8)).toString();
+        },
+        generateBalance() {
+            const e = this.form.balance.split("-");
+            const t = parseInt(e[0], 10);
+            const x = parseInt(e[1], 10);
+            return (Math.ceil((Math.random() * (x - t) + t) / 100) * 100).toString();
+        },
+        rand(e, t) {
+            return Math.floor(Math.random() * (t - e + 1)) + e;
+        },
+        reverseString(e) {
+            return e.split("").reverse().join("");
+        },
+        unilenS(e, t, x, n) {
+            var s = "" + e;
+            t *= 1;
+            (x == "" || x == null) && (x = "0");
+            (n == "" || n == null) && (n = 0);
+            var a = s.length;
+            if (a < t)
+                for (var i = 1; i <= t - a; i++) n == 0 ? s = "" + x + s : s += "" + x;
+            return s;
+        },
+        chkCCCksum(e, t) {
+            for (var x = !1, n = "21", s = "", a = 1, i = 1; i <= e.length - 1; i++) {
+                var l = this.midS(e, i, 1) * this.midS(n, a, 1);
+                l = this.sumDigits(l), s += "" + l, a++, a > n.length && (a = 1);
+            }
+            var p = this.sumDigits(s, -1),
+                m = (this.sumDigits(p, -1) * 10 - p) % 10;
+            return m == this.rightS(e, 1) && (x = !0), x;
+        },
+        chkLCD(e) {
+            var t = !1;
+            e += "";
+            for (var x = this.isdiv(e.length, 2), n = 0, s = 1; s <= e.length; s++) {
+                var a = this.midS(e, s, 1);
+                this.isdiv(s, 2) != x && (a *= 2, a > 9 && (a -= 9)), n += a * 1;
+            }
+            return this.isdiv(n, 10) && (t = !0), t;
+        },
+        leftS(e, t) {
+            e += "";
+            var x = "";
+            return t >= 1 && (x = e.substring(0, t)), x;
+        },
+        rightS(e, t) {
+            e += "";
+            var x = "";
+            return t >= 1 && (x = e.substring(e.length - t, e.length)), x;
+        },
+        midS(e, t, x) {
+            e += "";
+            var n = "";
+            return (x == null || x == "") && (x = e.length), t *= 1, x *= 1, t < 0 && t++, n = e.substring(t - 1, t - 1 + x), n;
+        },
+        sbtString(e, t) {
+            var x = "";
+            e += "", t += "";
+            for (var n = 1; n <= e.length; n++) {
+                var s = e.substring(n - 1, n),
+                    a = t.indexOf(s);
+                a == -1 && (x += s);
+            }
+            return x;
+        },
+        sbtStringSpRnd(e, t, x) {
+            (x == null || x == "") && (x = "0123456789");
+            var n = "";
+            x += "";
+            for (var s = 1; s <= e.length; s++) {
+                var a = e.substring(s - 1, s),
+                    i = t.indexOf(a);
+                i == -1 ? n += a : n += this.midS(x, Math.floor(Math.random() * (x.length - 1)) + 1, 1);
+            }
+            return n;
+        },
+        isdiv(e, t) {
+            t == null && (t = 2), e *= 1, t *= 1;
+            var x = !1;
+            return e / t == Math.floor(e / t) && (x = !0), x;
+        },
+        sumDigits(e, t) {
+            if ((t == 0 || t == null) && (t = 1), e += "", t > 0)
+                for (; e.length > t;) {
+                    for (var x = 0, n = 1; n <= e.length; n++) x += 1 * this.midS(e, n, 1);
+                    e = "" + x;
+                }
+            else
+                for (var s = 1; s <= Math.abs(t); s++) {
+                    for (var x = 0, n = 1; n <= e.length; n++) x += 1 * this.midS(e, n, 1);
+                    e = "" + x;
+                }
+            return x = e, x;
+        }
+    };
+};
+</script>
+  </body>
+</html>
