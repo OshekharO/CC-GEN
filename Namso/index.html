@@ -2,6 +2,28 @@
 <html data-n-head-ssr lang="en" data-n-head="lang">
   <head data-n-head="">
     <title data-n-head="true">Random Credit Card Numbers Generator - NamsoGen</title>
+    <meta data-n-head="true" charset="utf-8" />
+    <meta data-n-head="true" name="viewport" content="width=device-width,initial-scale=1" />
+    <meta data-n-head="true" data-hid="author" name="author" content="NamsoGen" />
+    <meta data-n-head="true" data-hid="og:site_name" name="og:site_name" content="NamsoGen" />
+    <meta data-n-head="true" data-hid="mobile-web-app-capable" name="mobile-web-app-capable" content="yes" />
+    <meta data-n-head="true" data-hid="apple-mobile-web-app-title" name="apple-mobile-web-app-title" content="namso-gen" />
+    <meta data-n-head="true" data-hid="theme-color" name="theme-color" content="#fff" />
+    <meta data-n-head="true" data-hid="og:type" name="og:type" property="og:type" content="website" />
+    <meta data-n-head="true" data-hid="description" name="description" content="NamsoGen random credit card numbers generator based on your own BIN pattern." />
+    <meta data-n-head="true" data-hid="og:title" name="og:title" content="NamsoGen's Random Credit Card Numbers Generator" />
+    <meta data-n-head="true" data-hid="og:description" name="og:description" content="NamsoGen random credit card numbers generator based on your own BIN pattern." />
+    <link data-n-head="true" rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link data-n-head="true" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" />
+    <link data-n-head="true" rel="manifest" href="/_nuxt/manifest.7aaea562.json" />
+    <link data-n-head="true" rel="shortcut icon" href="/_nuxt/icons/icon_64.104f87.png" />
+    <link data-n-head="true" rel="apple-touch-icon" href="/_nuxt/icons/icon_512.104f87.png" sizes="512x512>
+    <script data-n-head="true" src="//www.googletagmanager.com/gtm.js?id=GTM-WXF889Z&l=dataLayer" async type="2968bff84a9bf612a74c135f-text/javascript"></script>
+    <link rel="preload" href="/_nuxt/7b4e7f99a8dee88ba494.js" as="script" />
+    <link rel="preload" href="/_nuxt/6c8deff3de55f97ce4cf.js" as="script" />
+    <link rel="preload" href="/_nuxt/c4cff86f4cd6706eb8ee.js" as="script" />
+    <link rel="preload" href="/_nuxt/fbfa14ddcfd0d34c9cdd.js" as="script" />
+    <link rel="preload" href="/_nuxt/17f569201d8882bc075f.js" as="script" />
     <style data-vue-ssr-id="0313d3ce:0 17cfdfa9:0 a5a31970:0">
       /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
       html {
@@ -1154,98 +1176,17 @@
         </div>
       </div>
     </div>
-    <script>
-// Add this script at the end of the body or in a separate JS file
-
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    const resultTextarea = document.getElementById('result');
-    const copyButton = document.querySelector('.btn-clip');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        generateCards();
-    });
-
-    copyButton.addEventListener('click', copyToClipboard);
-
-    function generateCards() {
-        const bin = document.querySelector('input[placeholder="549627"]').value;
-        const includeDate = document.querySelector('input[type="checkbox"]').checked;
-        const month = document.querySelector('select[name="month"]').value;
-        const year = document.querySelector('select[name="year"]').value;
-        const includeCVV = document.querySelectorAll('input[type="checkbox"]')[1].checked;
-        const cvv = document.querySelector('input[placeholder="Leave blank to randomize"]').value;
-        const quantity = parseInt(document.querySelector('input[value="10"]').value);
-        const format = document.querySelector('select[name="format"]').value;
-
-        let results = [];
-
-        for (let i = 0; i < quantity; i++) {
-            let card = generateCard(bin);
-            let exp_month = month || (Math.floor(Math.random() * 12) + 1).toString().padStart(2, '0');
-            let exp_year = year || (Math.floor(Math.random() * 9) + 2019).toString();
-            let card_cvv = cvv || Math.floor(Math.random() * 900 + 100).toString();
-
-            let cardData = [card];
-            if (includeDate) cardData.push(exp_month, exp_year);
-            if (includeCVV) cardData.push(card_cvv);
-
-            results.push(cardData.join('|'));
-        }
-
-        displayResults(results, format);
-    }
-
-    function generateCard(bin) {
-        let cardNumber = bin.padEnd(15, 'x').replace(/x/g, () => Math.floor(Math.random() * 10));
-        return cardNumber + luhnCheck(cardNumber);
-    }
-
-    function luhnCheck(num) {
-        let arr = (num + '').split('').reverse().map(x => parseInt(x));
-        let lastDigit = arr.splice(0, 1)[0];
-        let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
-        sum += lastDigit;
-        return sum % 10 === 0 ? 0 : 10 - (sum % 10);
-    }
-
-    function displayResults(results, format) {
-        let output;
-        switch (format) {
-            case 'csv':
-                output = results.join('\n');
-                break;
-            case 'xml':
-                output = '<cards>\n' + results.map(card => `  <card>${card}</card>`).join('\n') + '\n</cards>';
-                break;
-            case 'json':
-                output = JSON.stringify(results, null, 2);
-                break;
-            case 'sql':
-                output = results.map(card => `INSERT INTO cards (card_data) VALUES ('${card}');`).join('\n');
-                break;
-            default:
-                output = results.join('\n');
-        }
-        resultTextarea.value = output;
-    }
-
-    function copyToClipboard() {
-        resultTextarea.select();
-        document.execCommand('copy');
-        
-        const tooltip = copyButton.querySelector('.tooltip');
-        tooltip.textContent = 'Copied!';
-        tooltip.classList.remove('invisible');
-        
-        setTimeout(() => {
-            tooltip.classList.add('invisible');
-            tooltip.textContent = 'Copy to clipboard';
-        }, 2000);
-    }
-});
-      
+    <script type="2968bff84a9bf612a74c135f-text/javascript">
+      window.__NUXT__=function(e,t){return{layout:"default",data:[{}],error:null,state:{creditcards:{items:[],formats:[t,"csv","xml","json","sql"],types:[{type:"mastercard",length:16},{type:"visa",length:16},{type:"discover",length:16},{type:"amex",length:15}],format:t,excludes:[]}},serverRendered:!0}}(0,"checker")
     </script>
+    <script src="/_nuxt/7b4e7f99a8dee88ba494.js" defer type="2968bff84a9bf612a74c135f-text/javascript"></script>
+    <script src="/_nuxt/17f569201d8882bc075f.js" defer type="2968bff84a9bf612a74c135f-text/javascript"></script>
+    <script src="/_nuxt/6c8deff3de55f97ce4cf.js" defer type="2968bff84a9bf612a74c135f-text/javascript"></script>
+    <script src="/_nuxt/c4cff86f4cd6706eb8ee.js" defer type="2968bff84a9bf612a74c135f-text/javascript"></script>
+    <script src="/_nuxt/fbfa14ddcfd0d34c9cdd.js" defer type="2968bff84a9bf612a74c135f-text/javascript"></script>
+    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="2968bff84a9bf612a74c135f-|49" defer=""></script>
   </body>
 </html>
+<?php
+echo (base64_decode("PGRpdiBjbGFzcz0iZm9vdGVyLWNvcHlyaWdodCB0ZXh0LWNlbnRlciBweS0zIj4KICAgICAgPGEgaHJlZj0iaHR0cHM6Ly9mb3J1bS5ibGFja2hhdGluZGlhLnJ1LyI+aHR0cHM6Ly9mb3J1bS5ibGFja2hhdGluZGlhLnJ1LzwvYT4KICAgIDwvZGl2Pgo="));
+?>
