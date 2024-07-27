@@ -1133,10 +1133,7 @@
              <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">FORMAT</span>
              <select name="format" class="form-select block w-full">
               <option value="pipe"> PIPE </option>
-              <option value="csv"> CSV </option>
-              <option value="xml"> XML </option>
               <option value="json"> JSON </option>
-              <option value="sql"> SQL </option>
              </select>
             </label>
            </div>
@@ -1288,19 +1285,8 @@ $(document).ready(function() {
       case 'pipe':
         result = cards.map(c => [c.number, c.month?.toString().padStart(2, '0'), c.year, c.cvv].filter(Boolean).join('|')).join('\n');
         break;
-      case 'csv':
-        var headers = ['Number', 'Month', 'Year', 'CVV'].filter(h => cards[0][h.toLowerCase()]);
-        result = headers.join(',') + '\n' + cards.map(c => headers.map(h => c[h.toLowerCase()]).join(',')).join('\n');
-        break;
-      case 'xml':
-        result = '<cards>\n' + cards.map(c => '  <card>\n' + Object.entries(c).map(([k, v]) => `    <${k}>${v}</${k}>`).join('\n') + '\n  </card>').join('\n') + '\n</cards>';
-        break;
       case 'json':
         result = JSON.stringify(cards, null, 2);
-        break;
-      case 'sql':
-        var columns = Object.keys(cards[0]).join(', ');
-        result = cards.map(c => `INSERT INTO cards (${columns}) VALUES (${Object.values(c).map(v => `'${v}'`).join(', ')});`).join('\n');
         break;
     }
 
