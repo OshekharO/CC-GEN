@@ -1219,13 +1219,25 @@
     </div>
    </div>
   </div>
- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
 function generateCardNumber(bin) {
     let cardNumber = bin;
-    while (cardNumber.length < 15) {
+    let desiredLength;
+    
+    // Determine desired length based on BIN
+    if (bin.startsWith('34') || bin.startsWith('37')) {
+        desiredLength = 15; // American Express
+    } else if (bin.startsWith('5018') || bin.startsWith('5020') || bin.startsWith('5038') || bin.startsWith('5893') || bin.startsWith('6304') || bin.startsWith('6759') || bin.startsWith('6761') || bin.startsWith('6762') || bin.startsWith('6763')) {
+        desiredLength = 19; // Some Maestro cards
+    } else {
+        desiredLength = 16; // Most other cards (Visa, Mastercard, etc.)
+    }
+
+    while (cardNumber.length < desiredLength - 1) {
         cardNumber += Math.floor(Math.random() * 10);
     }
+
     let sum = 0;
     let alternate = false;
     for (let i = cardNumber.length - 1; i >= 0; i--) {
@@ -1265,7 +1277,7 @@ $(document).ready(function() {
         number: generateCardNumber(bin),
         month: month ? parseInt(month) : Math.floor(Math.random() * 12) + 1,
         year: year ? parseInt(year) : Math.floor(Math.random() * 9) + 2024,
-        cvv: csv ? csv : Math.floor(Math.random() * 900) + 100
+        cvv: csv ? csv : (card.number.startsWith('34') || card.number.startsWith('37') ? Math.floor(Math.random() * 900) + 1000 : Math.floor(Math.random() * 900) + 100)
       };
       
       if (!includeDate) {
@@ -1310,6 +1322,7 @@ $(document).ready(function() {
     $('#ch').toggleClass('hidden');
   });
 });
+</script>
 </script>
  </body>
 </html>
