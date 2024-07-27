@@ -1222,301 +1222,80 @@
     </div>
    </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script>
-   $(document).ready(function () {
-    const cardGenerator = window.cardGenerator();
+ <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mihnea.dev/credit-card-generator@1.0.9/dist/CreditCardGenerator.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#codehap').submit(function(e) {
+    e.preventDefault();
+    
+    $('.wait-loading').show();
+    $('#submit').hide();
 
-    $("#codehap").submit(function (e) {
-     e.preventDefault();
-     generateCards();
-    });
+    var bin = $('input[name="bin"]').val();
+    var quantity = parseInt($('input[name="number"]').val());
+    var includeDate = $('input[name="date"]').is(':checked');
+    var includeCSV = $('input[name="csv"]').is(':checked');
+    var month = $('select[name="s_date"]').val();
+    var year = $('select[name="year"]').val();
+    var csv = $('input[name="s_csv"]').val();
+    var format = $('select[name="format"]').val();
 
-    $(".btn-clip").click(function () {
-     copyToClipboard();
-    });
-
-    function generateCards() {
-     const bin = $('input[name="bin"]').val();
-     cardGenerator.form.bin = bin;
-     cardGenerator.form.hasDate = $('input[name="date"]').is(":checked");
-     cardGenerator.form.expirationDateMonth = $('select[name="s_date"]').val();
-     cardGenerator.form.expirationDateYear = $('select[name="year"]').val();
-     cardGenerator.form.hasCvv = $('input[name="csv"]').is(":checked");
-     cardGenerator.form.cvv = $('input[name="s_csv"]').val();
-     cardGenerator.form.quantity = parseInt($('input[name="number"]').val());
-     cardGenerator.form.format = $('select[name="format"]').val();
-
-     $(".wait-loading").show();
-     $("#submit").hide();
-
-     setTimeout(function () {
-      cardGenerator.generate(bin);
-      updateResult();
-      $(".wait-loading").hide();
-      $("#submit").show();
-     }, 1000);
+    var cards = [];
+    for (var i = 0; i < quantity; i++) {
+      var card = CreditCardGenerator.generate(bin);
+      
+      if (includeDate) {
+        card.month = month ? parseInt(month) : Math.floor(Math.random() * 12) + 1;
+        card.year = year ? parseInt(year) : Math.floor(Math.random() * 9) + 2024;
+      }
+      
+      if (includeCSV) {
+        card.cvv = csv ? csv : Math.floor(Math.random() * 900) + 100;
+      }
+      
+      cards.push(card);
     }
 
-    function updateResult() {
-     $("#result").val(cardGenerator.result);
+    var result = '';
+    switch (format) {
+      case 'pipe':
+        result = cards.map(c => `${c.number}|${c.month.toString().padStart(2, '0')}|${c.year}|${c.cvv}`).join('\n');
+        break;
+      case 'csv':
+        result = 'Number,Month,Year,CVV\n' + cards.map(c => `${c.number},${c.month.toString().padStart(2, '0')},${c.year},${c.cvv}`).join('\n');
+        break;
+      case 'xml':
+        result = '<cards>\n' + cards.map(c => `  <card>\n    <number>${c.number}</number>\n    <month>${c.month.toString().padStart(2, '0')}</month>\n    <year>${c.year}</year>\n    <cvv>${c.cvv}</cvv>\n  </card>`).join('\n') + '\n</cards>';
+        break;
+      case 'json':
+        result = JSON.stringify(cards, null, 2);
+        break;
+      case 'sql':
+        result = cards.map(c => `INSERT INTO cards (number, month, year, cvv) VALUES ('${c.number}', '${c.month.toString().padStart(2, '0')}', '${c.year}', '${c.cvv}');`).join('\n');
+        break;
     }
 
-    function copyToClipboard() {
-     const textarea = document.getElementById("result");
-     textarea.select();
-     document.execCommand("copy");
+    $('#result').val(result);
+    
+    $('.wait-loading').hide();
+    $('#submit').show();
+  });
 
-     const tooltip = document.querySelector(".tooltip");
-     tooltip.textContent = "Copied!";
-     tooltip.classList.remove("invisible");
-
-     setTimeout(() => {
-      tooltip.classList.add("invisible");
-      tooltip.textContent = "Copy to clipboard";
-     }, 2000);
-    }
-
-    // Toggle menu for mobile
-    $("#codehapBTN").click(function () {
-     $("#ch").toggleClass("hidden");
+  $('.btn-clip').click(function() {
+    var resultText = $('#result').val();
+    navigator.clipboard.writeText(resultText).then(function() {
+      $('.tooltip').removeClass('invisible').addClass('visible');
+      setTimeout(function() {
+        $('.tooltip').removeClass('visible').addClass('invisible');
+      }, 2000);
     });
-   });
+  });
 
-   window.cardGenerator = function () {
-    return {
-     form: {
-      bin: "",
-      expirationDateMonth: "",
-      expirationDateYear: "",
-      cvv: "",
-      quantity: 10,
-      hasDate: true,
-      hasCvv: true,
-      hasMoney: false,
-      format: "pipe",
-      currency: "USD",
-      balance: "",
-     },
-     formats: {
-      pipe() {
-       return this.filteredItems
-        .map((e) =>
-         Object.values(e)
-          .map((t) => t.split("/").join("|"))
-          .join("|")
-        )
-        .join("\n");
-      },
-      csv() {
-       return this.filteredItems.map((e) => Object.values(e).join(", ")).join("\n");
-      },
-      json(e, t) {
-       return JSON.stringify(this.filteredItems, null, 2);
-      },
-      sql() {
-       let e = "CREATE TABLE IF NOT EXISTS `credit_cards` (\n";
-       e += "	`id` BIGINT(11) NOT NULL AUTO_INCREMENT,\n";
-       e += "	`card_number` VARCHAR(19) NOT NULL,\n";
-       e += this.excludes.includes("expiration_month") ? "" : "	`expiration_month` VARCHAR(2) NOT NULL,\n";
-       e += this.excludes.includes("expiration_year") ? "" : "	`expiration_year` VARCHAR(4) NOT NULL,\n";
-       e += this.excludes.includes("cvv") ? "" : "	`cvv` VARCHAR(4) NOT NULL,\n";
-       e += this.excludes.includes("currency") ? "" : "	`currency` VARCHAR(3) NOT NULL,\n";
-       e += this.excludes.includes("balance") ? "" : "	`balance` DECIMAL(10, 2) NOT NULL,\n";
-       e += "	PRIMARY KEY (`id`),\n";
-       e += "	KEY (`card_number`),\n";
-       e += "	UNIQUE KEY (`card_number`)\n";
-       e += ");\n\r";
-       e += this.filteredItems
-        .map((t) => {
-         const x = Object.keys(t).join(",");
-         const n = Object.values(t)
-          .map((s) => `'${s}'`)
-          .join(",");
-         return `INSERT INTO credit_cards (${x}) VALUES (${n});`;
-        })
-        .join("\n");
-       return e;
-      },
-      xml() {
-       let e = `<?xml version="1.0" encoding="utf-8"?>\n`;
-       e += `<CreditCards>\n`;
-       this.filteredItems.forEach((t) => {
-        const x = Object.entries(t);
-        e += `	<CreditCard>\n`;
-        x.map((n) => {
-         const s = n[0]
-          .split("_")
-          .map((a) => a.replace(/^\w/, (i) => i.toUpperCase()))
-          .join("");
-         e += `		<${s}>\n`;
-         e += `			${n[1]}\n`;
-         e += `		</${s}>\n`;
-        });
-        e += `	</CreditCard>\n`;
-       });
-       e += "</CreditCards>";
-       return e;
-      },
-     },
-     items: [],
-     excludes: ["currency", "balance"],
-     isGenerating: false,
-     get result() {
-      const e = this.formats[this.form.format];
-      if (this.items.length && typeof e == "function") return e.call(this);
-     },
-     get filteredItems() {
-      const e = [...this.items];
-      const t = ["card_number", "expiration_month", "expiration_year", "cvv", "currency", "balance"];
-      return e.map((x) => {
-       let n = {};
-       t.forEach((s) => {
-        !this.excludes.includes(s) && x.hasOwnProperty(s) && (n[s] = x[s]);
-       });
-       Object.keys(x).forEach((s) => {
-        !this.excludes.includes(s) && !n.hasOwnProperty(s) && (n[s] = x[s]);
-       });
-       return n;
-      });
-     },
-     generate(e) {
-      if (e.length < 6) return;
-      this.isGenerating = true;
-      this.bin = e;
-      this.items = [];
-      let t = [];
-      for (let x = 0; x < this.form.quantity; x++)
-       t.push({
-        card_number: this.generateCardNumber(e),
-        expiration_month: this.generateExpirationMonth(),
-        expiration_year: this.generateExpirationYear(),
-        cvv: this.generateCvv(),
-        currency: this.form.currency,
-        balance: this.generateBalance(),
-       });
-      this.items = t;
-      this.isGenerating = false;
-     },
-     generateCardNumber(e) {
-      for (let x = 500; x >= 1; x--) {
-       var t = this.sbtStringSpRnd(e, "x", "0123456789");
-       const n = this.sbtString(t, " -/abcdefghijklmnopqrstuvwyzABCDEFGHIJLMNOPQRSTUVWYZ");
-       const s = this.chkLCD(n);
-       const a = this.chkCCCksum(n, this.rand(0, 9));
-       if (s && a) break;
-      }
-      return t;
-     },
-     generateCvv() {
-      const e = this.bin.length < 16 ? 4 : 3;
-      let t = this.form.cvv;
-      if (t.length === 1 && e === 3) for (let x = 0; x < 2; x++) t += this.rand(0, 9);
-      for (; t.length < e; ) t += this.rand(0, 9);
-      return t.substring(0, e);
-     },
-     generateExpirationMonth(e) {
-      return ("0" + (this.form.expirationDateMonth || this.rand(1, 12))).slice(-2);
-     },
-     generateExpirationYear() {
-      const e = new Date().getFullYear();
-      return (this.form.expirationDateYear || this.rand(e, e + 8)).toString();
-     },
-     generateBalance() {
-      const e = "500-1000".split("-");
-      const t = parseInt(e[0], 10);
-      const x = parseInt(e[1], 10);
-      return (Math.ceil((Math.random() * (x - t) + t) / 100) * 100).toString();
-     },
-     rand(e, t) {
-      return Math.floor(Math.random() * (t - e + 1)) + e;
-     },
-     reverseString(e) {
-      return e.split("").reverse().join("");
-     },
-     unilenS(e, t, x, n) {
-      var s = "" + e;
-      t *= 1;
-      (x == "" || x == null) && (x = "0");
-      (n == "" || n == null) && (n = 0);
-      var a = s.length;
-      if (a < t) for (var i = 1; i <= t - a; i++) n == 0 ? (s = "" + x + s) : (s += "" + x);
-      return s;
-     },
-     chkCCCksum(e, t) {
-      for (var x = !1, n = "21", s = "", a = 1, i = 1; i <= e.length - 1; i++) {
-       var l = this.midS(e, i, 1) * this.midS(n, a, 1);
-       (l = this.sumDigits(l)), (s += "" + l), a++, a > n.length && (a = 1);
-      }
-      var p = this.sumDigits(s, -1),
-       m = (this.sumDigits(p, -1) * 10 - p) % 10;
-      return m == this.rightS(e, 1) && (x = !0), x;
-     },
-     chkLCD(e) {
-      var t = !1;
-      e += "";
-      for (var x = this.isdiv(e.length, 2), n = 0, s = 1; s <= e.length; s++) {
-       var a = this.midS(e, s, 1);
-       this.isdiv(s, 2) != x && ((a *= 2), a > 9 && (a -= 9)), (n += a * 1);
-      }
-      return this.isdiv(n, 10) && (t = !0), t;
-     },
-     leftS(e, t) {
-      e += "";
-      var x = "";
-      return t >= 1 && (x = e.substring(0, t)), x;
-     },
-     rightS(e, t) {
-      e += "";
-      var x = "";
-      return t >= 1 && (x = e.substring(e.length - t, e.length)), x;
-     },
-     midS(e, t, x) {
-      e += "";
-      var n = "";
-      return (x == null || x == "") && (x = e.length), (t *= 1), (x *= 1), t < 0 && t++, (n = e.substring(t - 1, t - 1 + x)), n;
-     },
-     sbtString(e, t) {
-      var x = "";
-      (e += ""), (t += "");
-      for (var n = 1; n <= e.length; n++) {
-       var s = e.substring(n - 1, n),
-        a = t.indexOf(s);
-       a == -1 && (x += s);
-      }
-      return x;
-     },
-     sbtStringSpRnd(e, t, x) {
-      (x == null || x == "") && (x = "0123456789");
-      var n = "";
-      x += "";
-      for (var s = 1; s <= e.length; s++) {
-       var a = e.substring(s - 1, s),
-        i = t.indexOf(a);
-       i == -1 ? (n += a) : (n += this.midS(x, Math.floor(Math.random() * (x.length - 1)) + 1, 1));
-      }
-      return n;
-     },
-     isdiv(e, t) {
-      t == null && (t = 2), (e *= 1), (t *= 1);
-      var x = !1;
-      return e / t == Math.floor(e / t) && (x = !0), x;
-     },
-     sumDigits(e, t) {
-      if (((t == 0 || t == null) && (t = 1), (e += ""), t > 0))
-       for (; e.length > t; ) {
-        for (var x = 0, n = 1; n <= e.length; n++) x += 1 * this.midS(e, n, 1);
-        e = "" + x;
-       }
-      else
-       for (var s = 1; s <= Math.abs(t); s++) {
-        for (var x = 0, n = 1; n <= e.length; n++) x += 1 * this.midS(e, n, 1);
-        e = "" + x;
-       }
-      return (x = e), x;
-     },
-    };
-   };
-  </script>
+  $('#codehapBTN').click(function() {
+    $('#ch').toggleClass('hidden');
+  });
+});
+</script>
  </body>
 </html>
