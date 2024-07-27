@@ -1223,8 +1223,29 @@
    </div>
   </div>
  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@mihnea.dev/credit-card-generator@1.0.9/dist/CreditCardGenerator.min.js"></script>
 <script>
+function generateCardNumber(bin) {
+    let cardNumber = bin;
+    while (cardNumber.length < 15) {
+        cardNumber += Math.floor(Math.random() * 10);
+    }
+    let sum = 0;
+    let alternate = false;
+    for (let i = cardNumber.length - 1; i >= 0; i--) {
+        let n = parseInt(cardNumber.charAt(i));
+        if (alternate) {
+            n *= 2;
+            if (n > 9) {
+                n = (n % 10) + 1;
+            }
+        }
+        sum += n;
+        alternate = !alternate;
+    }
+    let checkDigit = (10 - (sum % 10)) % 10;
+    return cardNumber + checkDigit;
+}
+
 $(document).ready(function() {
   $('#codehap').submit(function(e) {
     e.preventDefault();
@@ -1243,15 +1264,20 @@ $(document).ready(function() {
 
     var cards = [];
     for (var i = 0; i < quantity; i++) {
-      var card = CreditCardGenerator.generate(bin);
+      var card = {
+        number: generateCardNumber(bin),
+        month: month ? parseInt(month) : Math.floor(Math.random() * 12) + 1,
+        year: year ? parseInt(year) : Math.floor(Math.random() * 9) + 2024,
+        cvv: csv ? csv : Math.floor(Math.random() * 900) + 100
+      };
       
-      if (includeDate) {
-        card.month = month ? parseInt(month) : Math.floor(Math.random() * 12) + 1;
-        card.year = year ? parseInt(year) : Math.floor(Math.random() * 9) + 2024;
+      if (!includeDate) {
+        delete card.month;
+        delete card.year;
       }
       
-      if (includeCSV) {
-        card.cvv = csv ? csv : Math.floor(Math.random() * 900) + 100;
+      if (!includeCSV) {
+        delete card.cvv;
       }
       
       cards.push(card);
@@ -1260,19 +1286,21 @@ $(document).ready(function() {
     var result = '';
     switch (format) {
       case 'pipe':
-        result = cards.map(c => `${c.number}|${c.month.toString().padStart(2, '0')}|${c.year}|${c.cvv}`).join('\n');
+        result = cards.map(c => [c.number, c.month?.toString().padStart(2, '0'), c.year, c.cvv].filter(Boolean).join('|')).join('\n');
         break;
       case 'csv':
-        result = 'Number,Month,Year,CVV\n' + cards.map(c => `${c.number},${c.month.toString().padStart(2, '0')},${c.year},${c.cvv}`).join('\n');
+        var headers = ['Number', 'Month', 'Year', 'CVV'].filter(h => cards[0][h.toLowerCase()]);
+        result = headers.join(',') + '\n' + cards.map(c => headers.map(h => c[h.toLowerCase()]).join(',')).join('\n');
         break;
       case 'xml':
-        result = '<cards>\n' + cards.map(c => `  <card>\n    <number>${c.number}</number>\n    <month>${c.month.toString().padStart(2, '0')}</month>\n    <year>${c.year}</year>\n    <cvv>${c.cvv}</cvv>\n  </card>`).join('\n') + '\n</cards>';
+        result = '<cards>\n' + cards.map(c => '  <card>\n' + Object.entries(c).map(([k, v]) => `    <${k}>${v}</${k}>`).join('\n') + '\n  </card>').join('\n') + '\n</cards>';
         break;
       case 'json':
         result = JSON.stringify(cards, null, 2);
         break;
       case 'sql':
-        result = cards.map(c => `INSERT INTO cards (number, month, year, cvv) VALUES ('${c.number}', '${c.month.toString().padStart(2, '0')}', '${c.year}', '${c.cvv}');`).join('\n');
+        var columns = Object.keys(cards[0]).join(', ');
+        result = cards.map(c => `INSERT INTO cards (${columns}) VALUES (${Object.values(c).map(v => `'${v}'`).join(', ')});`).join('\n');
         break;
     }
 
