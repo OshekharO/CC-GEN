@@ -1052,7 +1052,8 @@
             if (window.crypto && window.crypto.getRandomValues) {
                 const array = new Uint32Array(1);
                 window.crypto.getRandomValues(array);
-                return array[0] % max;
+                // Use unbiased conversion to avoid modulo bias
+                return Math.floor((array[0] / 0x100000000) * max);
             }
             return Math.floor(Math.random() * max);
         }
@@ -1095,12 +1096,15 @@
             let sum = 0;
             const length = digits.length;
             
-            // Process from right to left, doubling every second digit
+            // Process from right to left
+            // When checksum is appended, rightmost digit (checksum) is position 1
+            // So current rightmost digit will be position 2 and should be doubled
             for (let i = 0; i < length; i++) {
                 const position = length - 1 - i;
                 let digit = digits[position];
                 
-                // Double every second digit (starting from rightmost which will be at odd position after checksum is added)
+                // Double digits at even indices from the right (0, 2, 4...) of the partial number
+                // These become odd positions (2, 4, 6...) when checksum is added
                 if (i % 2 === 0) {
                     digit *= 2;
                     if (digit > 9) digit -= 9;
@@ -1169,9 +1173,11 @@
         function detectCardType(cardNumber) {
             const cleaned = cardNumber.replace(/\D/g, '');
             
+            // MasterCard: 51-55 or 2221-2720
             const patterns = [
                 { regex: /^4/, type: 'Visa' },
-                { regex: /^5[1-5]|^2[2-7][2-9][1-9]/, type: 'MasterCard' },
+                { regex: /^5[1-5]/, type: 'MasterCard' },
+                { regex: /^(222[1-9]|22[3-9]\d|2[3-6]\d{2}|27[01]\d|2720)/, type: 'MasterCard' },
                 { regex: /^3[47]/, type: 'Amex' },
                 { regex: /^6011|^622[1-9][2-6]\d|^64[4-9]|^65/, type: 'Discover' },
                 { regex: /^3(0[0-5]|[68]\d|9\d)/, type: 'Diners Club' }
@@ -1209,8 +1215,14 @@
         /** Available months for random generation */
         const MONTHS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
         
-        /** Available years for random generation */
-        const YEARS = ['2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039', '2040'];
+        /** 
+         * Generate available years dynamically based on current year
+         * Returns years from next year to 15 years in the future
+         */
+        function getAvailableYears() {
+            const currentYear = new Date().getFullYear();
+            return Array.from({ length: 15 }, (_, i) => String(currentYear + i + 1));
+        }
 
         /**
          * Generate random month
@@ -1225,7 +1237,8 @@
          * @returns {string} Four-digit year
          */
         function generateYear() {
-            return YEARS[secureRandomInt(YEARS.length)];
+            const years = getAvailableYears();
+            return years[secureRandomInt(years.length)];
         }
 
         /**
@@ -1402,18 +1415,20 @@
                 // Modern approach using Clipboard API
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     await navigator.clipboard.writeText(text);
+                    showCopyFeedback();
                 } else {
-                    // Fallback for older browsers
+                    // Fallback: select text and prompt user to copy manually
                     textarea.select();
                     textarea.setSelectionRange(0, 99999);
-                    document.execCommand('copy');
+                    // Show a message since we can't auto-copy
+                    alert('Text selected. Please press Ctrl+C (Cmd+C on Mac) to copy.');
                 }
-                
-                // Visual feedback
-                showCopyFeedback();
             } catch (err) {
                 console.error('Failed to copy:', err);
-                alert('Failed to copy to clipboard');
+                // Fallback to selection
+                textarea.select();
+                textarea.setSelectionRange(0, 99999);
+                alert('Could not copy automatically. Text selected - please use Ctrl+C (Cmd+C on Mac).');
             }
         }
 
