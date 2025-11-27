@@ -380,6 +380,9 @@
             font-weight: 500;
             transition: var(--transition);
             border: 1px solid var(--border-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .dark-mode .preset-bin {
@@ -536,7 +539,12 @@
 
         @media (max-width: 768px) {
             .preset-bins {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .preset-bin {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.5rem;
             }
             
             /* Mobile tab styling */
