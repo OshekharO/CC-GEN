@@ -58,129 +58,196 @@
 
     <style>
         :root {
-            --primary-color: #0d6efd;
-            --secondary-color: #6c757d;
-            --success-color: #198754;
-            --warning-color: #ffc107;
-            --danger-color: #dc3545;
-            --dark-color: #212529;
-            --light-color: #f8f9fa;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --border-color: #e2e8f0;
+            --border-radius: 12px;
+            --border-radius-sm: 8px;
+            --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Roboto Mono', monospace;
-            transition: background-color 0.3s, color 0.3s;
+            transition: var(--transition);
             background-color: var(--light-color);
             color: var(--dark-color);
             min-height: 100vh;
             padding-bottom: 2rem;
+            line-height: 1.6;
         }
 
         body.dark-mode {
-            background-color: #1b1e21;
-            color: var(--light-color);
+            --light-color: #0f172a;
+            --dark-color: #f1f5f9;
+            --border-color: #334155;
+            background-color: #0f172a;
+            color: #f1f5f9;
         }
 
         .theme-toggle {
             position: fixed;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.2);
+            background: white;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--box-shadow);
+            box-shadow: var(--box-shadow-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
         }
 
         .dark-mode .theme-toggle {
-            background: rgba(0, 0, 0, 0.2);
+            background: #1e293b;
+            border-color: #334155;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1280px;
             margin-top: 2rem;
+            padding: 0 1rem;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem 1rem;
         }
 
-        .dark-mode .header {
-            border-bottom-color: #495057;
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header .lead {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            margin: 0;
         }
 
         .generator-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
+        @media (max-width: 992px) {
+            .generator-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .form-section {
-            flex: 1;
-            min-width: 350px;
             background: white;
-            padding: 1.5rem;
+            padding: 1.75rem;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
         }
 
         .dark-mode .form-section {
-            background: #2d3035;
+            background: #1e293b;
+            border-color: #334155;
         }
 
         .result-section {
-            flex: 1;
-            min-width: 350px;
             background: white;
-            padding: 1.5rem;
+            padding: 1.75rem;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
         }
 
         .dark-mode .result-section {
-            background: #2d3035;
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        .form-section h3, .result-section h6 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: inherit;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
         }
 
         .form-control, .form-select {
             background-color: inherit;
             color: inherit;
-            border: 1px solid #ced4da;
-            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            padding: 0.625rem 0.875rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
         .dark-mode .form-control, .dark-mode .form-select {
-            border-color: #495057;
+            border-color: #334155;
+            background-color: #0f172a;
         }
 
         .form-control:focus, .form-select:focus {
-            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
             border-color: var(--primary-color);
             background-color: inherit;
             color: inherit;
+            outline: none;
+        }
+
+        .form-text {
+            font-size: 0.75rem;
+            color: var(--secondary-color);
+            margin-top: 0.375rem;
+        }
+
+        .btn {
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+            padding: 0.625rem 1.25rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
-            font-weight: 500;
-            padding: 0.5rem 1.5rem;
         }
 
         .btn-primary:hover {
-            background-color: #0b5ed7;
-            border-color: #0a58ca;
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-1px);
         }
 
         .btn-success {
@@ -189,8 +256,20 @@
         }
 
         .btn-success:hover {
-            background-color: #157347;
-            border-color: #146c43;
+            background-color: #059669;
+            border-color: #059669;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline-secondary {
+            border-color: var(--border-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: var(--light-color);
+            border-color: var(--border-color);
+            color: var(--dark-color);
         }
 
         .output-container {
@@ -199,33 +278,41 @@
 
         .copy-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 12px;
+            right: 12px;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--primary-color);
             z-index: 10;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 4px;
-            padding: 5px 10px;
+            background: white;
+            border-radius: var(--border-radius-sm);
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background-color: var(--light-color);
         }
 
         .dark-mode .copy-btn {
-            background: rgba(45, 48, 53, 0.8);
+            background: #1e293b;
+            border-color: #334155;
         }
 
         textarea {
             resize: none;
-            height: 400px;
+            height: 350px;
             width: 100%;
             font-family: 'Roboto Mono', monospace;
-            font-size: 0.75rem;
-            line-height: 1.2;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            border-radius: var(--border-radius-sm);
         }
 
         .action-buttons {
             display: flex;
-            gap: 10px;
+            gap: 0.75rem;
             margin-top: 1rem;
         }
 
@@ -233,34 +320,43 @@
             flex: 1;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1rem;
-            border-top: 1px solid #dee2e6;
-        }
-
-        .dark-mode footer {
-            border-top-color: #495057;
-        }
-
         .card-preview {
-            background: #f8f9fa;
-            border-radius: var(--border-radius);
+            background: var(--light-color);
+            border-radius: var(--border-radius-sm);
             padding: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.25rem;
             font-family: 'Roboto Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
         }
 
         .dark-mode .card-preview {
-            background: #343a40;
+            background: #0f172a;
+            border-color: #334155;
+        }
+
+        .nav-tabs {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-tabs .nav-link {
+            color: var(--secondary-color);
+            border: none;
+            border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-tabs .nav-link:hover {
+            color: var(--primary-color);
+            border: none;
         }
 
         .nav-tabs .nav-link.active {
             background-color: var(--primary-color);
             color: white;
-            border-color: var(--primary-color);
+            border: none;
         }
 
         .tab-content {
@@ -269,55 +365,62 @@
 
         .preset-bins {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.75rem;
         }
 
         .preset-bin {
-            padding: 8px 12px;
-            background: #e9ecef;
-            border-radius: 4px;
+            padding: 0.5rem 0.75rem;
+            background: var(--light-color);
+            border-radius: var(--border-radius-sm);
             text-align: center;
             cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.2s;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
         }
 
         .dark-mode .preset-bin {
-            background: #495057;
+            background: #0f172a;
+            border-color: #334155;
         }
 
         .preset-bin:hover {
             background: var(--primary-color);
             color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-1px);
         }
 
         .history-item {
-            padding: 8px 12px;
-            border-bottom: 1px solid #dee2e6;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
             font-size: 0.85rem;
             cursor: pointer;
+            transition: var(--transition);
         }
 
         .dark-mode .history-item {
-            border-bottom-color: #495057;
+            border-bottom-color: #334155;
         }
 
         .history-item:hover {
-            background: #f8f9fa;
+            background: var(--light-color);
         }
 
         .dark-mode .history-item:hover {
-            background: #343a40;
+            background: #0f172a;
         }
 
         .validation-badge {
             display: inline-block;
             padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            margin-left: 5px;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
         }
 
         .badge-valid {
@@ -331,7 +434,27 @@
         }
 
         .card-type-icon {
-            margin-right: 5px;
+            margin-right: 0.375rem;
+        }
+
+        .accordion {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+        }
+
+        .accordion-item:last-child {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .accordion-button {
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 1rem 1.25rem;
         }
 
         .accordion-button:not(.collapsed) {
@@ -344,46 +467,76 @@
             border-color: var(--primary-color);
         }
 
+        .accordion-body {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
         /* Mobile-specific styles for tabs */
         .mobile-tab-label {
             display: none;
         }
 
-        /* SEO Content Styles */
+        /* Trust Signals & SEO Content Styles */
         .seo-content {
             background: white;
             padding: 2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             margin-top: 2rem;
+            border: 1px solid var(--border-color);
         }
 
         .dark-mode .seo-content {
-            background: #2d3035;
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        .seo-content h2, .seo-content h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .seo-content h2 {
+            font-size: 1.5rem;
+        }
+
+        .seo-content h3 {
+            font-size: 1.1rem;
         }
 
         .trust-signals {
             margin: 2rem 0;
-            padding: 1.5rem;
-            background: #f8f9fa;
+            padding: 2rem;
+            background: white;
             border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
         }
 
         .dark-mode .trust-signals {
-            background: #343a40;
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        .trust-signals h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-signals .small {
+            color: var(--secondary-color);
+        }
+
+        /* Info list styling */
+        .result-section .list-unstyled li {
+            padding: 0.375rem 0;
+            font-size: 0.8rem;
         }
 
         @media (max-width: 768px) {
-            .generator-container {
-                flex-direction: column;
-            }
-            
-            .form-section, .result-section {
-                width: 100%;
-            }
-            
             .preset-bins {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             }
             
             /* Mobile tab styling */
@@ -889,229 +1042,281 @@
             alert('BIN pattern is valid');
         }
 
-        // Generate a single valid credit card number using Luhn algorithm
-        function generateCard(bin, length) {
-            let bin2 = "";
-            let card = "";
-            let card1_l = [];
-            let card2_l = [];
+        /**
+         * Generate a cryptographically secure random integer between 0 and max (exclusive)
+         * Falls back to Math.random() if crypto API is not available
+         * @param {number} max - Upper bound (exclusive)
+         * @returns {number} Random integer
+         */
+        function secureRandomInt(max) {
+            if (window.crypto && window.crypto.getRandomValues) {
+                const array = new Uint32Array(1);
+                window.crypto.getRandomValues(array);
+                return array[0] % max;
+            }
+            return Math.floor(Math.random() * max);
+        }
+
+        /**
+         * Generate a random digit (0-9)
+         * @returns {number} Random digit
+         */
+        function randomDigit() {
+            return secureRandomInt(10);
+        }
+
+        /**
+         * Parse BIN pattern and extract digits, replacing 'x' with random digits
+         * @param {string} bin - BIN pattern with 'x' as random digit placeholder
+         * @param {number} maxLength - Maximum number of digits to extract
+         * @returns {number[]} Array of digits
+         */
+        function parseBinPattern(bin, maxLength) {
+            const digits = [];
+            for (const char of bin) {
+                if (digits.length >= maxLength) break;
+                const lowerChar = char.toLowerCase();
+                if (lowerChar === 'x') {
+                    digits.push(randomDigit());
+                } else if (/\d/.test(lowerChar)) {
+                    digits.push(parseInt(lowerChar, 10));
+                }
+                // Skip non-digit, non-x characters (allows formatted input like "4111-xxxx-xxxx")
+            }
+            return digits;
+        }
+
+        /**
+         * Calculate Luhn checksum digit for a partial card number
+         * @param {number[]} digits - Array of digits (without checksum)
+         * @returns {number} Checksum digit (0-9)
+         */
+        function calculateLuhnChecksum(digits) {
             let sum = 0;
-            let mod = 0;
-            let check_sum = 0;
-
-            // Replace 'x' with random digits and limit to length-1
-            for (let i = 0; i < bin.length && bin2.length < length - 1; i++) {
-                let char = bin[i].toLowerCase();
-                if (char === "x") {
-                    char = Math.floor(Math.random() * 10);
+            const length = digits.length;
+            
+            // Process from right to left, doubling every second digit
+            for (let i = 0; i < length; i++) {
+                const position = length - 1 - i;
+                let digit = digits[position];
+                
+                // Double every second digit (starting from rightmost which will be at odd position after checksum is added)
+                if (i % 2 === 0) {
+                    digit *= 2;
+                    if (digit > 9) digit -= 9;
                 }
-                bin2 += char;
+                sum += digit;
             }
-
-            // If bin2 is shorter than length-1, append random digits
-            while (bin2.length < length - 1) {
-                bin2 += Math.floor(Math.random() * 10);
-            }
-
-            // Convert bin2 to array of integers
-            for (let i = 0; i < bin2.length; i++) {
-                card1_l.push(parseInt(bin2[i]));
-                card2_l.push(parseInt(bin2[i]));
-            }
-
-            // Double the value of alternate digits starting from the rightmost
-            for (let i = card2_l.length - 1; i >= 0; i -= 2) {
-                card2_l[i] *= 2;
-                if (card2_l[i] > 9) {
-                    card2_l[i] -= 9;
-                }
-            }
-
-            // Sum all the digits
-            for (let i in card2_l) {
-                sum += card2_l[i];
-            }
-
-            // Calculate the checksum
-            mod = sum % 10;
-            if (mod !== 0) {
-                check_sum = 10 - mod;
-            }
-
-            // Add the checksum to the card number
-            card1_l.push(check_sum);
-
-            // Convert the card number array to a string
-            for (let i in card1_l) {
-                card += card1_l[i];
-            }
-            return card;
+            
+            return (10 - (sum % 10)) % 10;
         }
 
-        // Determine card length based on BIN
+        /**
+         * Generate a single valid credit card number using Luhn algorithm
+         * @param {string} bin - BIN pattern with 'x' as random digit placeholder
+         * @param {number} length - Desired card length
+         * @returns {string} Valid card number
+         */
+        function generateCard(bin, length) {
+            const targetLength = length - 1; // Reserve space for checksum
+            
+            // Parse BIN pattern into digits
+            let digits = parseBinPattern(bin, targetLength);
+
+            // Pad with random digits if needed
+            while (digits.length < targetLength) {
+                digits.push(randomDigit());
+            }
+
+            // Calculate and append Luhn checksum
+            const checksum = calculateLuhnChecksum(digits);
+            digits.push(checksum);
+
+            return digits.join('');
+        }
+
+        /**
+         * Batch generate multiple cards efficiently
+         * @param {string} bin - BIN pattern
+         * @param {number} length - Card length
+         * @param {number} count - Number of cards to generate
+         * @returns {string[]} Array of card numbers
+         */
+        function generateCards(bin, length, count) {
+            const cards = new Array(count);
+            for (let i = 0; i < count; i++) {
+                cards[i] = generateCard(bin, length);
+            }
+            return cards;
+        }
+
+        /**
+         * Determine card length based on BIN pattern
+         * @param {string} bin - BIN pattern
+         * @returns {number} Expected card length
+         */
         function getCardLength(bin) {
-            if (/^3[47]/.test(bin)) { // Amex
-                return 15;
-            } else if (/^3[0689]/.test(bin)) { // Diners Club
-                return 14;
-            } else { // Visa, MasterCard, Discover, etc.
-                return 16;
-            }
+            if (/^3[47]/.test(bin)) return 15;      // Amex
+            if (/^3[0689]/.test(bin)) return 14;    // Diners Club
+            return 16;                               // Visa, MasterCard, Discover, etc.
         }
 
-        // Detect card type
+        /**
+         * Detect card type from card number
+         * @param {string} cardNumber - Full card number
+         * @returns {string} Card type name
+         */
         function detectCardType(cardNumber) {
-            // Remove any non-digit characters
             const cleaned = cardNumber.replace(/\D/g, '');
             
-            // Visa: starts with 4
-            if (/^4/.test(cleaned)) {
-                return "Visa";
-            }
-            // MasterCard: starts with 51-55 or 2221-2720
-            else if (/^5[1-5]/.test(cleaned) || /^2[2-7][2-9][1-9]/.test(cleaned)) {
-                return "MasterCard";
-            }
-            // American Express: starts with 34 or 37
-            else if (/^3[47]/.test(cleaned)) {
-                return "Amex";
-            }
-            // Discover: starts with 6011, 622126-622925, 644-649, or 65
-            else if (/^6011/.test(cleaned) || /^622[1-9][2-6][0-9]/.test(cleaned) || 
-                     /^64[4-9]/.test(cleaned) || /^65/.test(cleaned)) {
-                return "Discover";
-            }
-            // Diners Club: starts with 300-305, 36, or 38-39
-            else if (/^3(0[0-5]|[68][0-9]|9[0-9])/.test(cleaned)) {
-                return "Diners Club";
-            }
-            else {
-                return "Unknown";
-            }
+            const patterns = [
+                { regex: /^4/, type: 'Visa' },
+                { regex: /^5[1-5]|^2[2-7][2-9][1-9]/, type: 'MasterCard' },
+                { regex: /^3[47]/, type: 'Amex' },
+                { regex: /^6011|^622[1-9][2-6]\d|^64[4-9]|^65/, type: 'Discover' },
+                { regex: /^3(0[0-5]|[68]\d|9\d)/, type: 'Diners Club' }
+            ];
+
+            const match = patterns.find(p => p.regex.test(cleaned));
+            return match ? match.type : 'Unknown';
         }
 
-        // Luhn algorithm validation
+        /**
+         * Validate card number using Luhn algorithm
+         * @param {string} cardNumber - Card number to validate
+         * @returns {boolean} True if valid
+         */
         function validateLuhn(cardNumber) {
-            // Remove any non-digit characters
             const cleaned = cardNumber.replace(/\D/g, '');
-            
-            // Check if the card number is empty or too short
-            if (cleaned.length < 13) {
-                return false;
-            }
-            
+            if (cleaned.length < 13) return false;
+
             let sum = 0;
             let isEven = false;
-            
-            // Iterate from right to left
+
             for (let i = cleaned.length - 1; i >= 0; i--) {
-                let digit = parseInt(cleaned.charAt(i), 10);
-                
+                let digit = parseInt(cleaned[i], 10);
                 if (isEven) {
                     digit *= 2;
-                    if (digit > 9) {
-                        digit -= 9;
-                    }
+                    if (digit > 9) digit -= 9;
                 }
-                
                 sum += digit;
                 isEven = !isEven;
             }
-            
-            return (sum % 10) === 0;
+
+            return sum % 10 === 0;
         }
 
-        // Generate random month
+        /** Available months for random generation */
+        const MONTHS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+        
+        /** Available years for random generation */
+        const YEARS = ['2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039', '2040'];
+
+        /**
+         * Generate random month
+         * @returns {string} Two-digit month
+         */
         function generateMonth() {
-            const monthList = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
-            return monthList[Math.floor(Math.random() * 12)];
+            return MONTHS[secureRandomInt(MONTHS.length)];
         }
 
-        // Generate random year
+        /**
+         * Generate random year
+         * @returns {string} Four-digit year
+         */
         function generateYear() {
-            const yearList = ["2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040"];
-            return yearList[Math.floor(Math.random() * yearList.length)];
+            return YEARS[secureRandomInt(YEARS.length)];
         }
 
-        // Generate CVV based on card type
+        /**
+         * Generate CVV based on card type
+         * @param {string} bin - BIN pattern to detect card type
+         * @returns {string} Generated CVV
+         */
         function generateCCV(bin) {
-            const ccvLength = /^3[47]/.test(bin) ? 4 : 3; // Amex has 4-digit CVV
-            let ccv = "";
-            for (let i = 0; i < ccvLength; i++) {
-                ccv += Math.floor(Math.random() * 10);
-            }
-            return ccv;
+            const length = /^3[47]/.test(bin) ? 4 : 3; // Amex has 4-digit CVV
+            return Array.from({ length }, () => randomDigit()).join('');
         }
 
-        // Format the output based on selected format
+        /** Output format configurations */
+        const OUTPUT_FORMATS = {
+            pipe: (card, month, year, ccv) => `${card}|${month}|${year}|${ccv}`,
+            comma: (card, month, year, ccv) => `${card},${month},${year},${ccv}`,
+            json: (card, month, year, ccv) => `{"card": "${card}", "month": "${month}", "year": "${year}", "cvv": "${ccv}"}`,
+            cardonly: (card) => card,
+            formatted: (card, month, year, ccv) => {
+                const formattedCard = card.replace(/(.{4})/g, '$1 ').trim();
+                return `${formattedCard}|${month}|${year}|${ccv}`;
+            }
+        };
+
+        /**
+         * Format output based on selected format
+         * @param {string} card - Card number
+         * @param {string} month - Expiration month
+         * @param {string} year - Expiration year
+         * @param {string} ccv - CVV code
+         * @param {string} format - Output format key
+         * @returns {string} Formatted output
+         */
         function formatOutput(card, month, year, ccv, format) {
-            switch(format) {
-                case 'pipe':
-                    return `${card}|${month}|${year}|${ccv}`;
-                case 'comma':
-                    return `${card},${month},${year},${ccv}`;
-                case 'json':
-                    return `{"card": "${card}", "month": "${month}", "year": "${year}", "cvv": "${ccv}"}`;
-                case 'cardonly':
-                    return card;
-                case 'formatted':
-                    // Format card number with spaces (XXXX XXXX XXXX XXXX)
-                    const formattedCard = card.replace(/(.{4})/g, '$1 ').trim();
-                    return `${formattedCard}|${month}|${year}|${ccv}`;
-                default:
-                    return `${card}|${month}|${year}|${ccv}`;
-            }
+            const formatter = OUTPUT_FORMATS[format] || OUTPUT_FORMATS.pipe;
+            return formatter(card, month, year, ccv);
         }
 
-        // Save to history
+        /** Maximum history items to keep */
+        const MAX_HISTORY_ITEMS = 20;
+
+        /**
+         * Save generation to history
+         * @param {string} bin - BIN pattern used
+         * @param {number} count - Number of cards generated
+         */
         function saveToHistory(bin, count) {
-            let history = JSON.parse(localStorage.getItem('generationHistory') || '[]');
+            const history = JSON.parse(localStorage.getItem('generationHistory') || '[]');
             
-            const historyItem = {
-                bin: bin,
-                count: count,
+            history.unshift({
+                bin,
+                count,
                 timestamp: new Date().toLocaleString()
-            };
-            
-            history.unshift(historyItem);
-            
-            // Keep only last 20 items
-            if (history.length > 20) {
-                history = history.slice(0, 20);
-            }
-            
-            localStorage.setItem('generationHistory', JSON.stringify(history));
+            });
+
+            // Keep only last MAX_HISTORY_ITEMS items
+            localStorage.setItem('generationHistory', JSON.stringify(history.slice(0, MAX_HISTORY_ITEMS)));
             loadHistory();
         }
 
-        // Load history
+        /**
+         * Load and display history
+         */
         function loadHistory() {
             const history = JSON.parse(localStorage.getItem('generationHistory') || '[]');
             const historyList = document.getElementById('history-list');
-            
-            historyList.innerHTML = '';
-            
+
             if (history.length === 0) {
                 historyList.innerHTML = '<div class="text-center p-3">No generation history</div>';
                 return;
             }
-            
-            history.forEach(item => {
-                const historyItem = document.createElement('div');
-                historyItem.className = 'history-item';
-                historyItem.innerHTML = `
+
+            historyList.innerHTML = history.map(item => `
+                <div class="history-item" data-bin="${item.bin}">
                     <div><strong>${item.bin}</strong> × ${item.count}</div>
                     <div class="small text-muted">${item.timestamp}</div>
-                `;
-                historyItem.addEventListener('click', () => {
-                    document.getElementById('bin').value = item.bin;
+                </div>
+            `).join('');
+
+            // Add click handlers
+            historyList.querySelectorAll('.history-item').forEach(el => {
+                el.addEventListener('click', () => {
+                    document.getElementById('bin').value = el.dataset.bin;
                     updatePreview();
                 });
-                historyList.appendChild(historyItem);
             });
         }
 
-        // Clear history
+        /**
+         * Clear generation history
+         */
         function clearHistory() {
             if (confirm('Are you sure you want to clear generation history?')) {
                 localStorage.removeItem('generationHistory');
@@ -1119,115 +1324,143 @@
             }
         }
 
-        // Main generation function
-        function generate() {
-            const bin = document.getElementById('bin').value.trim();
-            let ccv = document.getElementById('ccv').value.trim();
-            const month = document.getElementById('month').value;
-            const year = document.getElementById('year').value;
-            let count = parseInt(document.getElementById('count').value.trim());
-            const format = document.getElementById('format').value;
-            const output = document.getElementById('output');
+        /** Maximum cards that can be generated at once */
+        const MAX_CARDS = 1000;
+        const DEFAULT_CARD_COUNT = 20;
 
-            // Validate inputs
-            if (bin === "") {
-                alert("Please enter a BIN pattern");
+        /**
+         * Main generation function - optimized for performance
+         */
+        function generate() {
+            const binInput = document.getElementById('bin');
+            const countInput = document.getElementById('count');
+            const output = document.getElementById('output');
+            
+            const bin = binInput.value.trim();
+            const ccvInput = document.getElementById('ccv').value.trim();
+            const monthOption = document.getElementById('month').value;
+            const yearOption = document.getElementById('year').value;
+            const format = document.getElementById('format').value;
+            
+            // Validate BIN - ensure it contains at least one digit
+            if (!bin) {
+                alert('Please enter a BIN pattern');
                 return;
             }
             
-            if (ccv === "") {
-                ccv = "Random";
+            if (!/\d/.test(bin)) {
+                alert('BIN pattern must contain at least one digit');
+                return;
             }
-            
+
+            // Parse and validate count
+            let count = parseInt(countInput.value, 10);
             if (isNaN(count) || count <= 0) {
-                count = 20;
-            } else if (count > 1000) {
-                count = 1000;
-                document.getElementById('count').value = 1000;
+                count = DEFAULT_CARD_COUNT;
+            } else if (count > MAX_CARDS) {
+                count = MAX_CARDS;
+                countInput.value = MAX_CARDS;
             }
 
             const cardLength = getCardLength(bin);
-            let cards = [];
+            const isRandomMonth = monthOption === 'Random';
+            const isRandomYear = yearOption === 'Random';
+            const isRandomCCV = !ccvInput;
+
+            // Pre-generate card numbers in batch for better performance
+            const cardNumbers = generateCards(bin, cardLength, count);
             
-            // Generate the requested number of cards
+            // Format output efficiently
+            const results = new Array(count);
             for (let i = 0; i < count; i++) {
-                const generatedCard = generateCard(bin, cardLength);
-                const generatedMonth = month === "Random" ? generateMonth() : month;
-                const generatedYear = year === "Random" ? generateYear() : year;
-                const generatedCCV = ccv === "Random" ? generateCCV(bin) : ccv;
-                
-                cards.push(formatOutput(generatedCard, generatedMonth, generatedYear, generatedCCV, format));
+                const month = isRandomMonth ? generateMonth() : monthOption;
+                const year = isRandomYear ? generateYear() : yearOption;
+                const ccv = isRandomCCV ? generateCCV(bin) : ccvInput;
+                results[i] = formatOutput(cardNumbers[i], month, year, ccv, format);
             }
-            
-            // Display results based on format
-            if (format === 'json') {
-                output.value = '[\n  ' + cards.join(',\n  ') + '\n]';
-            } else {
-                output.value = cards.join('\n');
-            }
-            
-            // Save to history
+
+            // Display results
+            output.value = format === 'json'
+                ? '[\n  ' + results.join(',\n  ') + '\n]'
+                : results.join('\n');
+
+            // Save to history and switch to output tab
             saveToHistory(bin, count);
-            
-            // Switch to output tab
             document.getElementById('output-tab').click();
         }
 
-        // Copy output to clipboard
-        function copyToClipboard() {
+        /**
+         * Copy output to clipboard using modern Clipboard API with fallback
+         */
+        async function copyToClipboard() {
             const textarea = document.getElementById('output');
-            textarea.select();
-            textarea.setSelectionRange(0, 99999); // For mobile devices
+            const text = textarea.value;
             
+            if (!text) return;
+
             try {
-                const successful = document.execCommand('copy');
-                if (successful) {
-                    // Visual feedback
-                    const copyBtn = document.querySelector('.copy-btn');
-                    const originalIcon = copyBtn.classList.contains('fa-copy') ? 'fa-copy' : 'fa-clipboard';
-                    copyBtn.classList.remove(originalIcon);
-                    copyBtn.classList.add('fa-check', 'text-success');
-                    
-                    setTimeout(() => {
-                        copyBtn.classList.remove('fa-check', 'text-success');
-                        copyBtn.classList.add(originalIcon);
-                    }, 2000);
+                // Modern approach using Clipboard API
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    // Fallback for older browsers
+                    textarea.select();
+                    textarea.setSelectionRange(0, 99999);
+                    document.execCommand('copy');
                 }
+                
+                // Visual feedback
+                showCopyFeedback();
             } catch (err) {
-                console.error('Failed to copy: ', err);
+                console.error('Failed to copy:', err);
                 alert('Failed to copy to clipboard');
             }
         }
 
-        // Download output as a file
+        /**
+         * Show visual feedback after successful copy
+         */
+        function showCopyFeedback() {
+            const copyBtn = document.querySelector('.copy-btn');
+            copyBtn.classList.remove('fa-copy');
+            copyBtn.classList.add('fa-check', 'text-success');
+            
+            setTimeout(() => {
+                copyBtn.classList.remove('fa-check', 'text-success');
+                copyBtn.classList.add('fa-copy');
+            }, 2000);
+        }
+
+        /**
+         * Download output as a file
+         */
         function downloadAsFile() {
             const output = document.getElementById('output').value;
             if (!output) {
-                alert("No data to download");
+                alert('No data to download');
                 return;
             }
-            
+
             const format = document.getElementById('format').value;
-            let extension = '.txt';
-            let mimeType = 'text/plain';
-            
-            if (format === 'json') {
-                extension = '.json';
-                mimeType = 'application/json';
-            }
-            
+            const isJson = format === 'json';
+            const extension = isJson ? '.json' : '.txt';
+            const mimeType = isJson ? 'application/json' : 'text/plain';
+            const date = new Date().toISOString().slice(0, 10);
+
             const blob = new Blob([output], { type: mimeType });
             const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `generated_cards_${new Date().toISOString().slice(0, 10)}${extension}`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `generated_cards_${date}${extension}`;
+            link.click();
+            
             URL.revokeObjectURL(url);
         }
 
-        // Clear the output area
+        /**
+         * Clear the output area
+         */
         function clearOutput() {
             document.getElementById('output').value = '';
         }
