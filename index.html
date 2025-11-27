@@ -1,374 +1,1236 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <title>Namso Gen - Random Credit Card Generator - NamsoGen</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" />
-  <style>
-a,button{background-color:transparent}body,h1,h4,h5,p,pre,ul{margin:0}.form-checkbox,.form-select{-webkit-print-color-adjust:exact;color-adjust:exact}.block,details,main{display:block}h1{font-size:2em}code,pre{font-size:1em}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}button,input,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}.overflow-auto,textarea{overflow:auto}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}textarea{resize:vertical}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.hidden,[hidden],template{display:none}.form-checkbox,.inline-block{display:inline-block}button{background-image:none}button:focus{outline:dotted 1px;outline:-webkit-focus-ring-color auto 5px}ul{list-style:none;padding:0}html{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Helvetica Neue,Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}.form-input,.form-select,.form-textarea{-webkit-appearance:none;-moz-appearance:none;border-color:#a0aec0;border-width:2px;border-radius:.25rem;font-size:1rem;line-height:1.5;box-shadow:none;background-color:#fff;font-weight:500}img{border-style:solid;max-width:100%;height:auto}input::-moz-placeholder,textarea::-moz-placeholder{color:#a0aec0}input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#a0aec0}input::-ms-input-placeholder,textarea::-ms-input-placeholder{color:#a0aec0}input::placeholder,textarea::placeholder{color:#a0aec0}.cursor-pointer,[role=button],button{cursor:pointer}h1,h4,h5{font-size:inherit;font-weight:inherit}button,input,select,textarea{padding:0;line-height:inherit;color:inherit}code,pre{font-family:SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}img,svg{display:block;vertical-align:middle}.container,.w-full{width:100%}.form-input,.form-textarea{appearance:none;padding:.5rem .75rem}.form-input::-moz-placeholder{color:#a0aec0;opacity:1}.form-input:-ms-input-placeholder{color:#a0aec0;opacity:1}.form-input::-ms-input-placeholder{color:#a0aec0;opacity:1}.form-input::placeholder{color:#a0aec0;opacity:1}.form-input:focus,.form-select:focus,.form-textarea:focus{outline:0;box-shadow:none;border-color:#718096}.form-textarea::-moz-placeholder{color:#a0aec0;opacity:1}.form-textarea:-ms-input-placeholder{color:#a0aec0;opacity:1}.form-textarea::-ms-input-placeholder{color:#a0aec0;opacity:1}.form-textarea::placeholder{color:#a0aec0;opacity:1}.form-select{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg fill='%234a5568' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/%3E%3C/svg%3E");appearance:none;background-repeat:no-repeat;padding:.5rem 2.5rem .5rem .75rem;background-position:right .5rem center;background-size:1.5em 1.5em}.form-select::-ms-expand{color:#a0aec0;border:none}.form-checkbox,.rounded{border-radius:.25rem}@media print and (-ms-high-contrast:active),print and (-ms-high-contrast:none){.form-select{padding-right:.75rem}}.form-checkbox{-webkit-appearance:none;-moz-appearance:none;appearance:none;vertical-align:middle;background-origin:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;flex-shrink:0;height:1em;width:1em;color:#4299e1;background-color:#fff;border-color:#e2e8f0;border-width:1px;box-shadow:none}.form-checkbox:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4a1 1 0 00-1.414-1.414L7 8.586 5.707 7.293z'/%3E%3C/svg%3E");border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:50%;background-repeat:no-repeat}@media not print{.form-select::-ms-expand{display:none}.form-checkbox::-ms-check{border-width:1px;color:transparent;background:inherit;border-color:inherit;border-radius:inherit}}.form-checkbox:focus{outline:0;box-shadow:none;border-color:#63b3ed}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.bg-gray-500,.hover\:bg-gray-500:hover{--bg-opacity:1;background-color:#a0aec0;background-color:rgba(160,174,192,var(--bg-opacity))}.bg-gray-600,.focus\:bg-gray-600:focus{--bg-opacity:1;background-color:#718096;background-color:rgba(113,128,150,var(--bg-opacity))}.bg-red-200{--bg-opacity:1;background-color:#fed7d7;background-color:rgba(254,215,215,var(--bg-opacity))}.bg-teal-200{--bg-opacity:1;background-color:#b2f5ea;background-color:rgba(178,245,234,var(--bg-opacity))}.bg-teal-500,.hover\:bg-teal-500:hover{--bg-opacity:1;background-color:#38b2ac;background-color:rgba(56,178,172,var(--bg-opacity))}.bg-teal-600{--bg-opacity:1;background-color:#319795;background-color:rgba(49,151,149,var(--bg-opacity))}.bg-teal-800{--bg-opacity:1;background-color:#285e61;background-color:rgba(40,94,97,var(--bg-opacity))}.bg-teal-900,.hover\:bg-teal-900:hover{--bg-opacity:1;background-color:#234e52;background-color:rgba(35,78,82,var(--bg-opacity))}.focus\:bg-gray-700:focus{--bg-opacity:1;background-color:#4a5568;background-color:rgba(74,85,104,var(--bg-opacity))}.focus\:bg-teal-700:focus{--bg-opacity:1;background-color:#2c7a7b;background-color:rgba(44,122,123,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-gray-500{--border-opacity:1;border-color:#a0aec0;border-color:rgba(160,174,192,var(--border-opacity))}.border-red-400{--border-opacity:1;border-color:#fc8181;border-color:rgba(252,129,129,var(--border-opacity))}.rounded-lg{border-radius:.5rem}.rounded-full{border-radius:9999px}.border-2{border-width:2px}.border{border-width:1px}.cursor-wait{cursor:wait}.cursor-not-allowed{cursor:not-allowed}.flex{display:flex}.inline-flex{display:inline-flex}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.font-primary{font-family:Poppins,sans-serif}.font-fallback{font-family:sans-serif}.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}.h-4{height:1rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-full{height:100%}.text-xs{font-size:.75rem}.text-sm{font-size:.875rem}.text-base{font-size:1rem}.text-lg{font-size:1.125rem}.text-2xl{font-size:1.5rem}.text-3xl{font-size:1.875rem}.leading-relaxed{line-height:1.625}.list-disc{list-style-type:disc}.mx-0{margin-left:0;margin-right:0}.my-2{margin-top:.5rem;margin-bottom:.5rem}.mb-3,.my-3{margin-bottom:.75rem}.mx-2{margin-left:.5rem;margin-right:.5rem}.my-3{margin-top:.75rem}.mx-auto{margin-left:auto;margin-right:auto}.-mx-1{margin-left:-.25rem;margin-right:-.25rem}.-mx-2{margin-left:-.5rem;margin-right:-.5rem}.mt-0{margin-top:0}.ml-0{margin-left:0}.mt-1{margin-top:.25rem}.mr-1{margin-right:.25rem}.mt-2{margin-top:.5rem}.ml-2{margin-left:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mt-10{margin-top:2.5rem}.mr-10{margin-right:2.5rem}.mr-px{margin-right:1px}.mb-px{margin-bottom:1px}.-mt-1{margin-top:-.25rem}.-mt-3{margin-top:-.75rem}.-mt-20{margin-top:-5rem}.min-h-70-screen{min-height:70vh}.opacity-50{opacity:.5}.focus\:outline-none:focus{outline:0}.p-2{padding:.5rem}.p-3{padding:.75rem}.py-0{padding-top:0;padding-bottom:0}.py-1{padding-top:.25rem;padding-bottom:.25rem}.px-1{padding-left:.25rem;padding-right:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-8{padding-left:2rem;padding-right:2rem}.container,.pl-5{padding-left:1.25rem}.py-20{padding-top:5rem;padding-bottom:5rem}.pt-1{padding-top:.25rem}.pb-10{padding-bottom:2.5rem}.pt-32{padding-top:8rem}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.top-0{top:0}.right-0{right:0}.bottom-0{bottom:0}.resize-none{resize:none}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.shadow-md{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06)}.fill-current{fill:currentColor}.text-center{text-align:center}.text-right{text-align:right}.hover\:text-white:hover,.text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-800{--text-opacity:1;color:#2d3748;color:rgba(45,55,72,var(--text-opacity))}.text-red-500{--text-opacity:1;color:#f56565;color:rgba(245,101,101,var(--text-opacity))}.text-teal-200{--text-opacity:1;color:#b2f5ea;color:rgba(178,245,234,var(--text-opacity))}.hover\:text-teal-500:hover,.text-teal-500{--text-opacity:1;color:#38b2ac;color:rgba(56,178,172,var(--text-opacity))}.text-teal-600{--text-opacity:1;color:#319795;color:rgba(49,151,149,var(--text-opacity))}.text-teal-700{--text-opacity:1;color:#2c7a7b;color:rgba(44,122,123,var(--text-opacity))}.uppercase{text-transform:uppercase}.hover\:underline:hover,.underline{text-decoration:underline}.hover\:no-underline:hover{text-decoration:none}.tracking-wide{letter-spacing:.025em}.visible{visibility:visible}.invisible{visibility:hidden}.w-4{width:1rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-10{width:2.5rem}.w-24{width:6rem}.w-32{width:8rem}.z-50{z-index:50}.transform{--transform-translate-x:0;--transform-translate-y:0;--transform-rotate:0;--transform-skew-x:0;--transform-skew-y:0;--transform-scale-x:1;--transform-scale-y:1;transform:translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y))}.container{margin-left:auto;margin-right:auto;padding-right:1.25rem}.transition{transition:.2s ease-in-out}.form-input{height:46px}@media (min-width:640px){.container{max-width:640px}.sm\:inline-block{display:inline-block}.sm\:h-full{height:100%}.sm\:mt-0{margin-top:0}.sm\:w-auto{width:auto}.sm\:w-1\/2{width:50%}}@media (min-width:768px){.container{max-width:768px}.md\:mt-0{margin-top:0}.md\:w-1\/2{width:50%}}@media (min-width:1024px){.container{max-width:1024px}.lg\:ml-1,.lg\:mx-1{margin-left:.25rem}.lg\:flex{display:flex}.lg\:hidden{display:none}.lg\:mx-1{margin-right:.25rem}.lg\:mt-0{margin-top:0}.lg\:w-auto{width:auto}.lg\:w-1\/2{width:50%}}@media (min-width:1280px){.container{max-width:1280px}.xl\:w-2\/5{width:40%}}.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#fff;z-index:999999}
-  </style>
-  <meta name="theme-color" content="#ffffff" />
- </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Credit Card Generator Tool - Generate valid test credit card numbers with BIN patterns. Supports Visa, MasterCard, Amex, Discover. Perfect for developers and testing.">
+    <meta name="keywords" content="credit card generator, test credit cards, BIN generator, card number generator, payment testing, developer tools">
+    <meta name="author" content="UNCODER">
+    <meta name="robots" content="index, follow">
 
- <body>
-  <div data-server-rendered="true" id="__nuxt">
-   <div id="__layout">
-    <div class="font-primary">
-     <div class="transition bg-teal-800 py-3 fixed z-50 shadow w-full mt-0">
-      <div class="container">
-       <div class="flex flex-wrap justify-between items-center">
-        <a href="/">
-         <span class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 709 709" class="mr-1 w-10">
-           <style>
-            .st0 {
-             fill: #bdcece;
-            }
-            .st1 {
-             fill: #9eb0b0;
-            }
-            .st3 {
-             fill: #47505b;
-            }
-           </style>
-           <path
-            d="M233.86 584.37c-6.8-4.58-13.62-9.13-20.4-13.74-9.34-6.35-18.64-12.75-27.96-19.12-.98-.67-1.99-1.3-3.23-2.1-6.56 2.75-12.8 6.26-19.23 9.37-6.31 3.06-12.57 6.22-18.84 9.35-6.42 3.19-12.84 6.39-19.34 9.63-.97-.76-1.84-1.29-2.52-2a323.838 323.838 0 0 1-41.53-54.02c-.52-.85-.93-1.77-1.53-2.93 13.88-16.32 28.35-32.02 41.99-48.07-1.2-5.37-19.46-56.73-21.47-60.43-20.74-3.5-41.62-7.03-62.36-10.53-3.69-12.89-5.31-53.27-2.35-74.12 1.14-.33 2.41-.77 3.71-1.07 18-4.08 36.01-8.14 54.02-12.22 1.64-.37 3.26-.86 4.97-1.32 6.03-20.35 12-40.48 18.02-60.8-7.58-7.81-15.07-15.53-22.58-23.24-7.38-7.58-14.84-15.08-22.05-22.52 5.75-14.49 30.28-50.15 42.08-61.37 19.34 8.19 38.7 16.75 58.33 25.06.88-.46 1.85-.81 2.64-1.4 15.77-12.05 31.52-24.12 47.27-36.19.26-.2.46-.49 1-1.07-.52-6.83-1.89-13.86-2.91-20.93-1.01-6.94-2.06-13.87-3.07-20.8-1.03-7.09-2.04-14.19-3.07-21.33 1.32-1.61 3.06-2.23 4.87-2.71.36.74.95 1.44 1.04 2.21.18 1.52-.09 3.09.14 4.6.91 6.04 1.97 12.05 2.08 18.18.01.5.26.99.33 1.49.56 4.03 1.13 8.05 1.63 12.08.45 3.58.81 7.17 1.29 11.47 2.3-7.59 4.2-14.45 6.47-21.18 2.18-6.48 5.48-12.46 8.94-18.34 3.83-6.53 8.8-12.08 14.23-17.31 3.69-3.56 7.46-6.96 11.93-9.53.62-.36.91-1.31 1.35-1.98 2.11-.69 4.19-1.48 6.32-2.06 2.96-.8 5.95-1.46 9.1-2.21 3.31 4.34 5.64 9.09 8.35 13.6 2.82 4.69 5.58 9.42 8.37 14.13 2.7 4.57 5.38 9.14 8.08 13.7 2.7 4.56 5.42 9.1 8.22 13.8 1.4.08 2.73.24 4.07.21 18.65-.39 37.29-.85 55.94-1.17 2.74-.05 4.31-.99 5.59-3.47 7.82-15.21 15.8-30.34 23.74-45.5 1.42-2.71 2.89-5.39 4.26-7.96 13.41.52 54.06 12.35 69.14 20.12.38 4.12-.74 8.31-.87 12.54-.14 4.27-.69 8.52-1.06 12.78-.37 4.26-.74 8.52-1.13 12.78-.39 4.26-.82 8.51-1.19 12.77-.37 4.25-.7 8.5-1.06 13.01 5.65 4.27 11.58 7.99 17.32 11.95 5.92 4.08 11.88 8.1 17.82 12.13 5.79 3.93 11.58 7.85 17.49 11.85 19.12-9.58 38.06-19.08 57.14-28.64 1.01.82 2.02 1.46 2.83 2.3 15.97 16.58 29.91 34.73 41.9 54.38.35.57.58 1.21.98 2.06-14.04 16.12-28.07 32.23-42.14 48.38 7.18 20.03 14.26 39.8 21.37 59.65 1.65.42 3.1.9 4.59 1.14 11.3 1.87 22.61 3.67 33.92 5.53 2.02.33 4.01.85 6.01 1.28-.66 1.37-1.16 2.85-2.02 4.08-3.51 5.01-7.02 10.03-10.75 14.87-5.18 6.73-9.95 13.77-15.62 20.13-3.95 4.43-7.34 9.35-11.2 13.86-4.64 5.42-9.43 10.72-14.13 16.09-5.04 5.76-10.64 11.01-15.73 16.77-7.33 8.31-15.82 15.49-23.92 23.05-.89.83-1.74 1.65-3.05 1.67 0-.34-.08-.7 0-1.02 3.52-12.52 6.33-25.2 7.43-38.18.69-8.17.97-16.38 1.27-24.57.1-2.72-.44-5.45-.47-8.18-.09-8.24-1.22-16.38-2.59-24.46-2.29-13.5-5.92-26.67-10.79-39.5-9.16-24.11-22.37-45.74-39.49-64.96-20.79-23.34-45.55-41.29-74.31-53.61-21.55-9.23-44.06-14.87-67.43-16.42-17.6-1.16-35.17-.56-52.64 2.63-18.11 3.31-35.51 8.67-52.16 16.47-24.93 11.67-46.74 27.61-65.45 47.83-11.22 12.12-20.9 25.33-28.97 39.7-17.42 31.04-26.1 64.47-27.04 99.97-.13 4.77.45 9.56.5 14.34.09 8.24 1.17 16.39 2.55 24.46 2.97 17.42 8.02 34.28 15.33 50.4 14.91 32.9 36.67 60.4 65.48 82.22 19.4 14.7 40.72 25.74 64.04 32.81 6.05 1.83 12.15 3.45 18.23 5.17-.63 2.05-2.65 2.04-4.14 2.52-9.53 3.05-19.14 5.88-28.67 8.92-12.93 4.12-26.05 7.52-39.21 10.77-1.54.4-2.98.79-4.04 2.02z"
-            class="st0"
-           ></path>
-           <path
-            d="M233.86 584.37c1.06-1.23 2.5-1.61 4.02-1.99 13.16-3.25 26.28-6.65 39.21-10.77 9.53-3.04 19.14-5.86 28.67-8.92 1.49-.48 3.51-.46 4.14-2.52 1.64.09 3.28.18 4.92.28 2.15.49 4.29 1.1 6.47 1.45 3.2.51 6.43.78 9.63 1.24 7.61 1.1 15.29 1.34 22.95 1.59 3.73.12 7.48-.52 11.23-.58 7.36-.12 14.61-1.06 21.88-2.08 12.22-1.71 24.12-4.71 35.74-8.7 20.99-7.2 40.38-17.52 58.14-30.85 14.69-11.03 27.79-23.7 39.12-38.17 13.26-16.93 23.78-35.42 31.36-55.55 1.07-2.84 2.48-5.61 2.6-8.75.82-1.66 1.64-3.33 2.46-4.99 1.31-.02 2.17-.84 3.05-1.67 8.1-7.56 16.58-14.74 23.92-23.05 5.08-5.76 10.69-11.01 15.73-16.77 4.7-5.37 9.48-10.67 14.13-16.09 3.86-4.51 7.25-9.43 11.2-13.86 5.68-6.36 10.45-13.4 15.62-20.13 3.73-4.85 7.24-9.87 10.75-14.87.86-1.23 1.36-2.71 2.02-4.08 6.23.96 12.46 1.92 18.53 2.86 3.64 11.09 5.59 53.36 2.71 74.12-6.69 2.01-13.73 3.25-20.67 4.88-6.82 1.61-13.65 3.18-20.48 4.74-6.99 1.6-13.99 3.18-21.28 4.83-2.44 6.71-4.13 13.67-6.17 20.51-2 6.71-4.04 13.42-5.92 20.16-1.92 6.88-4.22 13.67-5.88 20.81 14.99 15.25 29.85 30.36 44.62 45.39-3.12 10.66-29.07 48.97-41.31 61.07-1.76.34-3.2-.81-4.72-1.46-16.84-7.13-33.66-14.31-50.49-21.48-1.25-.53-2.5-1.06-3.66-1.55-4.31 2.38-26.37 19.17-50.29 38.26-.86 1.45-.4 3-.17 4.49 2.52 16.91 5.09 33.8 7.63 50.71.43 2.86.78 5.73 1.16 8.51-9.95 7.31-55.92 23.86-69.98 25.09-10.84-18.19-21.77-36.52-32.78-54.99-21.35.6-42.5 1.2-63.76 1.8-10 19.16-19.88 38.07-29.86 57.19-24.59-4.12-48.03-11.18-70.9-20.84 0-1.16-.08-2.17.01-3.15.87-9.53 1.76-19.07 2.65-28.6.87-9.36 1.76-18.72 2.61-28.09.18-1.84.81-3.75-.56-5.43z"
-            class="st1"
-           ></path>
-           <path
-            d="M267.73 45.45c-.44.68-.73 1.62-1.35 1.98-4.47 2.57-8.23 5.97-11.93 9.53-5.42 5.23-10.4 10.77-14.23 17.31-3.45 5.89-6.76 11.87-8.94 18.34-2.27 6.73-4.17 13.58-6.47 21.18-.48-4.3-.84-7.89-1.29-11.47-.5-4.03-1.07-8.06-1.63-12.08-.07-.5-.32-.99-.33-1.49-.11-6.13-1.17-12.14-2.08-18.18-.23-1.51.04-3.08-.14-4.6-.09-.77-.68-1.48-1.04-2.21 3.65-1.75 7.24-3.66 10.98-5.22 10.98-4.56 21.97-9.11 33.47-12.22 1.63-.44 3.33-.59 4.98-.87z"
-            fill="#d0dddd"
-           ></path>
-           <path
-            d="M556.41 415.06c-.82 1.66-1.64 3.33-2.46 4.99-1.92-.15-3.16 1-4.4 2.22-1.94 1.92-3.88 3.86-5.94 5.64-3.6 3.11-7.3 6.12-10.96 9.16-2.62 2.17-5.21 4.38-7.89 6.47-.72.56-1.74 1.31-2.62.04 2.44-5.27 5.06-10.47 7.3-15.83 9.61-22.98 14.63-46.89 14.75-71.86.07-14.43-1.21-28.68-4.35-42.76-8.05-36.19-25.37-67.34-51.46-93.57-17.08-17.18-36.94-30.4-59.19-39.97-19.81-8.52-40.53-13.53-62.02-14.92-13.66-.88-27.32-.44-40.93 1.65-18.39 2.83-36.04 7.98-52.83 15.94-27.69 13.13-51.09 31.75-69.65 56.16-24.99 32.86-38.13 69.96-39.01 111.34-.31 14.43.71 28.73 3.7 42.83 4.42 20.91 12 40.63 23.07 58.96 12.89 21.34 29.23 39.61 49.17 54.56 18.67 13.99 39.24 24.24 61.73 30.53 14.03 3.93 28.29 6.55 42.91 6.95 2.56.07 5.1.47 7.65.72-2.04 1.61-4.51 2.28-6.87 3.18-9.85 3.79-19.73 7.5-29.57 11.31-.69.27-1.16 1.07-1.74 1.63l-4.92-.27c-6.08-1.72-12.19-3.34-18.23-5.17-23.32-7.07-44.64-18.12-64.04-32.81-28.81-21.82-50.57-49.33-65.48-82.22-7.31-16.12-12.35-32.97-15.33-50.4-1.38-8.07-2.46-16.22-2.55-24.46-.05-4.78-.63-9.57-.5-14.34.94-35.5 9.62-68.93 27.04-99.97 8.07-14.38 17.75-27.58 28.97-39.7 18.71-20.22 40.52-36.16 65.45-47.83 16.65-7.79 34.05-13.15 52.16-16.47 17.47-3.2 35.04-3.8 52.64-2.63 23.38 1.54 45.88 7.18 67.43 16.42 28.76 12.32 53.52 30.27 74.31 53.61 17.12 19.22 30.33 40.86 39.49 64.96 4.88 12.83 8.5 26 10.79 39.5 1.37 8.08 2.5 16.22 2.59 24.46.03 2.73.57 5.47.47 8.18-.3 8.2-.58 16.4-1.27 24.57-1.1 12.98-3.91 25.65-7.43 38.18-.07.32.01.68.02 1.02z"
-            class="st3"
-           ></path>
-           <path
-            d="M522.14 443.59c.89 1.27 1.9.52 2.62-.04 2.68-2.09 5.27-4.3 7.89-6.47 3.66-3.04 7.36-6.05 10.96-9.16 2.06-1.78 4-3.72 5.94-5.64 1.24-1.23 2.48-2.37 4.4-2.22-.12 3.14-1.53 5.9-2.6 8.75-7.59 20.13-18.11 38.62-31.36 55.55-11.33 14.47-24.43 27.14-39.12 38.17-17.76 13.33-37.16 23.65-58.14 30.85-11.62 3.99-23.52 6.99-35.74 8.7-7.28 1.02-14.53 1.96-21.88 2.08-3.75.06-7.5.71-11.23.58-7.66-.26-15.34-.49-22.95-1.59-3.2-.46-6.44-.73-9.63-1.24-2.18-.35-4.31-.96-6.47-1.45.57-.55 1.05-1.36 1.74-1.63 9.84-3.81 19.72-7.52 29.57-11.31 2.36-.91 4.83-1.58 6.87-3.18 1.68-.36 3.54.49 5.09-.76 12 .3 23.83-1.22 35.52-3.69 18.13-3.83 35.39-10.12 51.67-19.02 14.6-7.98 27.97-17.67 39.99-29.18 5.55-5.31 10.92-10.8 15.75-16.8 5.79-7.19 11.08-14.72 15.94-22.56.26-.42.32-.97.47-1.45 1.01-1.65 1.99-3.32 3.03-4.95.49-.82 1.1-1.57 1.67-2.34z"
-            class="st3"
-           ></path>
-           <path
-            d="M358.08 543.57c-1.55 1.25-3.41.4-5.09.76-2.55-.25-5.1-.65-7.65-.72-14.62-.39-28.87-3.02-42.91-6.95-22.49-6.3-43.07-16.54-61.73-30.53-19.95-14.95-36.29-33.22-49.17-54.56-11.07-18.33-18.65-38.05-23.07-58.96-2.98-14.1-4.01-28.4-3.7-42.83.88-41.38 14.03-78.48 39.01-111.34 18.56-24.41 41.96-43.03 69.65-56.16 16.79-7.96 34.44-13.11 52.83-15.94 13.61-2.1 27.27-2.54 40.93-1.65 21.49 1.39 42.21 6.39 62.02 14.92 22.25 9.57 42.1 22.8 59.19 39.97 26.09 26.24 43.41 57.38 51.46 93.57 3.13 14.08 4.41 28.33 4.35 42.76-.11 24.96-5.14 48.88-14.75 71.86-2.24 5.36-4.86 10.56-7.3 15.83-.57.78-1.18 1.53-1.69 2.34-1.04 1.63-2.02 3.3-3.03 4.95-1.94.24-3.51 1.2-5.02 2.37-11.7 9.06-23.7 17.71-36.03 25.9-8.09 5.37-16.27 10.61-24.5 15.75-4.62 2.89-9.42 5.49-14.16 8.18-3.41 1.93-6.86 3.79-10.3 5.68-6.12 3.38-12.14 6.95-18.37 10.1-9.75 4.92-19.62 9.61-29.49 14.28-5.54 2.62-11.22 4.95-16.8 7.49-1.68.75-3.63 1.15-4.68 2.93zm140.13-189.49c.39-78.19-63.67-143.64-143.57-143.81-77.58-.16-143.73 63.52-143.92 143.6-.18 75.11 59.47 143.7 143.37 143.98 81.43.27 144.37-65.93 144.12-143.77z"
-            class="st0"
-           ></path>
-           <path
-            d="M358.08 543.57c1.04-1.78 2.99-2.18 4.66-2.94 5.58-2.55 11.26-4.88 16.8-7.49 9.88-4.67 19.74-9.36 29.49-14.28 6.23-3.15 12.25-6.72 18.37-10.1 3.43-1.9 6.89-3.75 10.3-5.68 4.74-2.69 9.54-5.29 14.16-8.18 8.23-5.15 16.41-10.39 24.5-15.75 12.33-8.18 24.33-16.83 36.03-25.9 1.51-1.17 3.08-2.13 5.02-2.37-.15.49-.2 1.03-.46 1.45-4.86 7.84-10.15 15.37-15.94 22.56-4.83 6-10.2 11.49-15.75 16.8-12.02 11.5-25.39 21.19-39.99 29.18-16.28 8.9-33.54 15.19-51.67 19.02-11.69 2.46-23.51 3.99-35.52 3.68z"
-            class="st1"
-           ></path>
-           <g>
-            <path
-             d="M348.57 409.51h-21.89l-36.61-55.55v55.55h-21.89v-90.5h21.89l36.61 56.06v-56.06h21.89v90.5zM434.07 326.44c7.34 5.55 11.9 13.06 13.7 22.53H424.6c-1.54-3.24-3.88-5.82-7.04-7.74s-6.96-2.88-11.39-2.88c-6.91 0-12.46 2.33-16.64 6.98s-6.27 10.94-6.27 18.88c0 8.62 2.2 15.23 6.59 19.84 4.39 4.61 10.64 6.91 18.75 6.91 5.2 0 9.77-1.43 13.7-4.29 3.92-2.86 6.7-6.93 8.32-12.22h-27.65V358.7h45.95v21.63c-1.71 5.29-4.44 10.2-8.19 14.72-3.76 4.52-8.56 8.19-14.4 11.01-5.85 2.82-12.52 4.22-20.03 4.22-9.13 0-17.11-1.94-23.94-5.82-6.83-3.88-12.1-9.32-15.81-16.32-3.71-7-5.57-14.98-5.57-23.94s1.86-16.94 5.57-23.94 8.96-12.44 15.74-16.32c6.78-3.88 14.7-5.82 23.74-5.82 11.36 0 20.7 2.78 28.04 8.32z"
-             class="st0"
-            ></path>
-           </g>
-          </svg>
-          <span class="text-white font-semibold tracking-wide text-teal-200"></span>
-         </span>
-        </a>
-        <div class="block lg:hidden">
-         <button class="flex items-center px-3 py-2 focus:outline-none" id="codehapBTN">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8 fill-current text-white">
-           <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
-          </svg>
-         </button>
-        </div>
-        <div id="ch" class="mt-5 lg:mt-0 w-full lg:w-auto block lg:flex text-teal-200 text-sm font-medium tracking-wide hidden">
-         <a href="/" class="bg-teal-900 block px-5 py-3 mx-0 lg:mx-1 hover:bg-teal-900 hover:text-white rounded focus:outline-none">
-          Generate CC
-         </a>
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="ReNamso - Free Credit Card Generator">
+    <meta property="og:description" content="Free online credit card generator for testing and development. Generate valid card numbers with custom BIN patterns.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uncoder.eu.org/cc-gen/">
+    <meta property="og:image" content="https://uncoder.eu.org/cc-gen/renamso.svg">
 
-         <a href="/lorem-ipsum" class="block px-5 py-3 mx-0 lg:mx-1 mt-1 lg:mt-0 hover:bg-teal-900 hover:text-white rounded focus:outline-none">
-          Generate Lorem
-         </a>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ReNamso - Free Credit Card Generator">
+    <meta name="twitter:description" content="Free tool to generate test credit card numbers for development and testing purposes.">
 
-         <a href="/users" class="block px-5 py-3 mx-0 lg:mx-1 mt-1 lg:mt-0 hover:bg-teal-900 hover:text-white rounded focus:outline-none">
-          Generate User
-         </a>
-        </div>
-       </div>
-      </div>
-     </div>
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://uncoder.eu.org/cc-gen/">
 
-     <main id="main" class="pb-10 pt-32 text-gray-600">
-      <div class="container min-h-70-screen">
-       <div class="min-h-70-screen">
-        <div class="text-center">
-         <h1 class="text-3xl font-bold text-gray-700">Random Test Credit Card Numbers Generator</h1>
-         <p class="my-3">
-          Namso Gen provides a live credit card generator, instantly producing valid credit card numbers. Ideal for testing purposes in the technology field, these algorithm-generated cards offer a convenient solution for various
-          verification needs.
-         </p>
-        </div>
-
-        <div class="flex flex-wrap -mx-2 mt-5 text-gray-700">
-         <div class="w-full sm:w-1/2 px-2">
-          <form id="codehap">
-           <input type="hidden" name="type" value="3" />
-           <div>
-            <label class="block cursor-pointer relative">
-             <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">BIN</span>
-             <input placeholder="410039xxxxxxxxxx" name="bin" class="form-input block w-full" />
-            </label>
-           </div>
-           <div class="flex -mx-2 items-center">
-            <div class="px-2 mt-6">
-             <label class="flex items-center cursor-pointer"> <input type="checkbox" name="date" class="form-checkbox text-teal-700 cursor-pointer" checked /> <span class="ml-2 text-xs font-medium">DATE</span> </label>
-            </div>
-            <div class="mt-6 w-full sm:w-1/2 px-2">
-             <label class="block cursor-pointer relative">
-              <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">MONTH</span>
-              <select name="s_date" class="form-select block w-full">
-               <option value="">Random</option>
-               <option value="1"> January </option>
-               <option value="2"> Febuary </option>
-               <option value="3"> March </option>
-               <option value="4"> April </option>
-               <option value="5"> May </option>
-               <option value="6"> June </option>
-               <option value="7"> July </option>
-               <option value="8"> August </option>
-               <option value="9"> September </option>
-               <option value="10"> October </option>
-               <option value="11"> November </option>
-               <option value="12"> December </option>
-              </select>
-             </label>
-            </div>
-            <div class="mt-6 w-full sm:w-1/2 px-2">
-             <label class="block cursor-pointer relative">
-              <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">YEAR</span>
-              <select name="year" class="form-select block w-full">
-               <option value="">Random</option>
-               <option value="2024">2024</option>
-               <option value="2025">2025</option>
-               <option value="2026">2026</option>
-               <option value="2027">2027</option>
-               <option value="2028">2028</option>
-               <option value="2029">2029</option>
-               <option value="2030">2030</option>
-               <option value="2031">2031</option>
-               <option value="2032">2032</option>
-              </select>
-             </label>
-            </div>
-           </div>
-           <div class="flex -mx-2 items-center">
-            <div class="px-2 mt-6">
-             <label class="flex items-center cursor-pointer"> <input name="csv" type="checkbox" class="form-checkbox text-teal-700 cursor-pointer" checked /> <span class="ml-2 text-xs font-medium">CVV</span> </label>
-            </div>
-            <div class="mt-6 w-full sm:w-1/2 px-2">
-             <label class="block cursor-pointer relative">
-              <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">CVV</span>
-              <input name="s_csv" placeholder="Leave blank to randomize" class="form-input block w-full" />
-             </label>
-            </div>
-            <div class="mt-6 w-full sm:w-1/2 px-2">
-             <label class="block cursor-pointer relative">
-              <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">QUANTITY</span>
-              <input name="number" value="10" type="text" class="form-input block w-full" />
-             </label>
-            </div>
-           </div>
-           <div class="mt-6">
-            <label class="block cursor-pointer relative">
-             <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">FORMAT</span>
-             <select name="format" class="form-select block w-full">
-              <option value="pipe"> PIPE </option>
-              <option value="json"> JSON </option>
-             </select>
-            </label>
-           </div>
-           <div class="mt-6">
-            <button type="submit" id="submit" class="flex items-center justify-center shadow-md bg-teal-600 text-white font-medium w-full rounded py-3 hover:bg-teal-500 focus:bg-teal-700 focus:outline-none">
-             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-current w-6 h-6 mr-1">
-              <path
-               d="M6.80003 3.45C7.67003 2.93 8.62003 2.53 9.63003 2.28C9.79674 2.77655 10.1152 3.2082 10.5404 3.514C10.9657 3.81981 11.4762 3.98432 12 3.98432C12.5238 3.98432 13.0344 3.81981 13.4596 3.514C13.8849 3.2082 14.2033 2.77655 14.37 2.28C15.38 2.53 16.33 2.93 17.19 3.45C16.9519 3.92008 16.8683 4.45341 16.9513 4.9738C17.0344 5.4942 17.2797 5.97505 17.6524 6.34768C18.025 6.7203 18.5058 6.96565 19.0262 7.04868C19.5466 7.13171 20.0799 7.04817 20.55 6.81C21.07 7.67 21.47 8.61 21.72 9.63C21.2235 9.7967 20.7918 10.1152 20.486 10.5404C20.1802 10.9657 20.0157 11.4762 20.0157 12C20.0157 12.5238 20.1802 13.0343 20.486 13.4596C20.7918 13.8848 21.2235 14.2033 21.72 14.37C21.47 15.38 21.07 16.33 20.55 17.19C20.0799 16.9518 19.5466 16.8683 19.0262 16.9513C18.5058 17.0343 18.025 17.2797 17.6524 17.6523C17.2797 18.025 17.0344 18.5058 16.9513 19.0262C16.8683 19.5466 16.9519 20.0799 17.19 20.55C16.33 21.07 15.39 21.47 14.37 21.72C14.2033 21.2234 13.8849 20.7918 13.4596 20.486C13.0344 20.1802 12.5238 20.0157 12 20.0157C11.4762 20.0157 10.9657 20.1802 10.5404 20.486C10.1152 20.7918 9.79674 21.2234 9.63003 21.72C8.62003 21.47 7.67003 21.07 6.81003 20.55C7.0482 20.0799 7.13174 19.5466 7.04871 19.0262C6.96568 18.5058 6.72034 18.025 6.34771 17.6523C5.97508 17.2797 5.49423 17.0343 4.97383 16.9513C4.45344 16.8683 3.92011 16.9518 3.45003 17.19C2.91713 16.3159 2.52248 15.3646 2.28003 14.37C2.77658 14.2033 3.20823 13.8848 3.51403 13.4596C3.81984 13.0343 3.98435 12.5238 3.98435 12C3.98435 11.4762 3.81984 10.9657 3.51403 10.5404C3.20823 10.1152 2.77658 9.7967 2.28003 9.63C2.53003 8.62 2.93003 7.67 3.45003 6.81C3.92011 7.04817 4.45344 7.13171 4.97383 7.04868C5.49423 6.96565 5.97508 6.7203 6.34771 6.34768C6.72034 5.97505 6.96568 5.4942 7.04871 4.9738C7.13174 4.45341 7.0482 3.92008 6.81003 3.45H6.80003ZM12 16C13.0609 16 14.0783 15.5786 14.8285 14.8284C15.5786 14.0783 16 13.0609 16 12C16 10.9391 15.5786 9.92172 14.8285 9.17157C14.0783 8.42143 13.0609 8 12 8C10.9392 8 9.92175 8.42143 9.1716 9.17157C8.42146 9.92172 8.00003 10.9391 8.00003 12C8.00003 13.0609 8.42146 14.0783 9.1716 14.8284C9.92175 15.5786 10.9392 16 12 16Z"
-               fill="white"
-              ></path>
-              <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" fill="white"></path>
-             </svg>
-             Generate
-            </button>
-
-            <div class="wait-loading mt-2" style="display: none;">
-             <button type="submit" id="submit" class="flex items-center justify-center shadow-md bg-teal-600 text-white font-medium w-full rounded py-3 hover:bg-teal-500 focus:bg-teal-700 focus:outline-none">
-              <svg
-               xmlns:svg="http://www.w3.org/2000/svg"
-               xmlns="http://www.w3.org/2000/svg"
-               xmlns:xlink="http://www.w3.org/1999/xlink"
-               version="1.0"
-               class="fill-current mr-1"
-               width="19px"
-               height="19px"
-               viewBox="0 0 128 128"
-               xml:space="preserve"
-              >
-               <g>
-                <path
-                 fill="white"
-                 d="M116.7 66.28a52.86 52.86 0 0 1-1 8.18l9.8 7.57-1.78 4.67-1.77 4.67-12.36-.82a52.87 52.87 0 0 1-4.7 6.7L110 108.5l-3.75 3.3-3.75 3.32L92 108.67a52.6 52.6 0 0 1-7.45 3.9l-.66 12.3-4.87 1.2-4.86 1.2-6.38-10.66q-1.9.2-3.88.2-2.15 0-4.25-.14l-6.3 10.64-4.84-1.2-4.85-1.2-.7-12.43a52.6 52.6 0 0 1-6.7-3.5l-10.6 6.64-3.75-3.3-3.76-3.3 5.05-11.4a52.88 52.88 0 0 1-4.73-6.73l-12.34.9-1.8-4.66-1.8-4.67 9.7-7.67a52.8 52.8 0 0 1-1-8.05l-11.4-5 .56-4.95.54-4.97 12.26-2.3a52.37 52.37 0 0 1 2.94-7.83L8.4 32l2.8-4.14 2.8-4.14 12 3.68a53.06 53.06 0 0 1 6-5.33L29.57 9.8l4.4-2.37 4.43-2.35 8.95 8.86a52.4 52.4 0 0 1 8-1.98L59 0h10l3.66 11.96a52.4 52.4 0 0 1 7.8 1.9L89.26 5l4.42 2.3 4.43 2.34-2.3 12.27a52.98 52.98 0 0 1 6.2 5.5l11.9-3.7 2.9 4.1 2.84 4.1-7.8 9.8a52.34 52.34 0 0 1 2.86 7.5l12.3 2.17.6 4.96.57 4.95zM41 64a23 23 0 1 0 23-23 23 23 0 0 0-23 23z"
-                />
-                <animateTransform attributeName="transform" type="rotate" from="0 64 64" to="27.69 64 64" dur="600ms" repeatCount="indefinite"></animateTransform>
-               </g>
-              </svg>
-              In Progress..
-             </button>
-            </div>
-           </div>
-          </form>
-         </div>
-         <div class="w-full sm:w-1/2 px-2">
-          <div class="sm:h-full mt-6 sm:mt-0">
-           <label class="block cursor-pointer relative h-full relative">
-            <span class="text-gray-600 font-medium text-xs absolute bg-white px-3 pt-1 ml-2 -mt-3">RESULT</span>
-            <textarea id="result" rows="5" placeholder="xxxxxxxxxx" class="show-result form-textarea block w-full h-full resize-none font-fallback font-bold tracking-wide"></textarea>
-            <button type="button" class="btn-clip bg-gray-500 px-2 py-1 absolute bottom-0 right-0 mb-px mr-px focus:outline-none focus:bg-gray-600">
-             <span class="tooltip invisible absolute top-0 right-0 mr-10 -mt-1 w-32 py-1 text-center block text-white text-xs rounded-full bg-gray-600">Copy to clipboard</span>
-             <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" class="fill-current w-4 h-4 text-white">
-              <path
-               d="M3.50004 1.16666H7.00004V4.66666C7.00004 5.30833 7.52504 5.83333 8.16671 5.83333H11.6667V11.6667C11.6667 11.9761 11.5438 12.2728 11.325 12.4916C11.1062 12.7104 10.8095 12.8333 10.5 12.8333H3.50004C3.19062 12.8333 2.89388 12.7104 2.67508 12.4916C2.45629 12.2728 2.33337 11.9761 2.33337 11.6667V2.33333C2.33337 1.69166 2.85837 1.16666 3.50004 1.16666ZM4.66671 7.58333C4.512 7.58333 4.36362 7.64479 4.25423 7.75419C4.14483 7.86358 4.08337 8.01195 4.08337 8.16666C4.08337 8.32137 4.14483 8.46975 4.25423 8.57914C4.36362 8.68854 4.512 8.75 4.66671 8.75H9.33337C9.48808 8.75 9.63646 8.68854 9.74585 8.57914C9.85525 8.46975 9.91671 8.32137 9.91671 8.16666C9.91671 8.01195 9.85525 7.86358 9.74585 7.75419C9.63646 7.64479 9.48808 7.58333 9.33337 7.58333H4.66671ZM4.66671 9.91667C4.512 9.91667 4.36362 9.97812 4.25423 10.0875C4.14483 10.1969 4.08337 10.3453 4.08337 10.5C4.08337 10.6547 4.14483 10.8031 4.25423 10.9125C4.36362 11.0219 4.512 11.0833 4.66671 11.0833H7.00004C7.15475 11.0833 7.30312 11.0219 7.41252 10.9125C7.52191 10.8031 7.58337 10.6547 7.58337 10.5C7.58337 10.3453 7.52191 10.1969 7.41252 10.0875C7.30312 9.97812 7.15475 9.91667 7.00004 9.91667H4.66671Z"
-              ></path>
-              <path d="M8.16663 1.16666L11.6666 4.66666H8.16663V1.16666Z"></path>
-             </svg>
-            </button>
-           </label>
-          </div>
-         </div>
-        </div>
-       </div>
-      </div>
-     </main>
-
-     <footer class="py-8 bg-gray-100">
-      <div class="container text-center">
-       <div class="text-sm text-gray-600">
-        <a href="/about" class="px-2">
-         About
-        </a>
-        •
-        <a href="/contact" class="px-2">
-         Contact
-        </a>
-        •
-        <a href="/privacy-policy" class="px-2">
-         Privacy Policy
-        </a>
-       </div>
-       <p class="text-xs text-gray-500">Copyright © <span class="text-gray-700">OshekharO</span> - 2024</p>
-      </div>
-     </footer>
-    </div>
-   </div>
-  </div>
-   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script>
-function generateCardNumber(bin) {
-    let desiredLength;
+    <title>ReNamso - Free Credit Card Generator | UNCODER</title>
     
-    // Determine desired length based on BIN
-    if (bin.startsWith('34') || bin.startsWith('37')) {
-        desiredLength = 15; // American Express
-    } else if (['5018', '5020', '5038', '5893', '6304', '6759', '6761', '6762', '6763'].some(prefix => bin.startsWith(prefix))) {
-        desiredLength = 19; // Some Maestro cards
-    } else {
-        desiredLength = 16; // Most other cards (Visa, Mastercard, etc.)
-    }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" as="style">
 
-    let cardNumber = bin;
-    while (cardNumber.length < desiredLength - 1) {
-        cardNumber += Math.floor(Math.random() * 10);
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ReNamso - Free Credit Card Generator",
+      "description": "Free online tool to generate valid test credit card numbers for development and testing purposes",
+      "url": "https://uncoder.eu.org/cc-gen/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "UNCODER"
+      }
     }
+    </script>
 
-    let sum = 0;
-    let alternate = false;
-    for (let i = cardNumber.length - 1; i >= 0; i--) {
-        let n = parseInt(cardNumber.charAt(i));
-        if (alternate) {
-            n *= 2;
-            if (n > 9) {
-                n = (n % 10) + 1;
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+
+        body.dark-mode {
+            background-color: #1b1e21;
+            color: var(--light-color);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .dark-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin-top: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .dark-mode .header {
+            border-bottom-color: #495057;
+        }
+
+        .generator-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-section {
+            flex: 1;
+            min-width: 350px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .dark-mode .form-section {
+            background: #2d3035;
+        }
+
+        .result-section {
+            flex: 1;
+            min-width: 350px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .dark-mode .result-section {
+            background: #2d3035;
+        }
+
+        .form-control, .form-select {
+            background-color: inherit;
+            color: inherit;
+            border: 1px solid #ced4da;
+            transition: all 0.3s;
+        }
+
+        .dark-mode .form-control, .dark-mode .form-select {
+            border-color: #495057;
+        }
+
+        .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            border-color: var(--primary-color);
+            background-color: inherit;
+            color: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+
+        .btn-success:hover {
+            background-color: #157347;
+            border-color: #146c43;
+        }
+
+        .output-container {
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            padding: 5px 10px;
+        }
+
+        .dark-mode .copy-btn {
+            background: rgba(45, 48, 53, 0.8);
+        }
+
+        textarea {
+            resize: none;
+            height: 400px;
+            width: 100%;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .action-buttons .btn {
+            flex: 1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .dark-mode footer {
+            border-top-color: #495057;
+        }
+
+        .card-preview {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .dark-mode .card-preview {
+            background: #343a40;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .tab-content {
+            padding: 1rem 0;
+        }
+
+        .preset-bins {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .preset-bin {
+            padding: 8px 12px;
+            background: #e9ecef;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .dark-mode .preset-bin {
+            background: #495057;
+        }
+
+        .preset-bin:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .history-item {
+            padding: 8px 12px;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .dark-mode .history-item {
+            border-bottom-color: #495057;
+        }
+
+        .history-item:hover {
+            background: #f8f9fa;
+        }
+
+        .dark-mode .history-item:hover {
+            background: #343a40;
+        }
+
+        .validation-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 5px;
+        }
+
+        .badge-valid {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .badge-invalid {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .card-type-icon {
+            margin-right: 5px;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Mobile-specific styles for tabs */
+        .mobile-tab-label {
+            display: none;
+        }
+
+        /* SEO Content Styles */
+        .seo-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-top: 2rem;
+        }
+
+        .dark-mode .seo-content {
+            background: #2d3035;
+        }
+
+        .trust-signals {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+
+        .dark-mode .trust-signals {
+            background: #343a40;
+        }
+
+        @media (max-width: 768px) {
+            .generator-container {
+                flex-direction: column;
+            }
+            
+            .form-section, .result-section {
+                width: 100%;
+            }
+            
+            .preset-bins {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            /* Mobile tab styling */
+            .nav-tabs {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .nav-tabs .nav-item {
+                flex: 1;
+                text-align: center;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 0.5rem 0.25rem;
+                font-size: 0.8rem;
+            }
+            
+            .desktop-tab-label {
+                display: none;
+            }
+            
+            .mobile-tab-label {
+                display: inline;
+                font-size: 0.7rem;
+                margin-top: 2px;
+            }
+            
+            .nav-tabs .nav-link i {
+                font-size: 1.2rem;
+                margin-bottom: 3px;
             }
         }
-        sum += n;
-        alternate = !alternate;
-    }
-    let checkDigit = (10 - (sum % 10)) % 10;
-    return cardNumber + checkDigit;
-}
 
-function generateCVV(cardNumber) {
-    return cardNumber.startsWith('34') || cardNumber.startsWith('37') 
-           ? Math.floor(Math.random() * 9000) + 1000  // 4-digit CVV for Amex
-           : Math.floor(Math.random() * 900) + 100;   // 3-digit CVV for others
-}
+        @media (min-width: 769px) {
+            .mobile-tab-label {
+                display: none !important;
+            }
+            
+            .desktop-tab-label {
+                display: inline;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </div>
 
-$(document).ready(function() {
-  $('#codehap').submit(function(e) {
-    e.preventDefault();
+    <div class="container">
+        <div class="header">
+            <h1><b>- ReNamso -</b></h1>
+            <p class="lead">Advanced Credit Card Generator</p>
+        </div>
+
+        <div class="generator-container">
+            <div class="form-section">
+                <h3 class="mb-4"><i class="fas fa-cog me-2"></i>Configuration</h3>
+                <form id="generator-form">
+                    <div class="mb-3">
+                        <label for="bin" class="form-label"><b>BIN Pattern</b></label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="bin" placeholder="37513874xx0591x" required>
+                            <button class="btn btn-outline-secondary" type="button" onclick="validateBIN()">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </div>
+                        <div class="form-text">Use 'x' for random digits. Example: 411111xxxxxx1111</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label"><b>Quick BIN Presets</b></label>
+                        <div class="preset-bins">
+                            <div class="preset-bin" onclick="setBIN('4xxxxxxxxxxxxx')">Visa</div>
+                            <div class="preset-bin" onclick="setBIN('5xxxxxxxxxxxxxx')">MasterCard</div>
+                            <div class="preset-bin" onclick="setBIN('34xxxxxxxxxxxxx')">Amex</div>
+                            <div class="preset-bin" onclick="setBIN('37xxxxxxxxxxxxx')">Amex</div>
+                            <div class="preset-bin" onclick="setBIN('6011xxxxxxxxxx')">Discover</div>
+                            <div class="preset-bin" onclick="setBIN('3xxxxxxxxxxxxx')">Diners</div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="month" class="form-label"><b>Expiration Month</b></label>
+                            <select class="form-select" id="month">
+                                <option value="Random">Random</option>
+                                <option value="01">01 - January</option>
+                                <option value="02">02 - February</option>
+                                <option value="03">03 - March</option>
+                                <option value="04">04 - April</option>
+                                <option value="05">05 - May</option>
+                                <option value="06">06 - June</option>
+                                <option value="07">07 - July</option>
+                                <option value="08">08 - August</option>
+                                <option value="09">09 - September</option>
+                                <option value="10">10 - October</option>
+                                <option value="11">11 - November</option>
+                                <option value="12">12 - December</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="year" class="form-label"><b>Expiration Year</b></label>
+                            <select class="form-select" id="year">
+                                <option value="Random">Random</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                                <option value="2031">2031</option>
+                                <option value="2032">2032</option>
+                                <option value="2033">2033</option>
+                                <option value="2034">2034</option>
+                                <option value="2035">2035</option>
+                                <option value="2036">2036</option>
+                                <option value="2037">2037</option>
+                                <option value="2038">2038</option>
+                                <option value="2039">2039</option>
+                                <option value="2040">2040</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="ccv" class="form-label"><b>CVV/CVC</b></label>
+                            <input type="text" class="form-control" id="ccv" placeholder="Random">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="count" class="form-label"><b>Quantity</b></label>
+                            <input type="number" class="form-control" id="count" min="1" max="1000" value="20">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="format" class="form-label"><b>Output Format</b></label>
+                        <select class="form-select" id="format">
+                            <option value="pipe">Card|Month|Year|CVV</option>
+                            <option value="comma">Card,Month,Year,CVV</option>
+                            <option value="json">JSON Format</option>
+                            <option value="cardonly">Card Numbers Only</option>
+                            <option value="formatted">Formatted Card (XXXX XXXX XXXX XXXX)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary w-100 mb-3" onclick="generate()">
+                        <i class="fas fa-bolt me-2"></i><b>Generate Cards</b>
+                    </button>
+                </form>
+                
+                <div class="card-preview mt-4">
+                    <h6><i class="fas fa-eye me-2"></i>Preview</h6>
+                    <div id="preview">Enter a BIN pattern to see a preview</div>
+                    <div id="card-type" class="mt-2 small"></div>
+                </div>
+            </div>
+            
+            <div class="result-section">
+                <ul class="nav nav-tabs" id="resultTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="output-tab" data-bs-toggle="tab" data-bs-target="#output-pane" type="button" role="tab">
+                            <i class="fas fa-list me-1"></i>
+                            <span class="desktop-tab-label">Generated Cards</span>
+                            <span class="mobile-tab-label">Cards</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history-pane" type="button" role="tab">
+                            <i class="fas fa-history me-1"></i>
+                            <span class="desktop-tab-label">History</span>
+                            <span class="mobile-tab-label">History</span>
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="resultTabsContent">
+                    <div class="tab-pane fade show active" id="output-pane" role="tabpanel">
+                        <div class="output-container mt-3">
+                            <i class="fas fa-copy copy-btn" onclick="copyToClipboard()" title="Copy to clipboard"></i>
+                            <textarea class="form-control" id="output" rows="15" readonly placeholder="Generated cards will appear here..."></textarea>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button type="button" class="btn btn-success" onclick="downloadAsFile()">
+                                <i class="fas fa-download me-2"></i>Download
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="clearOutput()">
+                                <i class="fas fa-trash me-2"></i>Clear
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="history-pane" role="tabpanel">
+                        <div class="mt-3">
+                            <h6>Recent Generations</h6>
+                            <div id="history-list" style="max-height: 400px; overflow-y: auto;">
+                                <!-- History items will be added here -->
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary w-100 mt-2" onclick="clearHistory()">
+                                Clear History
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h6><i class="fas fa-info-circle me-2"></i>Information</h6>
+                    <ul class="list-unstyled small">
+                        <li><i class="fas fa-check-circle text-success me-2"></i>All cards pass Luhn algorithm validation</li>
+                        <li><i class="fas fa-shield-alt text-primary me-2"></i>For testing and development purposes only</li>
+                        <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>Do not use for fraudulent activities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Signals Section -->
+        <div class="trust-signals">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+                    <h5>100% Secure</h5>
+                    <p class="small">No data stored • Client-side processing only</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-bolt fa-2x text-primary mb-2"></i>
+                    <h5>Instant Generation</h5>
+                    <p class="small">Generate thousands of cards in seconds</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-code fa-2x text-primary mb-2"></i>
+                    <h5>Developer Focused</h5>
+                    <p class="small">Built for testing and development</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content Section -->
+        <section class="seo-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2>Free Credit Card Generator for Testing & Development</h2>
+                        <p>Our advanced <strong>credit card generator tool</strong> provides developers, testers, and quality assurance teams with valid test card numbers that pass Luhn algorithm validation. Generate unlimited <strong>test credit card numbers</strong> with custom BIN patterns for payment gateway testing, e-commerce development, and financial application testing.</p>
+                        
+                        <h3>Why Use Our Credit Card Generator?</h3>
+                        <ul>
+                            <li><strong>Luhn Algorithm Validated</strong> - All generated cards pass mathematical validation checks</li>
+                            <li><strong>Multiple Card Types</strong> - Support for Visa, MasterCard, American Express, Discover, and Diners Club</li>
+                            <li><strong>Custom BIN Patterns</strong> - Create cards with specific Bank Identification Numbers</li>
+                            <li><strong>Safe for Testing</strong> - Generated numbers work for testing but cannot be used for real transactions</li>
+                            <li><strong>Developer Friendly</strong> - Multiple output formats including JSON, CSV, and pipe-delimited</li>
+                        </ul>
+
+                        <h3>How to Generate Test Credit Card Numbers</h3>
+                        <ol>
+                            <li>Enter your desired BIN pattern (use 'x' for random digits)</li>
+                            <li>Select expiration date preferences or use random future dates</li>
+                            <li>Choose CVV generation method</li>
+                            <li>Specify quantity and output format</li>
+                            <li>Click generate and copy/download your test cards</li>
+                        </ol>
+
+                        <h3>Common Use Cases</h3>
+                        <p>Our <strong>credit card number generator</strong> is essential for:</p>
+                        <ul>
+                            <li>Payment gateway integration testing</li>
+                            <li>E-commerce website development</li>
+                            <li>Mobile payment app testing</li>
+                            <li>Financial software quality assurance</li>
+                            <li>Educational purposes and coding tutorials</li>
+                        </ul>
+
+                        <h3>Understanding BIN Patterns</h3>
+                        <p>A <strong>BIN (Bank Identification Number)</strong> is the first 6-8 digits of a credit card that identify the issuing bank and card type. Our tool allows you to create custom BIN patterns to generate cards that match specific testing requirements.</p>
+
+                        <div class="alert alert-info">
+                            <strong>Important:</strong> All generated credit card numbers are for testing purposes only and cannot be used for actual financial transactions. This tool should only be used in development and testing environments.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Information Accordion -->
+        <div class="accordion mt-4" id="infoAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="fas fa-info-circle me-2"></i> About This Tool
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#infoAccordion">
+                    <div class="accordion-body">
+                        <p>This Credit Card Generator is a sophisticated utility tool designed for developers, testers, and educators who need valid credit card numbers for testing payment systems, e-commerce platforms, and financial applications.</p>
+                        <p>The tool generates credit card numbers that pass the Luhn algorithm validation, making them suitable for testing scenarios where valid card numbers are required. All generated cards are completely fictional and cannot be used for actual transactions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <i class="fas fa-cog me-2"></i> How It Works
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#infoAccordion">
+                    <div class="accordion-body">
+                        <p>The generator uses the following process to create valid credit card numbers:</p>
+                        <ol>
+                            <li><strong>BIN Input</strong>: You provide a Bank Identification Number (BIN) pattern. Use 'x' characters for random digits.</li>
+                            <li><strong>Card Generation</strong>: The tool generates card numbers based on your BIN pattern while ensuring they pass the Luhn algorithm check.</li>
+                            <li><strong>Expiration Dates</strong>: You can specify fixed expiration dates or use random future dates.</li>
+                            <li><strong>CVV Codes</strong>: The tool generates appropriate CVV codes based on card type (3 digits for most cards, 4 digits for Amex).</li>
+                            <li><strong>Validation</strong>: All generated cards are automatically validated using the Luhn algorithm to ensure they're mathematically correct.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <i class="fas fa-shield-alt me-2"></i> Security & Legal Information
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#infoAccordion">
+                    <div class="accordion-body">
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Important Legal Notice</strong>
+                        </div>
+                        <p>This tool is intended for legitimate testing and educational purposes only. Please be aware of the following:</p>
+                        <ul>
+                            <li>All generated credit card numbers are fictional and cannot be used for actual financial transactions</li>
+                            <li>Using generated card numbers for fraudulent activities is illegal and strictly prohibited</li>
+                            <li>This tool should only be used in controlled testing environments</li>
+                            <li>Always comply with local laws and regulations regarding financial data</li>
+                            <li>Ensure you have proper authorization before testing payment systems</li>
+                        </ul>
+                        <p>By using this tool, you agree to use it responsibly and only for legitimate purposes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <i class="fas fa-question-circle me-2"></i> Frequently Asked Questions
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#infoAccordion">
+                    <div class="accordion-body">
+                        <h6>What is a BIN pattern?</h6>
+                        <p>A BIN (Bank Identification Number) pattern is the first 6-8 digits of a credit card that identify the issuing bank and card type. In this tool, you can use 'x' characters to represent random digits in your pattern.</p>
+                        
+                        <h6>Why do the generated cards pass validation?</h6>
+                        <p>All cards generated by this tool pass the Luhn algorithm check, which is the standard validation method used by payment processors to verify card number integrity.</p>
+                        
+                        <h6>Can I use these cards for online purchases?</h6>
+                        <p>No. These are randomly generated numbers that only pass mathematical validation. They are not associated with any real accounts and cannot be used for actual transactions.</p>
+                        
+                        <h6>What card types are supported?</h6>
+                        <p>The tool supports Visa, MasterCard, American Express, Discover, and Diners Club cards with appropriate BIN ranges and card lengths.</p>
+                        
+                        <h6>Is my data stored when using this tool?</h6>
+                        <p>The tool only stores your generation history locally in your browser for convenience. No data is sent to any server.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <i class="fas fa-tools me-2"></i> Developer Resources
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#infoAccordion">
+                    <div class="accordion-body">
+                        <h5>API Integration Guide</h5>
+                        <p>Learn how to integrate our credit card generation functionality into your applications.</p>
+                        
+                        <h5>Testing Best Practices</h5>
+                        <p>Discover the best practices for payment gateway testing using generated card numbers.</p>
+                        
+                        <h5>Card Number Validation</h5>
+                        <p>Understand how the Luhn algorithm works and how to validate credit card numbers in your code.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
-    $('.wait-loading').show();
-    $('#submit').hide();
-
-    var bin = $('input[name="bin"]').val();
-    var quantity = parseInt($('input[name="number"]').val());
-    var includeDate = $('input[name="date"]').is(':checked');
-    var includeCSV = $('input[name="csv"]').is(':checked');
-    var month = $('select[name="s_date"]').val();
-    var year = $('select[name="year"]').val();
-    var csv = $('input[name="s_csv"]').val();
-    var format = $('select[name="format"]').val();
-
-    var cards = [];
-    for (var i = 0; i < quantity; i++) {
-      var cardNumber = generateCardNumber(bin);
-      var card = {
-        number: cardNumber,
-        month: includeDate ? (month ? parseInt(month) : Math.floor(Math.random() * 12) + 1) : undefined,
-        year: includeDate ? (year ? parseInt(year) : Math.floor(Math.random() * 9) + 2024) : undefined,
-        cvv: includeCSV ? (csv ? csv : generateCVV(cardNumber)) : undefined
-      };
-      
-      // Remove undefined properties
-      Object.keys(card).forEach(key => card[key] === undefined && delete card[key]);
-      
-      cards.push(card);
+    <!-- Lazy loading for non-critical resources -->
+    <script>
+    if ('IntersectionObserver' in window) {
+        const lazyObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const lazy = entry.target;
+                    // Load lazy resources here
+                }
+            });
+        });
     }
+    </script>
 
-    var result = '';
-    switch (format) {
-      case 'pipe':
-        result = cards.map(c => Object.values(c).join('|')).join('\n');
-        break;
-      case 'json':
-        result = JSON.stringify(cards, null, 2);
-        break;
-    }
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            const icon = document.getElementById('theme-icon');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
 
-    $('#result').val(result);
-    
-    $('.wait-loading').hide();
-    $('#submit').show();
-  });
+        // Load theme preference on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.body.classList.add(theme + '-mode');
+            const icon = document.getElementById('theme-icon');
+            
+            if (theme === 'dark') {
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.add('fa-moon');
+            }
+            
+            // Add input event listener for BIN preview
+            document.getElementById('bin').addEventListener('input', updatePreview);
+            
+            // Load history
+            loadHistory();
+        });
 
-  $('.btn-clip').click(function() {
-    var resultText = $('#result').val();
-    navigator.clipboard.writeText(resultText).then(function() {
-      $('.tooltip').removeClass('invisible').addClass('visible');
-      setTimeout(function() {
-        $('.tooltip').removeClass('visible').addClass('invisible');
-      }, 2000);
-    });
-  });
+        // Update preview when BIN input changes
+        function updatePreview() {
+            const bin = document.getElementById('bin').value.trim();
+            const preview = document.getElementById('preview');
+            const cardType = document.getElementById('card-type');
+            
+            if (bin === '') {
+                preview.textContent = 'Enter a BIN pattern to see a preview';
+                cardType.innerHTML = '';
+                return;
+            }
+            
+            try {
+                const card = generateCard(bin, getCardLength(bin));
+                preview.textContent = card;
+                
+                // Detect card type
+                const type = detectCardType(card);
+                let icon = '';
+                switch(type) {
+                    case 'Visa': icon = '<i class="fab fa-cc-visa card-type-icon"></i>'; break;
+                    case 'MasterCard': icon = '<i class="fab fa-cc-mastercard card-type-icon"></i>'; break;
+                    case 'Amex': icon = '<i class="fab fa-cc-amex card-type-icon"></i>'; break;
+                    case 'Discover': icon = '<i class="fab fa-cc-discover card-type-icon"></i>'; break;
+                    default: icon = '<i class="fas fa-credit-card card-type-icon"></i>';
+                }
+                
+                cardType.innerHTML = `${icon} ${type} • ${validateLuhn(card) ? '<span class="badge-valid validation-badge">Valid</span>' : '<span class="badge-invalid validation-badge">Invalid</span>'}`;
+            } catch (e) {
+                preview.textContent = 'Invalid BIN pattern';
+                cardType.innerHTML = '';
+            }
+        }
 
-  $('#codehapBTN').click(function() {
-    $('#ch').toggleClass('hidden');
-  });
-});
-</script>  
- </body>
+        // Set BIN from preset
+        function setBIN(bin) {
+            document.getElementById('bin').value = bin;
+            updatePreview();
+        }
+
+        // Validate BIN pattern
+        function validateBIN() {
+            const bin = document.getElementById('bin').value.trim();
+            if (bin === '') {
+                alert('Please enter a BIN pattern');
+                return;
+            }
+            
+            // Simple validation - check if it contains at least some digits
+            if (!/\d/.test(bin)) {
+                alert('BIN pattern must contain at least one digit');
+                return;
+            }
+            
+            alert('BIN pattern is valid');
+        }
+
+        // Generate a single valid credit card number using Luhn algorithm
+        function generateCard(bin, length) {
+            let bin2 = "";
+            let card = "";
+            let card1_l = [];
+            let card2_l = [];
+            let sum = 0;
+            let mod = 0;
+            let check_sum = 0;
+
+            // Replace 'x' with random digits and limit to length-1
+            for (let i = 0; i < bin.length && bin2.length < length - 1; i++) {
+                let char = bin[i].toLowerCase();
+                if (char === "x") {
+                    char = Math.floor(Math.random() * 10);
+                }
+                bin2 += char;
+            }
+
+            // If bin2 is shorter than length-1, append random digits
+            while (bin2.length < length - 1) {
+                bin2 += Math.floor(Math.random() * 10);
+            }
+
+            // Convert bin2 to array of integers
+            for (let i = 0; i < bin2.length; i++) {
+                card1_l.push(parseInt(bin2[i]));
+                card2_l.push(parseInt(bin2[i]));
+            }
+
+            // Double the value of alternate digits starting from the rightmost
+            for (let i = card2_l.length - 1; i >= 0; i -= 2) {
+                card2_l[i] *= 2;
+                if (card2_l[i] > 9) {
+                    card2_l[i] -= 9;
+                }
+            }
+
+            // Sum all the digits
+            for (let i in card2_l) {
+                sum += card2_l[i];
+            }
+
+            // Calculate the checksum
+            mod = sum % 10;
+            if (mod !== 0) {
+                check_sum = 10 - mod;
+            }
+
+            // Add the checksum to the card number
+            card1_l.push(check_sum);
+
+            // Convert the card number array to a string
+            for (let i in card1_l) {
+                card += card1_l[i];
+            }
+            return card;
+        }
+
+        // Determine card length based on BIN
+        function getCardLength(bin) {
+            if (/^3[47]/.test(bin)) { // Amex
+                return 15;
+            } else if (/^3[0689]/.test(bin)) { // Diners Club
+                return 14;
+            } else { // Visa, MasterCard, Discover, etc.
+                return 16;
+            }
+        }
+
+        // Detect card type
+        function detectCardType(cardNumber) {
+            // Remove any non-digit characters
+            const cleaned = cardNumber.replace(/\D/g, '');
+            
+            // Visa: starts with 4
+            if (/^4/.test(cleaned)) {
+                return "Visa";
+            }
+            // MasterCard: starts with 51-55 or 2221-2720
+            else if (/^5[1-5]/.test(cleaned) || /^2[2-7][2-9][1-9]/.test(cleaned)) {
+                return "MasterCard";
+            }
+            // American Express: starts with 34 or 37
+            else if (/^3[47]/.test(cleaned)) {
+                return "Amex";
+            }
+            // Discover: starts with 6011, 622126-622925, 644-649, or 65
+            else if (/^6011/.test(cleaned) || /^622[1-9][2-6][0-9]/.test(cleaned) || 
+                     /^64[4-9]/.test(cleaned) || /^65/.test(cleaned)) {
+                return "Discover";
+            }
+            // Diners Club: starts with 300-305, 36, or 38-39
+            else if (/^3(0[0-5]|[68][0-9]|9[0-9])/.test(cleaned)) {
+                return "Diners Club";
+            }
+            else {
+                return "Unknown";
+            }
+        }
+
+        // Luhn algorithm validation
+        function validateLuhn(cardNumber) {
+            // Remove any non-digit characters
+            const cleaned = cardNumber.replace(/\D/g, '');
+            
+            // Check if the card number is empty or too short
+            if (cleaned.length < 13) {
+                return false;
+            }
+            
+            let sum = 0;
+            let isEven = false;
+            
+            // Iterate from right to left
+            for (let i = cleaned.length - 1; i >= 0; i--) {
+                let digit = parseInt(cleaned.charAt(i), 10);
+                
+                if (isEven) {
+                    digit *= 2;
+                    if (digit > 9) {
+                        digit -= 9;
+                    }
+                }
+                
+                sum += digit;
+                isEven = !isEven;
+            }
+            
+            return (sum % 10) === 0;
+        }
+
+        // Generate random month
+        function generateMonth() {
+            const monthList = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+            return monthList[Math.floor(Math.random() * 12)];
+        }
+
+        // Generate random year
+        function generateYear() {
+            const yearList = ["2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040"];
+            return yearList[Math.floor(Math.random() * yearList.length)];
+        }
+
+        // Generate CVV based on card type
+        function generateCCV(bin) {
+            const ccvLength = /^3[47]/.test(bin) ? 4 : 3; // Amex has 4-digit CVV
+            let ccv = "";
+            for (let i = 0; i < ccvLength; i++) {
+                ccv += Math.floor(Math.random() * 10);
+            }
+            return ccv;
+        }
+
+        // Format the output based on selected format
+        function formatOutput(card, month, year, ccv, format) {
+            switch(format) {
+                case 'pipe':
+                    return `${card}|${month}|${year}|${ccv}`;
+                case 'comma':
+                    return `${card},${month},${year},${ccv}`;
+                case 'json':
+                    return `{"card": "${card}", "month": "${month}", "year": "${year}", "cvv": "${ccv}"}`;
+                case 'cardonly':
+                    return card;
+                case 'formatted':
+                    // Format card number with spaces (XXXX XXXX XXXX XXXX)
+                    const formattedCard = card.replace(/(.{4})/g, '$1 ').trim();
+                    return `${formattedCard}|${month}|${year}|${ccv}`;
+                default:
+                    return `${card}|${month}|${year}|${ccv}`;
+            }
+        }
+
+        // Save to history
+        function saveToHistory(bin, count) {
+            let history = JSON.parse(localStorage.getItem('generationHistory') || '[]');
+            
+            const historyItem = {
+                bin: bin,
+                count: count,
+                timestamp: new Date().toLocaleString()
+            };
+            
+            history.unshift(historyItem);
+            
+            // Keep only last 20 items
+            if (history.length > 20) {
+                history = history.slice(0, 20);
+            }
+            
+            localStorage.setItem('generationHistory', JSON.stringify(history));
+            loadHistory();
+        }
+
+        // Load history
+        function loadHistory() {
+            const history = JSON.parse(localStorage.getItem('generationHistory') || '[]');
+            const historyList = document.getElementById('history-list');
+            
+            historyList.innerHTML = '';
+            
+            if (history.length === 0) {
+                historyList.innerHTML = '<div class="text-center p-3">No generation history</div>';
+                return;
+            }
+            
+            history.forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.innerHTML = `
+                    <div><strong>${item.bin}</strong> × ${item.count}</div>
+                    <div class="small text-muted">${item.timestamp}</div>
+                `;
+                historyItem.addEventListener('click', () => {
+                    document.getElementById('bin').value = item.bin;
+                    updatePreview();
+                });
+                historyList.appendChild(historyItem);
+            });
+        }
+
+        // Clear history
+        function clearHistory() {
+            if (confirm('Are you sure you want to clear generation history?')) {
+                localStorage.removeItem('generationHistory');
+                loadHistory();
+            }
+        }
+
+        // Main generation function
+        function generate() {
+            const bin = document.getElementById('bin').value.trim();
+            let ccv = document.getElementById('ccv').value.trim();
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            let count = parseInt(document.getElementById('count').value.trim());
+            const format = document.getElementById('format').value;
+            const output = document.getElementById('output');
+
+            // Validate inputs
+            if (bin === "") {
+                alert("Please enter a BIN pattern");
+                return;
+            }
+            
+            if (ccv === "") {
+                ccv = "Random";
+            }
+            
+            if (isNaN(count) || count <= 0) {
+                count = 20;
+            } else if (count > 1000) {
+                count = 1000;
+                document.getElementById('count').value = 1000;
+            }
+
+            const cardLength = getCardLength(bin);
+            let cards = [];
+            
+            // Generate the requested number of cards
+            for (let i = 0; i < count; i++) {
+                const generatedCard = generateCard(bin, cardLength);
+                const generatedMonth = month === "Random" ? generateMonth() : month;
+                const generatedYear = year === "Random" ? generateYear() : year;
+                const generatedCCV = ccv === "Random" ? generateCCV(bin) : ccv;
+                
+                cards.push(formatOutput(generatedCard, generatedMonth, generatedYear, generatedCCV, format));
+            }
+            
+            // Display results based on format
+            if (format === 'json') {
+                output.value = '[\n  ' + cards.join(',\n  ') + '\n]';
+            } else {
+                output.value = cards.join('\n');
+            }
+            
+            // Save to history
+            saveToHistory(bin, count);
+            
+            // Switch to output tab
+            document.getElementById('output-tab').click();
+        }
+
+        // Copy output to clipboard
+        function copyToClipboard() {
+            const textarea = document.getElementById('output');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    // Visual feedback
+                    const copyBtn = document.querySelector('.copy-btn');
+                    const originalIcon = copyBtn.classList.contains('fa-copy') ? 'fa-copy' : 'fa-clipboard';
+                    copyBtn.classList.remove(originalIcon);
+                    copyBtn.classList.add('fa-check', 'text-success');
+                    
+                    setTimeout(() => {
+                        copyBtn.classList.remove('fa-check', 'text-success');
+                        copyBtn.classList.add(originalIcon);
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy to clipboard');
+            }
+        }
+
+        // Download output as a file
+        function downloadAsFile() {
+            const output = document.getElementById('output').value;
+            if (!output) {
+                alert("No data to download");
+                return;
+            }
+            
+            const format = document.getElementById('format').value;
+            let extension = '.txt';
+            let mimeType = 'text/plain';
+            
+            if (format === 'json') {
+                extension = '.json';
+                mimeType = 'application/json';
+            }
+            
+            const blob = new Blob([output], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `generated_cards_${new Date().toISOString().slice(0, 10)}${extension}`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Clear the output area
+        function clearOutput() {
+            document.getElementById('output').value = '';
+        }
+    </script>
+</body>
 </html>
