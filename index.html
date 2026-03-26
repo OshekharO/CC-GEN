@@ -1356,7 +1356,7 @@
         // Load theme preference on page load
         window.addEventListener('DOMContentLoaded', function() {
             const theme = localStorage.getItem('theme') || 'dark';
-            document.body.classList.add(theme + '-mode');
+            document.body.className = theme + '-mode';
             const icon = document.getElementById('theme-icon');
             
             if (theme === 'dark') {
