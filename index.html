@@ -1225,18 +1225,25 @@
             alert('BIN pattern is valid');
         }
 
+        /** Buffer for batched cryptographic random value generation (performance optimization) */
+        const RANDOM_BUFFER_SIZE = 1024;
+        const randomBuffer = new Uint32Array(RANDOM_BUFFER_SIZE);
+        let randomBufferIndex = RANDOM_BUFFER_SIZE;
+
         /**
          * Generate a cryptographically secure random integer between 0 and max (exclusive)
-         * Falls back to Math.random() if crypto API is not available
+         * Batches getRandomValues calls into a static Uint32Array buffer to avoid allocation overhead
          * @param {number} max - Upper bound (exclusive)
          * @returns {number} Random integer
          */
         function secureRandomInt(max) {
             if (window.crypto && window.crypto.getRandomValues) {
-                const array = new Uint32Array(1);
-                window.crypto.getRandomValues(array);
-                // Use unbiased conversion to avoid modulo bias
-                return Math.floor((array[0] / 0x100000000) * max);
+                if (randomBufferIndex >= RANDOM_BUFFER_SIZE) {
+                    window.crypto.getRandomValues(randomBuffer);
+                    randomBufferIndex = 0;
+                }
+                const val = randomBuffer[randomBufferIndex++];
+                return Math.floor((val / 0x100000000) * max);
             }
             return Math.floor(Math.random() * max);
         }
@@ -1250,22 +1257,24 @@
         }
 
         /**
-         * Parse BIN pattern and extract digits, replacing 'x' with random digits
+         * Parse BIN pattern and extract digits, replacing 'x'/'X' with random digits
+         * Optimized with fast ASCII character code checking instead of regex/lowerCase allocations
          * @param {string} bin - BIN pattern with 'x' as random digit placeholder
          * @param {number} maxLength - Maximum number of digits to extract
          * @returns {number[]} Array of digits
          */
         function parseBinPattern(bin, maxLength) {
             const digits = [];
-            for (const char of bin) {
+            const len = bin.length;
+            for (let i = 0; i < len; i++) {
                 if (digits.length >= maxLength) break;
-                const lowerChar = char.toLowerCase();
-                if (lowerChar === 'x') {
+                const code = bin.charCodeAt(i);
+                if (code === 120 || code === 88) { // 'x' or 'X'
                     digits.push(randomDigit());
-                } else if (/\d/.test(lowerChar)) {
-                    digits.push(parseInt(lowerChar, 10));
+                } else if (code >= 48 && code <= 57) { // '0'-'9'
+                    digits.push(code - 48);
                 }
-                // Skip non-digit, non-x characters (allows formatted input like "4111-xxxx-xxxx")
+                // Skip non-digit, non-x characters
             }
             return digits;
         }
@@ -1381,14 +1390,17 @@
          * Generate a single valid credit card number using enhanced Luhn algorithm
          * @param {string} bin - BIN pattern with 'x' as random digit placeholder
          * @param {number} length - Desired card length
+         * @param {string} [cardType] - Optional card type (avoid recalculating in loops)
          * @returns {string} Valid card number
          */
-        function generateCard(bin, length) {
+        function generateCard(bin, length, cardType) {
             const targetLength = length - 1; // Reserve space for checksum
-            const cardType = getCardTypeFromBin(bin);
+            if (!cardType) {
+                cardType = getCardTypeFromBin(bin);
+            }
             
             // Parse BIN pattern into digits
-            let digits = parseBinPattern(bin, targetLength);
+            const digits = parseBinPattern(bin, targetLength);
             
             // Calculate how many more digits we need
             const remainingDigits = targetLength - digits.length;
@@ -1396,20 +1408,14 @@
             // Generate remaining account digits
             if (remainingDigits > 0) {
                 const accountDigits = generateAccountDigits(remainingDigits, cardType);
-                digits = digits.concat(accountDigits);
+                for (let i = 0; i < accountDigits.length; i++) {
+                    digits.push(accountDigits[i]);
+                }
             }
 
             // Calculate and append Luhn checksum
             const checksum = calculateLuhnChecksum(digits);
             digits.push(checksum);
-
-            // Double-verify the generated card passes Luhn
-            if (!verifyLuhnChecksum(digits)) {
-                // Recalculate if verification fails (shouldn't happen, but safety check)
-                digits.pop();
-                const newChecksum = calculateLuhnChecksum(digits);
-                digits.push(newChecksum);
-            }
 
             return digits.join('');
         }
@@ -1425,9 +1431,10 @@
             const cards = new Set();
             const maxAttempts = count * 2; // Prevent infinite loops
             let attempts = 0;
+            const cardType = getCardTypeFromBin(bin);
             
             while (cards.size < count && attempts < maxAttempts) {
-                const card = generateCard(bin, length);
+                const card = generateCard(bin, length, cardType);
                 cards.add(card); // Set automatically handles uniqueness
                 attempts++;
             }
